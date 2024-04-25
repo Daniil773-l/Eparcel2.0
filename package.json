@@ -1,0 +1,11 @@
+{
+  "name": "treact-ui",
+  "version": "(1.0.0)",
+  "description": "My awesome project",
+  "main": " (index.js)",
+  "repository": "s",
+  "license": "MIT",
+  "dependencies": {
+    "feather-icons": "^4.29.1"
+  }
+}
