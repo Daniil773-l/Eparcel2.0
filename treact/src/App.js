@@ -1,10 +1,10 @@
 import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import styled from 'styled-components';
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/ThreeColWithSideImage.js";
-import MainFeature from "components/features/TwoColWithButton.js";
 import MainFeature2 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
 import FeatureWithSteps from "components/features/TwoColWithSteps.js";
 import Pricing from "components/pricing/ThreePlans.js";
@@ -12,44 +12,72 @@ import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js"
 import FAQ from "components/faqs/SingleCol.js";
 import GetStarted from "components/cta/GetStarted";
 import Footer from "components/footers/FiveColumnWithBackground.js";
-import heroScreenshotImageSrc from "images/hero-screenshot-1.png";
-import macHeroScreenshotImageSrc from "images/hero-screenshot-2.png";
+import StepImg from "images/steps.svg"
+import PVZ from "images/PBZ.svg"
+import PostMat from "images/postmat.svg"
+import Dostavka from "images/dostavka.svg"
 import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
 import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 
 export default () => {
     const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
-    const HighlightedText = tw.span`text-primary-500`;
-
+    const HighlightedText = styled.span`
+        ${tw`text-primary-500`} // Применяем основные стили от tw.macro
+        color: #0ABD19; // Устанавливаем желаемый цвет
+    `;
+    const Steps = styled.span`
+        ${tw`text-primary-500`} // Применяем основные стили от tw.macro
+        color: #0ABD19; // Устанавливаем желаемый цвет
+    `;
     return (
         <AnimationRevealPage>
             <Hero roundedHeaderButton={true} />
             <Features
-                subheading={<Subheading>Features</Subheading>}
                 heading={
                     <>
-                        We have Amazing <HighlightedText>Service.</HighlightedText>
+                        У нас потрясающий  <HighlightedText>Сервис.</HighlightedText>
                     </>
                 }
             />
-            <MainFeature
-                subheading={<Subheading>Quality Work</Subheading>}
-                imageSrc={heroScreenshotImageSrc}
-                imageBorder={true}
-                imageDecoratorBlob={true}
-            />
+
             <FeatureWithSteps
-                subheading={<Subheading>STEPS</Subheading>}
+                subheading={<Steps>ШАГИ</Steps>}
                 heading={
                     <>
-                        Easy to <HighlightedText>Get Started.</HighlightedText>
+                        Как это <HighlightedText>работает?</HighlightedText>
                     </>
                 }
                 textOnLeft={false}
-                imageSrc={macHeroScreenshotImageSrc}
+                imageSrc={StepImg}
                 imageDecoratorBlob={true}
                 decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
+            />
+            <Pricing
+
+                heading={
+                    <>
+                        Способы  <HighlightedText>доставки.</HighlightedText>
+                    </>
+                }
+                plans={[
+                    {
+
+                        name: "Доставка до ПВЗ",
+                        icon: PVZ,
+                        mainFeature: "Доставка в пункты выдачи заказов наших партнеров",
+                    },
+                    {
+                        name: "Доставка до постамата",
+                        icon: PostMat,
+                        mainFeature: "Выбирайте постамат удобный для вас и мы доставим ваши покупки именно туда",
+                    },
+                    {
+                        name: "Доставка до двери",
+                        icon: Dostavka,
+                        mainFeature: "Скажите адрес и наш курьер доставит его прямо к вам до двери",
+                    },
+                ]}
             />
             <MainFeature2
                 subheading={<Subheading>VALUES</Subheading>}
@@ -75,38 +103,7 @@ export default () => {
                     }
                 ]}
             />
-            <Pricing
-                subheading={<Subheading>Pricing</Subheading>}
-                heading={
-                    <>
-                        Reasonable & Flexible <HighlightedText>Plans.</HighlightedText>
-                    </>
-                }
-                plans={[
-                    {
-                        name: "Personal",
-                        price: "$17.99",
-                        duration: "Monthly",
-                        mainFeature: "For Individuals",
-                        features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"]
-                    },
-                    {
-                        name: "Business",
-                        price: "$37.99",
-                        duration: "Monthly",
-                        mainFeature: "For Small Businesses",
-                        features: ["60 Templates", "15 Landing Pages", "22 Internal Pages", "Priority Assistance"],
-                        featured: true
-                    },
-                    {
-                        name: "Enterprise",
-                        price: "$57.99",
-                        duration: "Monthly",
-                        mainFeature: "For Large Companies",
-                        features: ["90 Templates", "27 Landing Pages", "37 Internal Pages", "Personal Assistance"]
-                    }
-                ]}
-            />
+
             <Testimonial
                 subheading={<Subheading>Testimonials</Subheading>}
                 heading={

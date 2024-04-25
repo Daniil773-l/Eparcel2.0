@@ -33,32 +33,44 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col items-center text-center h-full mx-4 px-2 py-8`}
+  height: 100%; /* Ensure card stretches to full height */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute space evenly */
+
   .imageContainer {
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
+    margin-bottom: 12px; /* Adjust space between icon and title */
     img {
-      ${tw`w-6 h-6`}
+      ${tw`w-12 h-12`}
     }
   }
 
   .textContainer {
-    ${tw`sm:ml-4 mt-4 sm:mt-2`}
+    ${tw`flex-grow`}
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align content to the top */
   }
 
   .title {
-    ${tw`mt-4 tracking-wide font-bold text-2xl leading-none`}
+    ${tw`tracking-wide font-bold text-2xl leading-none`}
+    margin-bottom: 12px; /* Adjust space between title and description */
   }
 
   .description {
-    ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 leading-loose`}
+    ${tw`font-medium text-secondary-100 leading-loose`}
+    text-align: center; /* Ensure description is centered */
   }
 `;
+
 
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
+export default ({ cards = null, heading = "Amazing Features", subheading = "", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
    *  1) imageSrc - the image shown at the top of the card
@@ -70,14 +82,14 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
   const defaultCards = [
     {
       imageSrc: ShieldIconImage,
-      title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security."
+      title: "Доставка",
+      description: "Дешевая и быстрая доставка зарубежных товаров в Казхстан"
     },
-    { imageSrc: SupportIconImage, title: "24/7 Support" },
-    { imageSrc: CustomizeIconImage, title: "Customizable" },
-    { imageSrc: ReliableIconImage, title: "Reliable" },
-    { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
+    { imageSrc: SupportIconImage, title: "Пункты выдачи" ,      description: "Более 50 000 пунктов выдачи и постаматов по всему Казахстану"},
+    { imageSrc: CustomizeIconImage, title: "Обслуживание" ,description: "Адрес склада, получение,   упаковка посылки - бесплатно"},
+    { imageSrc: ReliableIconImage, title: "Выгода" , description: "Покупайте товары в США и Турции с большой выгодой"},
+    { imageSrc: FastIconImage, title: "Пересылка" ,description: "Получи личный почтовый адрес в США и Турции для покупок в интернет-магазинах, а Eparcel вам доставит в Казахстан"},
+    { imageSrc: SimpleIconImage, title: "Экономдоставка" ,description: "Товары из США и Турции дешевле с экономной доставкой от Eparcel.\""}
   ];
 
   if (!cards) cards = defaultCards;
@@ -87,7 +99,7 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
-        {description && <Description>{description}</Description>}
+
         <VerticalSpacer />
         {cards.map((card, i) => (
           <Column key={i}>

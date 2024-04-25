@@ -9,7 +9,14 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
+const ImageColumn = styled(Column)(props => [
+  tw`md:w-6/12 flex-shrink-0 relative`,
+  css`
+    /* Adjust the position of the image column */
+    margin-left: 0%; /* Shifts the entire image column slightly to the left */
+    max-width: 95%; /* Reducing max-width of the column to adjust the space */
+  `
+]);
 const TextColumn = styled(Column)(props => [
   tw`md:w-6/12 mt-16 md:mt-0`,
   props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
@@ -33,11 +40,22 @@ const Heading = tw(
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 
 const Steps = tw.ul`mt-12`;
-const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`;
-const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
-const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
-const StepHeading = tw.h6`leading-none text-xl font-semibold`;
-const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
+const Step = styled.li`
+  ${tw`mt-8 flex items-start`}
+`;
+
+const StepNumber = styled.div`
+  ${tw`font-semibold text-4xl leading-none text-[#0ABD19]`}
+  min-width: 80px; // Adjust this as needed to match the design
+`;
+
+
+const StepText = styled.div`
+  ${tw`flex flex-col justify-center`}
+`;
+const StepHeading = tw.h6`text-xl font-semibold leading-none mt-1`; // Adjust the margin-top as needed
+const StepDescription = tw.p`mt-[-2rem]
+ text-sm font-medium`;
 
 export default ({
   subheading = "Our Expertise",
@@ -59,17 +77,22 @@ export default ({
 
   const defaultSteps = [
     {
-      heading: "Register",
-      description: "Create an account with us using Google or Facebook."
+      heading: " Регистрация",
+      description: "Зарегистрируйтесь на нашем сайте и получите адрес для доставки ваших покупок за рубежом"
     },
     {
-      heading: "Download",
-      description: "Browse and Download the template that you like from the marketplace."
+      heading: "Покупка",
+      description: "Заказывайте товары в зарубежных интернет-магазинах и отправляйте их к нам на склад"
     },
     {
-      heading: "Run",
-      description: "Follow the instructions to setup and customize the template to your needs."
+      heading: "Оформление",
+      description: "Оформляйте доставку в Россию. Отправляйте товары из заграницы друзьям, клиентам или себе"
+    },
+    {
+      heading: "Получение",
+      description: "Получайте посылки прямо дома или в другом удобном пункте выдачи вашего города"
     }
+
   ];
 
   if (!steps) steps = defaultSteps;
