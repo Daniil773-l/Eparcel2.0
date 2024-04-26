@@ -10,15 +10,17 @@ import FeatureWithSteps from "components/features/TwoColWithSteps.js";
 import Pricing from "components/pricing/ThreePlans.js";
 import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
 import FAQ from "components/faqs/SingleCol.js";
-import GetStarted from "components/cta/GetStarted";
-import Footer from "components/footers/FiveColumnWithBackground.js";
+import Footer from "components/footers/MiniCenteredFooter";
 import StepImg from "images/steps.svg"
 import PVZ from "images/PBZ.svg"
 import PostMat from "images/postmat.svg"
 import Dostavka from "images/dostavka.svg"
 import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
-import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
-import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
+
+
+import { ReactComponent as One } from "images/01.svg";
+import { ReactComponent as Two } from "images/02.svg";
+import { ReactComponent as Three } from "images/03.svg";
 
 export default () => {
     const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
@@ -28,6 +30,10 @@ export default () => {
     `;
     const Steps = styled.span`
         ${tw`text-primary-500`} // Применяем основные стили от tw.macro
+        color: #0ABD19; // Устанавливаем желаемый цвет
+    `;
+    const Prim = styled.span`
+        ${tw`text-center text-primary-500 md:text-left`}// Применяем основные стили от tw.macro
         color: #0ABD19; // Устанавливаем желаемый цвет
     `;
     return (
@@ -80,101 +86,100 @@ export default () => {
                 ]}
             />
             <MainFeature2
-                subheading={<Subheading>VALUES</Subheading>}
+                subheading={< Prim>Преимущества</ Prim>}
                 heading={
                     <>
-                        We Always Abide by Our <HighlightedText>Principles.</HighlightedText>
+                        Преимущества нашей службы <HighlightedText>доставки.</HighlightedText>
                     </>
                 }
                 imageSrc={prototypeIllustrationImageSrc}
                 showDecoratorBlob={false}
                 features={[
                     {
-                        Icon: MoneyIcon,
-                        title: "Affordable",
-                        description: "We promise to offer you the best rate we can - at par with the industry standard.",
-                        iconContainerCss: tw`bg-green-300 text-green-800`
+                        Icon: One,
+                        title: "Дешевая доставка",
+                        description: "При регистрации на сайте вы бесплатно получаете почтовый адрес склада для доставки ваших товаров.\n",
+
                     },
                     {
-                        Icon: BriefcaseIcon,
-                        title: "Professionalism",
-                        description: "We assure you that our templates are designed and created by professional designers.",
-                        iconContainerCss: tw`bg-red-300 text-red-800`
-                    }
+                        Icon: Two,
+                        title: "Более 50 000 ПВЗ",
+                        description: "Вы сможете воспользоваться доставкой в любой пункт выдачи заказов или постамат и забрать посылку по всему Казахстану.",
+
+                    },
+                    {
+                        Icon: Three, // Adding another feature as requested
+                        title: "Оплата и тенге",
+                        description: "Все услуги и товары оплачиваются в тенге и валюте на ваше усмотрение. Различные методы оплаты.",
+
+                    },
                 ]}
+
             />
 
             <Testimonial
-                subheading={<Subheading>Testimonials</Subheading>}
+                subheading={<Prim>Актуализация</Prim>}
                 heading={
                     <>
-                        Our Clients <HighlightedText>Love Us.</HighlightedText>
+                        Новости и специальные  <HighlightedText>предложения!</HighlightedText>
                     </>
                 }
                 testimonials={[
                     {
-                        stars: 5,
-                        profileImageSrc:
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-                        heading: "Amazing User Experience",
+
+
+                        heading: "Где покупать товары с выгодой",
                         quote:
-                            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-                        customerName: "Charlotte Hale",
-                        customerTitle: "Director, Delos Inc."
+                            "В США и Турции много мест для выгодных покупок. В США стоит обратить внимание на крупные сети, такие как Walmart и Target, а также на аутлеты. В Турции особенно популярны базары, например, Grand Bazaar в Стамбуле. Обе страны также предлагают сезонные распродажи и специальные предложения для экономии.",
+
                     },
                     {
-                        stars: 5,
-                        profileImageSrc:
-                            "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-                        heading: "Love the Developer Experience and Design Principles !",
+
+                        heading: "Как правильно указывать адрес для доставки",
                         quote:
-                            "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-                        customerName: "Adam Cuppy",
-                        customerTitle: "Founder, EventsNYC"
+                            "Чтобы посылка точно пришла к нам на склад, важно правильно указать адрес доставки и следить за отслеживанием отправления. Также полезно выбирать доставку с надежными перевозчиками и использовать страхование, чтобы обеспечить защиту посылки в случае утраты или повреждения в пути.",
+
+                    },
+                    {
+
+                        heading: "Топ-10 люксовых брендов сумочек",
+                        quote:
+                            "В мире существует множество роскошных брендов сумок, которые символизируют статус и изысканный вкус. Вот некоторые из самых известных и дорогих брендов сумок:\n" +
+                            "\n" +
+                            "Chanel - основанный Коко Шанель в 1910 году, Chanel известен своими стегаными кожаными сумками с цепочкой1.\n" +
+                            "Fendi - изначально известный своими меховыми изделиями, Fendi теперь производит одни из самых дорогих сумок в мире1.",
+
                     }
                 ]}
             />
             <FAQ
-                subheading={<Subheading>FAQS</Subheading>}
+                subheading={<Prim>FAQS</Prim>}
                 heading={
                     <>
-                        You have <HighlightedText>Questions ?</HighlightedText>
+                        У вас есть<HighlightedText> вопросы ?</HighlightedText>
                     </>
                 }
                 faqs={[
                     {
-                        question: "Are all the templates easily customizable ?",
+                        question: "Как делать покупки в США с доставкой в Казахстан, если я не знаю английский язык ?",
                         answer:
-                            "Yes, they all are. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            "Если Вы не знаете английский и не можете оформить заказ на наш складской адрес, то Eparcel оформит покупку в зарубежных магазинах за Вас. По Вашему поручению мы можем за отдельную плату произвести выкуп товара в выбранном Вами онлайн-магазине. Поручение на выкуп товара оформляется через личный кабинет."
                     },
                     {
-                        question: "How long do you usually support an standalone template for ?",
+                        question: "В чем преимущества американских и европейских магазинов ?",
                         answer:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            "Товары американского и турецкого производства давно заслужили отличную репутацию во всем мире. Высокий контроль качества вещей – стандарт магазинов одежды США и Турции. А за счет регулярных скидок в американских и турецких магазинах одежды очень выгодно покупать брендовые товары."
                     },
+
                     {
-                        question: "What kind of payment methods do you accept ?",
+                        question: "Как мне проверить состояние товара до отправки в Казахстан ?",
                         answer:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            "Мы всегда советуем проверять состояние/комплектацию покупок с помощью услуги «Спецзапрос». Он позволяет выявить все несоответствия заказа с пришедшими покупками и оперативно решить с магазином все вопросы. Создать спецзапрос можно в личном кабинете."
                     },
-                    {
-                        question: "Is there a subscribption service to get the latest templates ?",
-                        answer:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                    },
-                    {
-                        question: "Are the templates compatible with the React ?",
-                        answer:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                    },
-                    {
-                        question: "Do you really support Internet Explorer 11 ?",
-                        answer:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                    }
+
                 ]}
             />
-            <GetStarted/>
+
             <Footer />
         </AnimationRevealPage>
     );

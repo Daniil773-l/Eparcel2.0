@@ -6,6 +6,8 @@
   "repository": "s",
   "license": "MIT",
   "dependencies": {
-    "feather-icons": "^4.29.1"
+    "@material-ui/core": "^4.12.4",
+    "feather-icons": "^4.29.1",
+    "prop-types": "^15.8.1"
   }
 }

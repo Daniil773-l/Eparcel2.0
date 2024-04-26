@@ -25,31 +25,33 @@ const Image = styled.img(props => [
 ]);
 
 const DecoratorBlob = tw(
-  SvgDotPattern
+    SvgDotPattern
 )`w-20 h-20 absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 fill-current text-primary-500 -z-10`;
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
-const Subheading = tw(SubheadingBase)`text-center md:text-left`;
+const Subheading = styled(SubheadingBase)`
+    ${tw`text-center md:text-left`}
+    color: #0ABD19; // Set the color to bright green
+  `;
+
 const Heading = tw(
-  SectionHeading
+    SectionHeading
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-8 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-row max-w-xs lg:max-w-none`;
+const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-col max-w-xs lg:max-w-none w-full`;
+
 const Feature = tw.div`mt-10 lg:mt-8 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
 
 const FeatureHeadingContainer = tw.div`flex items-center`;
 const FeatureIconContainer = styled.div`
-  ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center rounded p-2 flex-shrink-0`}
-  ${props => [
-    props.iconRoundedFull && tw`rounded-full`,
-    props.iconFilled && tw`border-0 bg-primary-500 text-gray-100`
-  ]}
+  ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center p-2 flex-shrink-0`}
   svg {
-    ${tw`w-5 h-5`}
+    ${tw`w-6 h-6`}
   }
 `;
+
 const FeatureHeading = tw.div`ml-3 font-bold text-xl`;
 
 const FeatureDescription = tw.div`mt-4 text-center md:text-left text-gray-600 leading-relaxed`;
@@ -60,27 +62,28 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 ]);
 
 export default ({
-  subheading = "Our Expertise",
-  heading = (
-    <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
-    </>
-  ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://timerse.com",
-  imageSrc = TeamIllustrationSrc,
-  buttonRounded = true,
-  imageRounded = true,
-  imageBorder = false,
-  imageShadow = false,
-  showDecoratorBlob = false,
-  textOnLeft = true,
-  features = null,
-  iconRoundedFull = true,
-  iconFilled = true,
-  iconContainerCss = null
-}) => {
+                  subheading = "Our Expertise",
+                  heading = (
+                      <>
+                        Designed & Developed by <span tw="text-primary-500">Professionals.</span>
+                      </>
+                  ),
+                  description="Eparcel - Ваш надежный мейлфорвард — с собственными методами доставки и удобными автоматизированными складами.",
+                  description1="Доставка товаров из-за границы — наша основная деятельность, сотни тысяч клиентов из России получают свои покупки благодаря нам.",
+                  primaryButtonText = "Learn More",
+                  primaryButtonUrl = "https://timerse.com",
+                  imageSrc = TeamIllustrationSrc,
+                  buttonRounded = true,
+                  imageRounded = true,
+                  imageBorder = false,
+                  imageShadow = false,
+                  showDecoratorBlob = false,
+                  textOnLeft = true,
+                  features = null,
+                  iconRoundedFull = true,
+                  iconFilled = true,
+                  iconContainerCss = null
+                }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   /*
@@ -105,41 +108,39 @@ export default ({
   if (!features) features = defaultFeatures;
 
   return (
-    <Container>
-      <TwoColumn>
-        <ImageColumn>
-          <Image src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
-          {showDecoratorBlob && <DecoratorBlob />}
-        </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
-          <TextContent>
-            <Subheading>{subheading}</Subheading>
-            <Heading>{heading}</Heading>
-            <Description>{description}</Description>
-            <Features>
-              {features.map((feature, index) => (
-                <Feature key={index}>
-                  <FeatureHeadingContainer>
-                    <FeatureIconContainer
-                      iconFilled={iconFilled}
-                      iconRoundedFull={iconRoundedFull}
-                      css={feature.iconContainerCss || iconContainerCss}
-                    >
-                      {<feature.Icon />}
-                    </FeatureIconContainer>
-                    <FeatureHeading>{feature.title}</FeatureHeading>
-                  </FeatureHeadingContainer>
-                  <FeatureDescription>{feature.description}</FeatureDescription>
-                </Feature>
-              ))}
-            </Features>
+      <Container>
+        <TwoColumn>
+          <ImageColumn>
+            <Image src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
+            {showDecoratorBlob && <DecoratorBlob />}
+          </ImageColumn>
+          <TextColumn textOnLeft={textOnLeft}>
+            <TextContent>
+              <Subheading>{subheading}</Subheading>
+              <Heading>{heading}</Heading>
+              <Description>
+                <span style={{ color: "#0ABD19" }}>Eparcel</span> - Ваш надежный мейлфорвард — с собственными методами доставки и удобными автоматизированными складами.
+              </Description>
+              <Description>
+                <span style={{ color: "#0ABD19" }}>Доставка</span> товаров из-за границы — наша основная деятельность, сотни тысяч клиентов из России получают свои покупки благодаря нам.
+              </Description>
+              <Features>
+                {features.map((feature, index) => (
+                    <Feature key={index}>
+                      <FeatureHeadingContainer>
+                        <FeatureIconContainer>
+                          {<feature.Icon />}
+                        </FeatureIconContainer>
+                        <FeatureHeading>{feature.title}</FeatureHeading>
+                      </FeatureHeadingContainer>
+                      <FeatureDescription>{feature.description}</FeatureDescription>
+                    </Feature>
 
-            <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
-              {primaryButtonText}
-            </PrimaryButton>
-          </TextContent>
-        </TextColumn>
-      </TwoColumn>
-    </Container>
+                ))}
+              </Features>
+            </TextContent>
+          </TextColumn>
+        </TwoColumn>
+      </Container>
   );
 };
