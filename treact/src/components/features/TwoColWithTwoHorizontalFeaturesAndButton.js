@@ -62,7 +62,7 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 ]);
 
 export default ({
-                  subheading = "Our Expertise",
+                  subheading = "",
                   heading = (
                       <>
                         Designed & Developed by <span tw="text-primary-500">Professionals.</span>

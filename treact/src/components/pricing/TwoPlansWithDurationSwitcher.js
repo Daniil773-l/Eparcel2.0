@@ -1,151 +1,217 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
-import { SectionDescription } from "components/misc/Typography.js";
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-6.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 
 const HeaderContainer = tw.div`w-full flex flex-col items-center`;
-const Subheading = tw(SubheadingBase)`mb-4`;
-const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center`;
+const Heading = tw.h2`w-full text-2xl sm:text-3xl font-black tracking-wide text-center`;
+const Description = tw.p`w-full text-center text-sm md:text-base`;
 
-const PlanDurationSwitcher = tw.div`block w-full max-w-xs sm:inline-block sm:w-auto border-2 rounded-full px-1 py-1 mt-8`;
+const PlanDurationSwitcher = tw.div`flex justify-center items-center my-5`;
 const SwitchButton = styled.button`
-  ${tw`w-1/2 sm:w-32 px-4 sm:px-8 py-3 rounded-full focus:outline-none text-sm font-bold text-gray-700 transition duration-300`}
-  ${props => props.active && tw`bg-primary-500 text-gray-100`}
+  ${tw`px-6 py-3 rounded-full focus:outline-none text-sm font-bold transition duration-300 mx-2`}
+  ${props => props.active ? tw`bg-green-500 text-white border border-green-500` : tw`bg-transparent text-green-700 border border-green-500 hover:bg-green-700 hover:text-white`}
+
+  &:hover {
+    ${tw`bg-green-700 text-white border-green-700`}
+  }
 `;
 
-const PlansContainer = tw.div`flex justify-center flex-col md:flex-row items-center md:items-start relative`;
-const Plan = styled.div`
-  ${tw`w-full max-w-72 mt-16 md:mr-12 md:last:mr-0 text-center px-8 rounded-lg relative text-gray-900 bg-white flex flex-col shadow-raised`}
+const PricesContainer = styled.div`
+  position: relative;
+`;
 
-  ${props =>
-    props.featured &&
-    css`
-      ${tw`border-2 border-gray-200 shadow-none`}
-    `}
+const PriceTransition = styled(CSSTransition)`
+  &.price-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  &.price-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  &.price-exit {
+    opacity: 1;
+  }
+  &.price-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+`;
+
+
+const PlansContainer = tw.div`flex justify-center flex-wrap items-center md:items-start relative`;
+const Plan = styled.div`
+  ${tw`max-w-xs mt-16 text-center px-8 py-2 rounded-lg relative text-gray-900 bg-white shadow-raised m-2`}
 `;
 
 const PlanHeader = styled.div`
-  ${tw`flex flex-col leading-relaxed py-8 -mx-8 bg-gray-100 rounded-t-lg`}
+  ${tw`flex flex-col items-center py-4`}
   .name {
-    ${tw`font-bold text-xl`}
-  }
-  .price {
-    ${tw`font-bold text-4xl sm:text-5xl my-1`}
-  }
-  .slash {
-    ${tw`text-xl text-gray-500`}
+    ${tw`font-bold text-lg`}
+    .zone {
+      ${tw`text-green-500`}
+    }
   }
   .duration {
-    ${tw`lowercase text-gray-500 font-medium tracking-widest`}
-  }
-  .mainFeature {
-    ${tw`text-gray-500 text-sm font-medium tracking-wide`}
+    ${tw`text-gray-500 text-sm`}
   }
 `;
+const Subheading = tw.span`uppercase tracking-wider text-sm`;
+
+
 const PlanFeatures = styled.div`
-  ${tw`flex flex-col -mx-8 px-8 py-8 flex-1 text-sm`}
-  .feature {
-    ${tw`mt-5 first:mt-0 font-semibold text-gray-500`}
+  ${tw`flex flex-col md:flex-row items-start border-t-2 border-b-2 py-4`}
+`;
+
+const FeaturesColumn = styled.div`
+  ${tw`w-full md:w-1/2 flex flex-col`}
+`;
+
+
+
+const Divider = tw.div`hidden md:block md:w-px md:bg-gray-300 md:h-full md:self-center`;
+
+const FeatureHeader = tw.div`font-semibold text-gray-600`;
+
+const PriceListItem = styled.li`
+  ${tw`text-sm text-gray-600 py-1`}
+  &:not(:last-child) {
+    ${tw`border-b`}
   }
 `;
 
-const PlanAction = tw.div`px-4 pb-8`;
-const BuyNowButton = styled(PrimaryButtonBase)`
-  ${tw`rounded-full tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
-`;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-25 transform -translate-x-2/3 -translate-y-1/2`}
 `;
+
 const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
-  ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-25 transform translate-x-2/3 translate-y-1/2 fill-current text-teal-300`}
+  ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-25 transform translate-x-2/3 translate-y-1/2 fill-current text-teal-500`}
 `;
 
 export default ({
-  subheading = "Pricing",
-  heading = "Flexible Plans.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  plans = null,
-  primaryButtonText = "Buy Now",
-  planDurations = [
-    {
-      text: "Month",
-      switcherText: "Monthly",
-    },
-    {
-      text: "Year",
-      switcherText: "Yearly",
-    }
-  ]
-}) => {
+                  subheading = "",
+                  heading = "Тарифы",
+                  description = "",
+                  plans = null,
+                  primaryButtonText = "Buy Now",
+                  planDurations = [
+                    {
+                      text: "Month",
+                      switcherText: "США",
+                    },
+                    {
+                      text: "Year",
+                      switcherText: "Турция",
+                    }
+                  ]
+                }) => {
   const defaultPlans = [
     {
-      name: "Free Plan",
-      durationPrices: ["$0", "$0"],
-      mainFeature: "For Personal Blogs",
-      features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"]
+      name: "Тарифная Зона 1",
+      duration: "Тариф установлен для доставки посылок в Центральную часть России",
+      mainFeature: "Посмотреть цены >",
+      features: ["Посылки от ПВЗ", "Курьер"],
+      durationPrices: ["$10", "$120"],
+      prices: ["0,5 кг = 1$", "1 кг = 2$", "1,5 кг = 3$", "от 2 кг = 4$", "от 3 кг = 5$ (за один кг)"],
     },
     {
-      name: "Pro Plan",
-      durationPrices: ["$49", "$499"],
-      mainFeature: "Suited for Production Websites",
-      features: ["60 Templates", "8 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"],
-      featured: true
-    }
+      name: "Тарифная Зона 2",
+      duration: "Тариф установлен для доставки посылок за Уралом",
+      mainFeature: "Посмотреть цены >",
+      features: ["Посылки от ПВЗ", "Курьер"],
+      durationPrices: ["$10", "$120"],
+      prices: ["0,5 кг = 1$", "1 кг = 2$", "1,5 кг = 3$", "от 2 кг = 4$", "от 3 кг = 5$ (за один кг)"],
+    },
+    {
+      name: "Тарифная Зона 3",
+      duration: "Тариф установлен для доставки посылок в удаленные и труднодоступные города",
+      mainFeature: "Посмотреть цены >",
+      features: ["Посылки от ПВЗ", "Курьер"],
+      durationPrices: ["$10", "$120"],
+      prices: ["0,5 кг = 1$", "1 кг = 2$", "1,5 кг = 3$", "от 2 кг = 4$", "от 3 кг = 5$ (за один кг)"],
+    },
   ];
 
   if (!plans) plans = defaultPlans;
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
+  const [activePrices, setActivePrices] = useState(plans.map(plan => plan.durationPrices[0]));
+
+  const switchPrices = (newIndex) => {
+    setActiveDurationIndex(newIndex);
+    setActivePrices(plans.map(plan => plan.durationPrices[newIndex]));
+  };
 
   return (
-    <Container>
-      <ContentWithPaddingXl>
-        <HeaderContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          {description && <Description>{description}</Description>}
-        <PlanDurationSwitcher>
-          {planDurations.map((planDuration, index) => (
-            <SwitchButton active={activeDurationIndex === index} key={index} onClick={() => setActiveDurationIndex(index)}>{planDuration.switcherText}</SwitchButton>
-          ))}
-        </PlanDurationSwitcher>
-        </HeaderContainer>
-        <PlansContainer>
-          {plans.map((plan, index) => (
-            <Plan key={index} featured={plan.featured}>
-              <PlanHeader>
-                <span className="priceAndDuration">
-                  <span className="price">{plan.durationPrices[activeDurationIndex]}</span>
-                  <span className="slash"> / </span>
-                  <span className="duration">{planDurations[activeDurationIndex].text}</span>
-                </span>
-                <span className="name">{plan.name}</span>
-                <span className="mainFeature">{plan.mainFeature}</span>
-              </PlanHeader>
-              <PlanFeatures>
-                {plan.features.map((feature, index) => (
-                  <span key={index} className="feature">
-                    {feature}
-                  </span>
-                ))}
-              </PlanFeatures>
-              <PlanAction>
-                <BuyNowButton>{primaryButtonText}</BuyNowButton>
-              </PlanAction>
-            </Plan>
-          ))}
-        </PlansContainer>
-      </ContentWithPaddingXl>
-      <DecoratorBlob1 />
-      <DecoratorBlob2 />
-    </Container>
+      <Container>
+        <ContentWithPaddingXl>
+          <HeaderContainer>
+            {subheading && <Subheading>{subheading}</Subheading>}
+            <Heading>{heading}</Heading>
+            <Description>{description}</Description>
+            <PlanDurationSwitcher>
+              {planDurations.map((planDuration, index) => (
+                  <SwitchButton
+                      active={activeDurationIndex === index}
+                      key={index}
+                      onClick={() => switchPrices(index)}
+                  >
+                    {planDuration.switcherText}
+                  </SwitchButton>
+              ))}
+            </PlanDurationSwitcher>
+          </HeaderContainer>
+          <PlansContainer>
+            {plans.map((plan, index) => (
+                <Plan key={index}>
+                  <PlanHeader>
+                    <span className="name">Тарифная <span className="zone">Зона {index + 1}</span></span>
+                    <span className="duration">{plan.duration}</span>
+                  </PlanHeader>
+                  <PlanFeatures>
+                    <FeaturesColumn>
+                      <FeatureHeader>{plan.features[0]}</FeatureHeader>
+                      <PricesContainer>
+                        <TransitionGroup>
+                          <PriceTransition
+                              key={activePrices[index]}
+                              timeout={300}
+                              classNames="price"
+                          >
+                            <PriceListItem>{activePrices[index]}</PriceListItem>
+                          </PriceTransition>
+                        </TransitionGroup>
+                      </PricesContainer>
+                    </FeaturesColumn>
+                    <Divider />
+                    <FeaturesColumn>
+                      <FeatureHeader>{plan.features[1]}</FeatureHeader>
+                      <PricesContainer>
+                        <TransitionGroup>
+                          <PriceTransition
+                              key={activePrices[index]}
+                              timeout={300}
+                              classNames="price"
+                          >
+                            <PriceListItem>{activePrices[index]}</PriceListItem>
+                          </PriceTransition>
+                        </TransitionGroup>
+                      </PricesContainer>
+                    </FeaturesColumn>
+                  </PlanFeatures>
+                </Plan>
+            ))}
+          </PlansContainer>
+        </ContentWithPaddingXl>
+        <DecoratorBlob1 />
+        <DecoratorBlob2 />
+      </Container>
   );
 };
+

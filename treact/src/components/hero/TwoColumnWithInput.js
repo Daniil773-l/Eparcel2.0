@@ -80,7 +80,7 @@ export default ({ roundedHeaderButton }) => {
               Доставка товаров из США и Турции в <HighlightedText>Казахстан.</HighlightedText>
             </Heading>
             <Paragraph>
-              Помогаем с покупками в американских и турецких  интернет-магазинах и привозим их Вам в Казахстан
+              Помогаем с покупками в американских и турецких  интернет-магазинах и привозим их вам в Росиию
             </Paragraph>
             <Actions>
               <input type="text" placeholder="Ваш e-mail" />

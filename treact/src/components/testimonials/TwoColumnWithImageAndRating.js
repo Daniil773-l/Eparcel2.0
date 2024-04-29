@@ -108,7 +108,6 @@ export default ({
               <Image src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} style={{ width: `${imageWidth}px`, height: `${imageHeight}px` }} />
             </ImageColumn>
             <TextColumn textOnLeft={textOnLeft}>
-              <Subheading>{subheading}</Subheading>
               <Heading>{heading}</Heading>
               <TestimonialSlider arrows={false} ref={setSliderRef}>
                 {testimonials.map((testimonial, index) => (
