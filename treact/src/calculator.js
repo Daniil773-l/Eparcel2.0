@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./CSS/calculator.css";
 
 function Header() {
     const [country, setCountry] = useState("USA"); // Состояние для хранения выбранной страны
