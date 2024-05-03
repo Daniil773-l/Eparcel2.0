@@ -1,22 +1,16 @@
 import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-import Header from "components/hero/HeaderTariff";
-import Pricing from "components/pricing/TwoPlansWithDurationSwitcher.js";
-
+import Header from "components/headers/ShopsHeader";
 import Footer from "components/footers/MiniCenteredFooter";
-
 import "./CSS/IncludedServicesSectionTariff.css";
 import imageSrc from "./images/blockdw.png";
 import tw from "twin.macro";
 import DutyCalculator from "./customsDutyCalculator";
 import MainFeature1 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton1.js";
 import styled from "styled-components";
-import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
-import Calculator from "./calculator";
 
 export default () => {
-    const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
-    const HighlightedText = tw.span`text-primary-500`;
+   
 
     const Prim = styled.span`
         ${tw`text-center text-primary-500 md:text-left`}// Применяем основные стили от tw.macro
@@ -25,7 +19,7 @@ export default () => {
     return (
         <AnimationRevealPage>
             <Header roundedHeaderButton={true}/>
-            <Pricing/>
+
             <section className="included-services-section">
                 <div className="container">
                     <h2>В стоимость тарифа включено:</h2>

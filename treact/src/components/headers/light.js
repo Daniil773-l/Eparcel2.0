@@ -73,10 +73,10 @@ border-b-0`}
 
 export const LogoLink = styled(NavLink)`
   ${tw`flex items-center font-black border-b-0`}
-
   img {
     ${tw`w-40 h-10 w-auto h-auto`}
   }
+
 `;
 
 export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
