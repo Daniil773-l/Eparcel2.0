@@ -98,7 +98,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
 
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/#">Тарифы</NavLink>
+      <NavLink href="/tariifs.js">Тарифы</NavLink>
       <NavLink href="/#">Услуги и стоимость</NavLink>
       <NavLink href="/#">Магазины</NavLink>
       <NavLink href="/#">Выкуп товаров</NavLink>
