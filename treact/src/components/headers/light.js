@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
-import { NavLink } from "react-router-dom";
 import styled, { keyframes,createGlobalStyle } from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
@@ -102,12 +101,12 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
 
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/tariifs.js">Тарифы</NavLink>
-      <NavLink href="/#">Услуги и стоимость</NavLink>
-      <NavLink href="/#">Магазины</NavLink>
-      <NavLink href="/#">Выкуп товаров</NavLink>
-      <NavLink href="/#">О нас</NavLink>
-      <NavLink href="/#"> Контакты</NavLink>
+      <NavLink href="/Tarriffs">Тарифы</NavLink>
+      <NavLink href="/">Услуги и стоимость</NavLink>
+      <NavLink href="/Shops">Магазины</NavLink>
+      <NavLink href="/RedemptionOfGoods">Выкуп товаров</NavLink>
+      <NavLink href="/AboutUS">О нас</NavLink>
+      <NavLink href="/Contacts"> Контакты</NavLink>
 
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/#">Войти </PrimaryLink>
     </NavLinks>
