@@ -115,7 +115,7 @@ export default function ContactForm() {
                         <DescriptionContact>Режим работы склада (США): <br/><ContactInfo> Понедельник - пятница с 15:00 до 23:00 (по МСК) Суббота, Воскресенье - Выходные дни</ContactInfo></DescriptionContact> <br/>
                         <DescriptionContact>Режим работы склада (Турция): <br/><ContactInfo>Понедельник - пятница с 11:00 до 19:00 (по МСК) Суббота, Воскресенье - Выходные дни</ContactInfo></DescriptionContact> <br/>
                         <DescriptionContact>E-mail: <br/><ContactInfo>info@epacrel.ru</ContactInfo></DescriptionContact> <br/>
-                        <DescriptionContact>Другие способы связи: <br/>
+                        <DescriptionContact>Другие способы связи: <br/> <br/>
                             <IconContainer>
                                 <IconLink href="#">
                                     <Icon src={vkIcon} alt="VK" />

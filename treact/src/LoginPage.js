@@ -75,6 +75,7 @@ const ButtonGroup = styled.div`
 const StyledLink = styled.a`
     ${tw`text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed`}
     cursor: pointer;
+    text-decoration: none;
     &:hover {
         color: #0ABD19; // Зелёный цвет текста при наведении
     }
@@ -122,7 +123,7 @@ export default ({
                                 <SubmitButton type="submit">Войти</SubmitButton>
                                 <ButtonGroup>
                                     <StyledLink>Забыли пароль?</StyledLink>
-                                    <StyledLink>Зарегистрироваться</StyledLink>
+                                    <StyledLink href="register">Зарегистрироваться</StyledLink>
                                 </ButtonGroup>
                             </Form>
                         </TextContent>

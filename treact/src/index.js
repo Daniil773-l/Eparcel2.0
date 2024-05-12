@@ -11,6 +11,14 @@ import Shops from "./Shops";
 import RedemptionOfGoods from "./RedemptionOfGoods";
 import Contacts from "./Contacts";
 
+import CustomsRegulations from "./pages/CustomsRegulations";
+import ProhibitedProductsPage from "./pages/ProhibitedProductsPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import PublicOffer from "./pages/PublicOffer";
+import ClothesSizes from "./pages/ClothesSizes";
+import TermsOfService from "./pages/TermsOfService";
+import BrandedHandbagsPage from "./pages/BrandedHandbagsPage";
+
 // Locate the root element from the DOM
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);  // Create a root.
@@ -19,12 +27,12 @@ const root = createRoot(rootElement);  // Create a root.
 root.render(
     <Router>
         <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/tariffs" element={<Tariffs />} />
-            <Route path="/shops" element={<Shops />} />
-            <Route path="/redemption-of-goods" element={<RedemptionOfGoods />} />
+            <Route path="/" element={<BrandedHandbagsPage />} />
+            <Route path="/Tariffs" element={<Tariffs />} />
+            <Route path="/Shops" element={<Shops />} />
+            <Route path="/RedemptionOfGoods" element={<RedemptionOfGoods />} />
             <Route path="/AboutUS" element={<AboutUS />} />
-            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/Contacts" element={<Contacts />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
         </Routes>

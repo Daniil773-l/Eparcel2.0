@@ -4,9 +4,11 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import LogoImage from "images/logo-light.svg";
-import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
+import { ReactComponent as TelegramIcon } from "images/telegram_3536661.png";
+import { ReactComponent as ViberIcon } from "images/viber_3256018.png";
+import { ReactComponent as WhatsappIcon } from "images/whatsapp.png";
+import { ReactComponent as ClassmatesIcon } from "images/odnoklassniki_13170461.png";
+import { ReactComponent as VkIcon } from "images/vk_5968835.png";
 
 const Container = tw.div`relative bg-gray-900 text-gray-100 -mx-8 -mb-8 px-8`;
 const Content = tw.div`max-w-screen-xl mx-auto pt-16 pb-8`
@@ -48,61 +50,78 @@ export default () => {
                     <CompanyColumn>
                         <LogoContainer>
                             <LogoImg src={LogoImage} />
-                            <LogoText>Treact Inc.</LogoText>
                         </LogoContainer>
-                        <CompanyAddress>
-                            123 Road, New Startup Building
-                            Carter Road, San Francisco
-                            California 40234
-                        </CompanyAddress>
+
                         <SocialLinksContainer>
-                            <SocialLink href="https://facebook.com">
-                                <FacebookIcon />
+                            <SocialLink href="https://web.telegram.org/a/">
+                                <TelegramIcon />
                             </SocialLink>
-                            <SocialLink href="https://twitter.com">
-                                <TwitterIcon />
+                            <SocialLink href="https://www.viber.com/ru/">
+                                <ViberIcon />
                             </SocialLink>
-                            <SocialLink href="https://youtube.com">
-                                <YoutubeIcon />
+                            <SocialLink href="https://web.whatsapp.com">
+                                <WhatsappIcon />
+                            </SocialLink>
+                            <SocialLink href="https://ok.ru">
+                                <ClassmatesIcon />
+                            </SocialLink>
+                            <SocialLink href="https://vk.com/feed">
+                                <VkIcon />
                             </SocialLink>
                         </SocialLinksContainer>
+                        <CompanyAddress>
+                            Телефон для связи:
+                            8 (800) 777-76-10
+                        </CompanyAddress>
                     </CompanyColumn>
                     <Column>
-                        <ColumnHeading>Quick Links</ColumnHeading>
+                        <ColumnHeading>Общая информация</ColumnHeading>
                         <LinkList>
                             <LinkListItem>
-                                <Link href="#">Blog</Link>
+                                <Link href="#">О нас</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">FAQs</Link>
+                                <Link href="#">Услуги и стоимость</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Support</Link>
+                                <Link href="#">Тарифы</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">About Us</Link>
+                                <Link href="#">Магазины</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="#">Выкуп товаров</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="#">Контакты</Link>
                             </LinkListItem>
                         </LinkList>
                     </Column>
                     <Column>
-                        <ColumnHeading>Product</ColumnHeading>
+                        <ColumnHeading>Клиентам</ColumnHeading>
                         <LinkList>
                             <LinkListItem>
-                                <Link href="#">Log In</Link>
+                                <Link href="#">Новости и спецпредложения</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Personal</Link>
+                                <Link href="#">Вопросы и ответы</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Business</Link>
+                                <Link href="#">Запрещенные товары</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Team</Link>
+                                <Link href="#">Таможенные правила</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="#">Калькулятор доставки</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="#">Калькулятор таможенной пошлины</Link>
                             </LinkListItem>
                         </LinkList>
                     </Column>
                     <Column>
-                        <ColumnHeading>Legal</ColumnHeading>
+                        <ColumnHeading>Полезное</ColumnHeading>
                         <LinkList>
                             <LinkListItem>
                                 <Link href="#">GDPR</Link>
@@ -118,28 +137,28 @@ export default () => {
                             </LinkListItem>
                         </LinkList>
                     </Column>
-                    <Column>
-                        <ColumnHeading>Contact</ColumnHeading>
-                        <LinkList>
-                            <LinkListItem>
-                                +1 (234) (567)-8901
-                            </LinkListItem>
-                            <LinkListItem>
-                                <Link href="mailto:support@servana.com">support@servana.com</Link>
-                            </LinkListItem>
-                            <LinkListItem>
-                                <Link href="#">Sales</Link>
-                            </LinkListItem>
-                            <LinkListItem>
-                                <Link href="#">Report Abuse</Link>
-                            </LinkListItem>
-                        </LinkList>
-                    </Column>
+                    {/*<Column>*/}
+                    {/*    <ColumnHeading>Contact</ColumnHeading>*/}
+                    {/*    <LinkList>*/}
+                    {/*        <LinkListItem>*/}
+                    {/*            +1 (234) (567)-8901*/}
+                    {/*        </LinkListItem>*/}
+                    {/*        <LinkListItem>*/}
+                    {/*            <Link href="mailto:support@servana.com">support@servana.com</Link>*/}
+                    {/*        </LinkListItem>*/}
+                    {/*        <LinkListItem>*/}
+                    {/*            <Link href="#">Sales</Link>*/}
+                    {/*        </LinkListItem>*/}
+                    {/*        <LinkListItem>*/}
+                    {/*            <Link href="#">Report Abuse</Link>*/}
+                    {/*        </LinkListItem>*/}
+                    {/*    </LinkList>*/}
+                    {/*</Column>*/}
                 </FiveColumns>
                 <Divider/>
                 <CopyrightAndCompanyInfoRow>
-                    <CopyrightNotice>&copy; Copyright 2020, Treact Inc.</CopyrightNotice>
-                    <CompanyInfo>An Internet Company.</CompanyInfo>
+                    <CopyrightNotice>&copy; 2024 Eparcel. Все права защищены.</CopyrightNotice>
+                    <CompanyInfo></CompanyInfo>
                 </CopyrightAndCompanyInfoRow>
             </Content>
         </Container>

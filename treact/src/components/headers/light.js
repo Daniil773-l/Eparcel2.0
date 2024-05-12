@@ -101,14 +101,14 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
 
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/Tarriffs">Тарифы</NavLink>
-      <NavLink href="/">Услуги и стоимость</NavLink>
+      <NavLink href="/tariffs">Тарифы</NavLink>
+      <NavLink href="/#">Услуги и стоимость</NavLink>
       <NavLink href="/Shops">Магазины</NavLink>
       <NavLink href="/RedemptionOfGoods">Выкуп товаров</NavLink>
       <NavLink href="/AboutUS">О нас</NavLink>
       <NavLink href="/Contacts"> Контакты</NavLink>
 
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/#">Войти </PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/Login">Войти </PrimaryLink>
     </NavLinks>
   ];
 

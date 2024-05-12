@@ -9,7 +9,6 @@ import MainFeature2 from "components/features/TwoColWithTwoHorizontalFeaturesAnd
 import FeatureWithSteps from "components/features/TwoColWithSteps.js";
 import Pricing from "components/pricing/ThreePlans.js";
 import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
-import FAQ from "components/faqs/SingleCol.js";
 import Footer from "components/footers/MiniCenteredFooter";
 import StepImg from "images/steps.svg"
 import PVZ from "images/PBZ.svg"
