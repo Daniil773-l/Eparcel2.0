@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
+import { NavLink } from "react-router-dom";
 import styled, { keyframes,createGlobalStyle } from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
@@ -53,12 +54,15 @@ const pulsateAnimation = keyframes`
   }
 `;
 
+
+
 export const PrimaryLink = styled(NavLink)`
   ${tw`lg:mx-0
 px-8 py-3 rounded text-gray-100
-hocus:text-gray-200 focus:shadow-outline
+hocus:text-gray-200 focus:shadow-outline rounded-full
 border-b-0`}
   background-color: #0ABD19;
+  border: none;
   transition: background-color 0.3s ease;
 
   &:not(:hover):not(:focus) {
@@ -67,7 +71,7 @@ border-b-0`}
 
   &:hover, &:focus {
     background-color: #0ABD50;
-    animation: none; // Disable pulsate animation on hover or focus
+    transform: scale(1.1);
   }
 `;
 

@@ -2,11 +2,17 @@ import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Header from "components/hero/HeaderTariff";
 import Pricing from "components/pricing/TwoPlansWithDurationSwitcher.js";
-
 import Footer from "components/footers/MiniCenteredFooter";
-
 import "./CSS/IncludedServicesSectionTariff.css";
-import imageSrc from "./images/blockdw.png";
+import Icon1 from "./images/icon1.png";
+import Icon2 from "./images/icon2.png";
+import Icon3 from "./images/icon3.png";
+import Icon4 from "./images/icon4.png";
+import Icon5 from "./images/icon5.png";
+import Icon6 from "./images/icon6.png";
+
+
+
 import tw from "twin.macro";
 import DutyCalculator from "./customsDutyCalculator";
 import MainFeature1 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton1.js";
@@ -30,7 +36,12 @@ export default () => {
                 <div className="container">
                     <h2>В стоимость тарифа включено:</h2>
                     <div className="services-list">
-                        <img src={imageSrc} alt="Описание"/>
+                        <img src={Icon1} alt="Описание"/>
+                        <img src={Icon2} alt="Описание"/>
+                        <img src={Icon3} alt="Описание"/>
+                        <img src={Icon4} alt="Описание"/>
+                        <img src={Icon5} alt="Описание"/>
+                        <img src={Icon6} alt="Описание"/>
                     </div>
                 </div>
             </section>
@@ -43,10 +54,10 @@ export default () => {
                 }
 
                 showDecoratorBlob={false}
-
-
             />
             <DutyCalculator/>
+
+
             <Footer/>
         </AnimationRevealPage>
     );

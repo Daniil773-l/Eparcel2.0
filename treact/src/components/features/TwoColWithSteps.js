@@ -25,8 +25,18 @@ const TextColumn = styled(Column)(props => [
 const Image = styled.img(props => [
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
-  props.imageShadow && tw`shadow`
+  props.imageShadow && tw`shadow`,
+  css`
+    width: 100%;       // Занимает 100% ширины контейнера
+    height: auto;      // Высота автоматически адаптируется
+    @media (max-width: 768px) {
+      width: auto;     // На мобильных устройствах может использовать исходную ширину
+      max-width: 100%; // Не превышает ширину контейнера
+    }
+  `
 ]);
+
+
 
 const DecoratorBlob = styled(SvgDotPattern)(() => [
   tw`w-20 h-20 absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 fill-current text-primary-500 -z-10`

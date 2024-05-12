@@ -48,17 +48,17 @@ export default () => {
             />
 
             <FeatureWithSteps
-                subheading={<Steps>ШАГИ</Steps>}
-                heading={
-                    <>
-                        Как это <HighlightedText>работает?</HighlightedText>
-                    </>
-                }
-                textOnLeft={false}
-                imageSrc={StepImg}
-                imageDecoratorBlob={true}
-                decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
-            />
+            subheading={<Steps>ШАГИ</Steps>}
+            heading={
+                <>
+                    Как это <HighlightedText>работает?</HighlightedText>
+                </>
+            }
+            textOnLeft={false}
+            imageSrc={StepImg}
+            imageDecoratorBlob={true}
+            decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
+        />
             <Pricing
 
                 heading={

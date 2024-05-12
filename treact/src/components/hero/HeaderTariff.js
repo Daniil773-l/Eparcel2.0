@@ -9,7 +9,7 @@ import Header from "../headers/light.js";
 
 // Random Decorator Blobs (shapes that you see in background)
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
-import DesignIllustration from "../../images/delivery-guy.png";
+import DesignIllustration from "../../images/delivery-guy.svg";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -19,6 +19,7 @@ const RightColumn = tw.div`relative mt-24 lg:mt-32 flex-1 flex flex-col justify-
 const Heading = styled.h1`
     ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`}
 `;
+
 
 const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
@@ -46,7 +47,11 @@ const Actions = styled.div`
     }
 `;
 
-const IllustrationContainer = tw.div`flex justify-center lg:justify-end items-center align-middle max-w-md`;
+const IllustrationContainer = styled.div`
+  ${tw`flex justify-center lg:justify-end items-center align-middle max-w-md`}
+    margin-left: 100px;  // Добавлен отступ слева
+    margin-bottom: 200px;
+`;
 
 // Random Decorator Blobs (shapes that you see in background)
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
@@ -79,10 +84,9 @@ export default ({ roundedHeaderButton }) => {
                         <Paragraph>
                             Доставка товаров осуществляется компанией Eparcel по трем тарифам в зависимости от региона, в котором Вы проживаете
                         </Paragraph>
-
                     </LeftColumn>
                     <RightColumn>
-                        <IllustrationContainer>
+                        <IllustrationContainer style={{ marginRight: "-50px", marginTop: "-20px" }}>
                             <img tw="min-w-0 w-full max-w-lg xl:max-w-3xl" src={DesignIllustration} alt="Design Illustration" />
                         </IllustrationContainer>
                     </RightColumn>

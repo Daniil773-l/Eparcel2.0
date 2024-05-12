@@ -48,10 +48,12 @@ function Header() {
         <section className="calculator-section" style={{ fontFamily: "Arial, sans-serif" }}>
             <div className="country-switcher" >
                 <button
+
                     type="button"
                     data-country="USA" /* Add data-country attribute */
                     className={`country-button ${country === "USA" ? "active" : ""}`}
                     onClick={() => setCountry("USA")}
+
                 >
                     из США
                 </button>
@@ -60,6 +62,7 @@ function Header() {
                     data-country="Turkey" /* Add data-country attribute */
                     className={`country-button ${country === "Turkey" ? "active" : ""}`}
                     onClick={() => setCountry("Turkey")}
+
                 >
                     из Турции
                 </button>
