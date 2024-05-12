@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import tw from "twin.macro";
 import styled from 'styled-components';
-import { ReactComponent as MailIcon } from './images/01.svg';
-import { ReactComponent as DeliveryIcon } from './images/01.svg';
+import { ReactComponent as MailIcon } from './images/icon/Pochto.svg';
+import { ReactComponent as DeliveryIcon } from './images/icon/dilevery.svg';
 import { ReactComponent as RegistrationIcon } from './images/01.svg';
 import { ReactComponent as StorageIcon } from './images/01.svg';
 import { ReactComponent as PhotoIcon } from './images/01.svg';
@@ -13,31 +12,54 @@ import Hero from "./components/headers/RatesHeders";
 import Footer from "./components/footers/MiniCenteredFooter";
 
 const Layout = styled.div`
-    ${tw`flex flex-row bg-white rounded-xl shadow-lg overflow-hidden`}
+    display: flex;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(45, 45, 45, 0.08);
+    overflow: hidden;
+    margin:60px;
+    height: 100vh; // Set to full viewport height or adjust as needed
 `;
 
-const TabsContainer = styled.div`
-    ${tw`w-64 bg-white rounded-l-xl shadow-lg`}
+const SidebarContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 400px; // Adjust width as needed
+    background: #ffffff;
+    border-right: 1px solid #F5F5F5;
+
 `;
 
 const TabButton = styled.button`
-    ${tw`text-lg py-3 w-full text-left flex items-center focus:outline-none border-l-4 border-transparent`}
-    ${({ active }) => active && `background-color: #DDF2E6; color: white; border-color: #34D399; shadow-xl`}
+    display: flex;
+    align-items: center;
+    background: ${({ active }) => active ? '#DDF2E6' : 'transparent'};
+    color: #000000;
+    border: none;
+    padding: 10px 22px;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: 'Gilroy Medium', sans-serif;
+    cursor: pointer;
+
     &:hover {
-        ${tw`shadow-md bg-green-100`}
+        background-color: #DDF2E6;
     }
+
     svg {
-        ${tw`w-6 h-6 mr-3`}
+        margin-right: 10px;
+        width: 24px;
+        height: 24px;
     }
 `;
 
 const ContentContainer = styled.div`
-    ${tw`flex-1 p-5 rounded-r-lg`}
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto; // Allows scrolling if content is taller than the view area
 `;
 
-const IconContainer = styled.span`
-    ${tw`inline-block p-2 rounded-lg`}
-`;
+const IconContainer = styled.span``;
 
 const tabs = [
     { name: "Почтовый адрес", content: "Content for Mail Address", Icon: MailIcon },
@@ -53,25 +75,23 @@ export default function App() {
     return (
         <AnimationRevealPage>
             <Hero roundedHeaderButton={true}/>
-
             <Layout>
-                <TabsContainer>
+                <SidebarContainer>
                     {tabs.map((tab, index) => (
                         <TabButton
                             key={index}
                             active={index === activeTab}
                             onClick={() => setActiveTab(index)}
                         >
-                            <IconContainer>{<tab.Icon />}</IconContainer>
+                            <IconContainer>{<tab.Icon active={index === activeTab} />}</IconContainer>
                             {tab.name}
                         </TabButton>
                     ))}
-                </TabsContainer>
+                </SidebarContainer>
                 <ContentContainer>
                     {tabs[activeTab].content}
                 </ContentContainer>
             </Layout>
-
             <Footer/>
         </AnimationRevealPage>
     );
