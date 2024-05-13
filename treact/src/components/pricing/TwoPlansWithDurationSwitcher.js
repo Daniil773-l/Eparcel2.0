@@ -43,36 +43,33 @@ const PriceTransition = styled(CSSTransition)`
   }
 `;
 
-
 const PlansContainer = tw.div`flex justify-center flex-wrap items-center md:items-start relative`;
 const Plan = styled.div`
-  ${tw`max-w-xs mt-16 text-center px-8 py-2 rounded-lg relative text-gray-900 bg-white shadow-raised m-2`}
+  ${tw`max-w-xs mt-16 text-center px-8 py-4 rounded-lg relative text-gray-900 bg-white shadow-raised m-2`}
 `;
 
 const PlanHeader = styled.div`
   ${tw`flex flex-col items-center py-4`}
   .name {
-    ${tw`font-bold text-lg`}
+    ${tw`font-bold text-lg mb-2`}
     .zone {
       ${tw`text-green-500`}
     }
   }
   .duration {
-    ${tw`text-gray-500 text-sm`}
+    ${tw`text-gray-500 text-base`}
   }
 `;
-const Subheading = tw.span`uppercase tracking-wider text-sm`;
 
+const Subheading = tw.span`uppercase tracking-wider text-sm`;
 
 const PlanFeatures = styled.div`
   ${tw`flex flex-col md:flex-row items-start border-t-2 border-b-2 py-4`}
 `;
 
 const FeaturesColumn = styled.div`
-  ${tw`w-full md:w-1/2 flex flex-col`}
+  ${tw`w-full md:w-1/3 flex flex-col`}
 `;
-
-
 
 const Divider = tw.div`hidden md:block md:w-px md:bg-gray-300 md:h-full md:self-center`;
 
@@ -84,7 +81,6 @@ const PriceListItem = styled.li`
     ${tw`border-b`}
   }
 `;
-
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-25 transform -translate-x-2/3 -translate-y-1/2`}
@@ -116,25 +112,25 @@ export default ({
       name: "Тарифная Зона 1",
       duration: "Тариф установлен для доставки посылок в Центральную часть России",
       mainFeature: "Посмотреть цены >",
-      features: ["Посылки от ПВЗ", "Курьер"],
+      features: ["Вес","Посылки от ПВЗ", "Курьер"],
       durationPrices: ["$10", "$120"],
-      prices: ["0,5 кг = 1$", "1 кг = 2$", "1,5 кг = 3$", "от 2 кг = 4$", "от 3 кг = 5$ (за один кг)"],
+      prices: ["0.5 кг = $1", "1 кг = $2", "1.5 кг = $3", "от 2 кг = $4", "от 3 кг = $5 (за один кг)"],
     },
     {
       name: "Тарифная Зона 2",
       duration: "Тариф установлен для доставки посылок за Уралом",
       mainFeature: "Посмотреть цены >",
-      features: ["Посылки от ПВЗ", "Курьер"],
+      features: ["Вес","Посылки от ПВЗ", "Курьер"],
       durationPrices: ["$10", "$120"],
-      prices: ["0,5 кг = 1$", "1 кг = 2$", "1,5 кг = 3$", "от 2 кг = 4$", "от 3 кг = 5$ (за один кг)"],
+      prices: ["0.5 кг = $1", "1 кг = $2", "1.5 кг = $3", "от 2 кг = $4", "от 3 кг = $5 (за один кг)"],
     },
     {
       name: "Тарифная Зона 3",
       duration: "Тариф установлен для доставки посылок в удаленные и труднодоступные города",
       mainFeature: "Посмотреть цены >",
-      features: ["Посылки от ПВЗ", "Курьер"],
+      features: ["Вес","Посылки от ПВЗ", "Курьер"],
       durationPrices: ["$10", "$120"],
-      prices: ["0,5 кг = 1$", "1 кг = 2$", "1,5 кг = 3$", "от 2 кг = 4$", "от 3 кг = 5$ (за один кг)"],
+      prices: ["0.5 кг = $1", "1 кг = $2", "1.5 кг = $3", "от 2 кг = $4", "от 3 кг = $5 (за один кг)"],
     },
   ];
 
@@ -180,7 +176,7 @@ export default ({
                       <PricesContainer>
                         <TransitionGroup>
                           <PriceTransition
-                              key={activePrices[index]}
+                              key={`${index}-weight`}
                               timeout={300}
                               classNames="price"
                           >
@@ -195,7 +191,22 @@ export default ({
                       <PricesContainer>
                         <TransitionGroup>
                           <PriceTransition
-                              key={activePrices[index]}
+                              key={`${index}-pvz`}
+                              timeout={300}
+                              classNames="price"
+                          >
+                            <PriceListItem>{activePrices[index]}</PriceListItem>
+                          </PriceTransition>
+                        </TransitionGroup>
+                      </PricesContainer>
+                    </FeaturesColumn>
+                    <Divider />
+                    <FeaturesColumn>
+                      <FeatureHeader>{plan.features[2]}</FeatureHeader>
+                      <PricesContainer>
+                        <TransitionGroup>
+                          <PriceTransition
+                              key={`${index}-courier`}
                               timeout={300}
                               classNames="price"
                           >
@@ -214,4 +225,3 @@ export default ({
       </Container>
   );
 };
-

@@ -15,7 +15,8 @@ import PVZ from "images/PBZ.svg"
 import PostMat from "images/postmat.svg"
 import Dostavka from "images/dostavka.svg"
 import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
-
+import { ContentWithPaddingXl } from "components/misc/Layouts.js";
+import { Container } from "components/misc/Layouts.js";
 
 import { ReactComponent as One } from "images/01.svg";
 import { ReactComponent as Two } from "images/02.svg";
@@ -26,6 +27,9 @@ export default () => {
     const HighlightedText = styled.span`
         ${tw`text-primary-500`} // Применяем основные стили от tw.macro
         color: #0ABD19; // Устанавливаем желаемый цвет
+    `;
+    const ContentWithPaddingXlCustom = styled(ContentWithPaddingXl)`
+        ${tw`pb-5`} // Здесь можно экспериментировать с значением отступа
     `;
     const Steps = styled.span`
         ${tw`text-primary-500`} // Применяем основные стили от tw.macro
@@ -58,7 +62,7 @@ export default () => {
             imageDecoratorBlob={true}
             decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
         />
-            <Pricing
+                <Pricing
 
                 heading={
                     <>

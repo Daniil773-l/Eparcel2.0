@@ -50,7 +50,7 @@ const Layout = styled.div`
     box-shadow: 2px 2px 10px rgba(45, 45, 45, 0.08);
     overflow: hidden;
     margin:60px;
-    height: 134vh; // Set to full viewport height or adjust as needed
+    height: 108vh; // Set to full viewport height or adjust as needed
 `;
 
 const SidebarContainer = styled.div`
