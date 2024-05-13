@@ -167,7 +167,7 @@ export default function ContactForm() {
                                 <option value="email">E-mail</option>
                                 <option value="sms">Другое</option>
                             </Select>
-                            <TextArea placeholder="Сообщение"/>
+                            <StyledInput type="email" placeholder="Сообщение" />
                             <ButtonAndLegalContainer>
                                 <SubmitButton type="submit">Отправить</SubmitButton>
                                 <LegalText>
