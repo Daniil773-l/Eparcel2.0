@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Header from "components/headers/LoginPageHeader";
+import Footer from "components/footers/MainFooterWithLinks";
 import Hero from "components/hero/TwoColumnWithVideo.js";
 import MainFeature from "components/features/TwoColWithButton.js";
 import ArticleBackground from "images/ArticleBag.jpeg"
@@ -17,7 +18,7 @@ import Bag4 from "images/HandBag4.svg"
 import Bag3 from "images/HandBag3.svg"
 import Bag2 from "images/HandBag2.svg"
 import Bag1 from "images/HandBag1.svg"
-import Footer from "components/footers/MiniCenteredFooter";
+
 
 const StyledPage = styled(AnimationRevealPage)`
   ${tw`min-h-screen bg-cover bg-center`}

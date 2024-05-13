@@ -3,14 +3,19 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "images/logo-light.svg";
-import { ReactComponent as TelegramIcon } from "images/telegram_3536661.png";
-import { ReactComponent as ViberIcon } from "images/viber_3256018.png";
-import { ReactComponent as WhatsappIcon } from "images/whatsapp.png";
-import { ReactComponent as ClassmatesIcon } from "images/odnoklassniki_13170461.png";
-import { ReactComponent as VkIcon } from "images/vk_5968835.png";
+import LogoImage from "images/logo-footer.svg";
+import TelegramIcon from "images/icon/telegram.svg";
+import  ViberIcon from "images/icon/Viber.svg";
+import WhatsappIcon  from "images/icon/whatsapp.svg";
+import  ClassmatesIcon  from "images/icon/classmates.svg";
+import VkIcon  from "images/icon/vk.svg";
 
-const Container = tw.div`relative bg-gray-900 text-gray-100 -mx-8 -mb-8 px-8`;
+
+const Container = styled.div`
+    ${tw`relative text-gray-100 -mx-8 -mb-8 px-8`}
+    background-color: #e2ffe2;!important; // Using !important to ensure it takes precedence
+    color: #2D2D2D;
+`;
 const Content = tw.div`max-w-screen-xl mx-auto pt-16 pb-8`
 const FiveColumns = tw.div`flex flex-wrap justify-between`;
 
@@ -19,22 +24,48 @@ const CompanyColumn = tw.div`text-center md:text-left mb-16 lg:mb-0 w-full lg:w-
 
 const ColumnHeading = tw.h5`font-bold uppercase`;
 
-const LinkList = tw.ul`mt-4 text-sm font-medium`;
+const LinkList = styled.ul`
+    ${tw`mt-4 text-sm font-medium list-none`}; // Removes bullets
+`;
 const LinkListItem = tw.li`mt-3`;
-const Link = tw.a`border-b-2 border-transparent hocus:text-gray-300 hocus:border-gray-100 pb-1 transition duration-300`;
+const Link = styled.a`
+    ${tw` hover:text-green-500 cursor-pointer`};
+    text-decoration: none; // Ensures no underline at all
+    color: #2D2D2D;
+    &:hover {
+        text-decoration: none; // Prevents any text-decoration on hover as well
+    }
+`;
+
 
 const LogoContainer = tw.div`flex items-center justify-center lg:justify-start`;
-const LogoImg = tw.img`w-8`;
+const LogoImg = styled.img`
+  ${tw`w-32 h-24`}; // Increased logo size
+`;
 const LogoText = tw.h5`ml-2 text-xl font-black`;
 
 const CompanyAddress = tw.p`mt-4 max-w-xs font-medium text-sm mx-auto lg:mx-0 lg:mr-4 leading-loose text-center lg:text-left`;
 
-const SocialLinksContainer = tw.div`mt-4 text-center lg:text-left`;
+const SocialLinksContainer = tw.div`mt-4 flex justify-center lg:justify-start space-x-2`;
 const SocialLink = styled.a`
-  ${tw`cursor-pointer inline-block p-2 rounded-full bg-gray-100 text-gray-900 hover:bg-gray-500 transition duration-300 mr-4 last:mr-0`}
-  svg {
-    ${tw`w-4 h-4`}
-  }
+    ${tw`cursor-pointer inline-block p-2 text-gray-900  transition duration-300`}
+    svg {
+        ${tw`w-4 h-4`}
+    }
+    font-size: 16px;
+    line-height: 19px;
+    color: #2D2D2D;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+    &:hover {
+        filter: none;
+    }
+`;
+
+
+
+const Break = styled.div`
+  ${tw`my-1`}
 `;
 
 const CopyrightAndCompanyInfoRow = tw.div`pb-0 text-sm font-normal flex flex-col sm:flex-row justify-between items-center`
@@ -54,23 +85,23 @@ export default () => {
 
                         <SocialLinksContainer>
                             <SocialLink href="https://web.telegram.org/a/">
-                                <TelegramIcon />
+                                <img src={TelegramIcon} />
                             </SocialLink>
                             <SocialLink href="https://www.viber.com/ru/">
-                                <ViberIcon />
+                                <img src={ViberIcon}/>
                             </SocialLink>
                             <SocialLink href="https://web.whatsapp.com">
-                                <WhatsappIcon />
+                                <img src={WhatsappIcon}/>
                             </SocialLink>
                             <SocialLink href="https://ok.ru">
-                                <ClassmatesIcon />
+                                <img src={ClassmatesIcon}/>
                             </SocialLink>
                             <SocialLink href="https://vk.com/feed">
-                                <VkIcon />
+                                <img src={VkIcon}/>
                             </SocialLink>
                         </SocialLinksContainer>
                         <CompanyAddress>
-                            Телефон для связи:
+                            Телефон для связи: <Break/>
                             8 (800) 777-76-10
                         </CompanyAddress>
                     </CompanyColumn>
@@ -78,22 +109,25 @@ export default () => {
                         <ColumnHeading>Общая информация</ColumnHeading>
                         <LinkList>
                             <LinkListItem>
-                                <Link href="#">О нас</Link>
+                                <Link href="AboutUS">О нас</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Услуги и стоимость</Link>
+                                <Link href="Rates">Услуги и стоимость</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Тарифы</Link>
+                                <Link href="Tariffs">Тарифы</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Магазины</Link>
+                                <Link href="Shops">Магазины</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Выкуп товаров</Link>
+                                <Link href="RedemptionOfGoods">Выкуп товаров</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Контакты</Link>
+                                <Link href="Contacts">Контакты</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="TermsOfService">Политика экспортного и санкционного контроля</Link>
                             </LinkListItem>
                         </LinkList>
                     </Column>
@@ -101,22 +135,22 @@ export default () => {
                         <ColumnHeading>Клиентам</ColumnHeading>
                         <LinkList>
                             <LinkListItem>
-                                <Link href="#">Новости и спецпредложения</Link>
+                                <Link href="News">Новости и спецпредложения</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Вопросы и ответы</Link>
+                                <Link href="Questions">Вопросы и ответы</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Запрещенные товары</Link>
+                                <Link href="ProhibitedProductsPage">Запрещенные товары</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Таможенные правила</Link>
+                                <Link href="CustomRegulations">Таможенные правила</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Калькулятор доставки</Link>
+                                <Link href="DeliveryCalculator">Калькулятор доставки</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Калькулятор таможенной пошлины</Link>
+                                <Link href="DutyCalculatorPage">Калькулятор таможенной пошлины</Link>
                             </LinkListItem>
                         </LinkList>
                     </Column>
@@ -124,36 +158,26 @@ export default () => {
                         <ColumnHeading>Полезное</ColumnHeading>
                         <LinkList>
                             <LinkListItem>
-                                <Link href="#">GDPR</Link>
+                                <Link href="LegalInformation">Правовая информация</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Privacy Policy</Link>
+                                <Link href="HowToBuyGoodsAbroadPage">Как покупать товары заграницей</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Terms of Service</Link>
+                                <Link href="ClothesSizes">Размеры одежды и обуви</Link>
                             </LinkListItem>
                             <LinkListItem>
-                                <Link href="#">Disclaimer</Link>
+                                <Link href="ForBussinesPage">Для бизнеса</Link>
                             </LinkListItem>
+                            <LinkListItem>
+                                <Link href="PrivacyPolicy">Политика конфиденциальности</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="PublicOffer">Договор оферты</Link>
+                            </LinkListItem>
+
                         </LinkList>
                     </Column>
-                    {/*<Column>*/}
-                    {/*    <ColumnHeading>Contact</ColumnHeading>*/}
-                    {/*    <LinkList>*/}
-                    {/*        <LinkListItem>*/}
-                    {/*            +1 (234) (567)-8901*/}
-                    {/*        </LinkListItem>*/}
-                    {/*        <LinkListItem>*/}
-                    {/*            <Link href="mailto:support@servana.com">support@servana.com</Link>*/}
-                    {/*        </LinkListItem>*/}
-                    {/*        <LinkListItem>*/}
-                    {/*            <Link href="#">Sales</Link>*/}
-                    {/*        </LinkListItem>*/}
-                    {/*        <LinkListItem>*/}
-                    {/*            <Link href="#">Report Abuse</Link>*/}
-                    {/*        </LinkListItem>*/}
-                    {/*    </LinkList>*/}
-                    {/*</Column>*/}
                 </FiveColumns>
                 <Divider/>
                 <CopyrightAndCompanyInfoRow>

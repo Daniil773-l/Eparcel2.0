@@ -9,7 +9,7 @@ import Testimonial from "components/testimonials/TwoColumnWithImageAndProfilePic
 import FAQ from "components/faqs/SimpleWithSideImage.js";
 import SubscribeNewsLetterForm from "components/forms/SimpleSubscribeNewsletter.js";
 import Header from "components/headers/ShopsHeader";
-import Footer from "components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import Shop from "./components/features/DashedBorderSixFeatures";
 import Cards from './components/features/DashedBorderSixFeatures';
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";

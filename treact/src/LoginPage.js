@@ -4,7 +4,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import EmailIllustrationSrc from "images/email-illustration.svg";
 import Header from "components/headers/LoginPageHeader";
-import Footer from "components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const Container = tw.div`relative `;

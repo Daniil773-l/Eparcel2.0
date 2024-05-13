@@ -17,7 +17,7 @@ import FAQs from './components/faqs/SingleCol';
 
 import AnimationRevealPage from "./helpers/AnimationRevealPage";
 import Hero from "./components/headers/QuestionsHeader";
-import Footer from "./components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 
 const Layout = styled.div`
     display: flex;

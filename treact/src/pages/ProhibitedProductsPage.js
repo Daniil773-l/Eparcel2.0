@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
-import Footer from 'components/footers/MiniCenteredFooter';
+import Footer from "components/footers/MainFooterWithLinks";
 import {TbDashboard} from "react-icons/tb";
 import Products from "images/ProhibitedProducts.svg"
 import "CSS/calculator.css";

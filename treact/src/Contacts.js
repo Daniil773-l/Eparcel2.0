@@ -3,11 +3,12 @@ import tw, { styled } from 'twin.macro';
 import Header from 'components/headers/LoginPageHeader';
 import Footer from 'components/footers/MiniCenteredFooter';
 import {Breadcrumbs} from "@material-ui/core";
-import telegramIcon from  "./images/telegram_3536661.png";
-import viberIcon from  "./images/viber_3256018.png";
-import whatsappIcon from  "./images/whatsapp.png";
-import classmatesIcon from  "./images/odnoklassniki_13170461.png";
-import vkIcon from  "./images/vk_5968835.png";
+import TelegramIcon from "images/icon/telegram.svg";
+import  ViberIcon from "images/icon/Viber.svg";
+import WhatsappIcon  from "images/icon/whatsapp.svg";
+import  ClassmatesIcon  from "images/icon/classmates.svg";
+import VkIcon  from "images/icon/vk.svg";
+
 
 const Container = tw.div`relative flex flex-col items-center justify-start min-h-screen bg-white p-8 pt-24`; // Изменен отступ сверху
 const ContentContainer = tw.div`flex flex-col md:flex-row gap-x-12 w-full max-w-6xl`;
@@ -118,19 +119,19 @@ export default function ContactForm() {
                         <DescriptionContact>Другие способы связи: <br/> <br/>
                             <IconContainer>
                                 <IconLink href="#">
-                                    <Icon src={vkIcon} alt="VK" />
+                                    <Icon src={VkIcon} alt="VK" />
                                 </IconLink>
                                 <IconLink href="#">
-                                    <Icon src={classmatesIcon} alt="Classmates" />
+                                    <Icon src={ClassmatesIcon} alt="Classmates" />
                                 </IconLink>
                                 <IconLink href="#">
-                                    <Icon src={whatsappIcon} alt="WhatsApp" />
+                                    <Icon src={WhatsappIcon} alt="WhatsApp" />
                                 </IconLink>
                                 <IconLink href="#">
-                                    <Icon src={telegramIcon} alt="Telegram" />
+                                    <Icon src={TelegramIcon} alt="Telegram" />
                                 </IconLink>
                                 <IconLink href="#">
-                                    <Icon src={viberIcon} alt="Viber" />
+                                    <Icon src={ViberIcon} alt="Viber" />
                                 </IconLink>
                             </IconContainer>
                         </DescriptionContact> <br/>

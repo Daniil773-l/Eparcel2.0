@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
-import Footer from 'components/footers/MiniCenteredFooter';
+import Footer from "components/footers/MainFooterWithLinks";
 const Container = tw.div`relative `;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`; // Уменьшенные отступы
 const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;

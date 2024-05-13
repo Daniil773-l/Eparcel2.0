@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
-import Footer from 'components/footers/MiniCenteredFooter';
+import Footer from "components/footers/MainFooterWithLinks";
 import DressRoom from "images/DressRoom.svg"
 import UsaMap from "images/usa.svg"
 import TurkeyMap from "images/TurkeyMap.svg"

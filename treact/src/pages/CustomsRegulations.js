@@ -4,6 +4,7 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import Header from "components/headers/light";
+import Footer from "components/footers/MainFooterWithLinks";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-1.svg";
 import DesignIllustration from "images/CustomRules.svg";
 import Banner1 from "images/BannerCustoms.svg";
@@ -154,6 +155,7 @@ export default ({ roundedHeaderButton }) => {
                     </HeadingColumn>
                 </Content>
             </Container>
+            <Footer/>
         </>
     );
 };

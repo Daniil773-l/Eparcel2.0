@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
-import Footer from 'components/footers/MiniCenteredFooter';
+import Footer from "components/footers/MainFooterWithLinks";
 import Choose from "images/GoodChoose.svg";
 import Purchase from "images/PurchaseGood.svg";
 import Delivery from "images/DeliveryIcon.svg";

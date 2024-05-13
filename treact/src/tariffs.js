@@ -2,7 +2,7 @@ import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Header from "components/hero/HeaderTariff";
 import Pricing from "components/pricing/TwoPlansWithDurationSwitcher.js";
-import Footer from "components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import "./CSS/IncludedServicesSectionTariff.css";
 import Icon1 from "./images/icon1.png";
 import Icon2 from "./images/icon2.png";

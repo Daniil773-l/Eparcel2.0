@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import styled, { css } from 'styled-components';
 import AnimationRevealPage from "./helpers/AnimationRevealPage";
 import Hero from "./components/headers/NewHeader";
-import Footer from "./components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import { PrimaryButton as PrimaryButtonBase } from "./components/misc/Buttons";
 
 const Heading = styled.h1`

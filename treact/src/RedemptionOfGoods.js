@@ -2,7 +2,7 @@ import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Header from "components/headers/RedemptionOfGoodsHeader";
 import FeatureWithSteps from "components/features/HowDoesItWorkPage5";
-import Footer from "components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import Explanation from "components/cards/JustExplanation";
 import SectionApplication from "components/cta/ApplicationRedemption";
 import "./CSS/IncludedServicesSectionTariff.css";

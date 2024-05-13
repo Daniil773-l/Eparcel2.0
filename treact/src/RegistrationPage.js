@@ -3,7 +3,7 @@ import tw, { styled } from "twin.macro";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import Header from "components/headers/LoginPageHeader";
-import Footer from "components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const Container = tw.div`relative flex items-center justify-center min-h-screen`;

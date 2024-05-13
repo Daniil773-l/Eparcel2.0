@@ -5,7 +5,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import "CSS/calculator.css";
 import Header from 'components/headers/LoginPageHeader';
-import Footer from 'components/footers/MiniCenteredFooter';
+import Footer from "components/footers/MainFooterWithLinks";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;

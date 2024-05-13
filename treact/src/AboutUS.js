@@ -2,7 +2,7 @@ import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Header from "components/headers/AboutUsHeader";
 import MainFeature2 from "components/features/AboutUsGoal";
-import Footer from "components/footers/MiniCenteredFooter";
+import Footer from "components/footers/MainFooterWithLinks";
 import Explanation from "components/cards/AboutUsExplanation";
 import Slider from "components/hero/ImageSliderWithText";
 import Slider2 from "components/hero/SecondImageSlider";
