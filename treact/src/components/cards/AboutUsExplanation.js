@@ -3,14 +3,16 @@ import tw from "twin.macro";
 import styled from "styled-components";
 
 const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`; // Уменьшенные отступы
+const Content = tw.div`max-w-screen-xl mx-auto py-8 lg:py-12`; // Еще более уменьшенные отступы
+
 
 const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
 
 const HeadingTitle = styled.h1`
-  ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
-  margin-bottom: 50px; /* Увеличение отступа между заголовком и абзацем */
+    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
+    /* Уменьшение отступа между заголовком и абзацем */
 `;
+
 
 const HeadingDescription = tw.p`my-5 lg:my-8 text-base xl:text-xl`;
 

@@ -3,7 +3,9 @@ import tw from "twin.macro";
 import styled from "styled-components";
 
 const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`; // Уменьшенные отступы
+const Content = tw.div`max-w-screen-xl mx-auto`; // Без отступов сверху
+
+
 
 const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
 

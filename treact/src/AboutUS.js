@@ -14,27 +14,25 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import Partners from "images/Partners.png";
 import Goal from "images/GoalPicture.svg";
-
 import { ReactComponent as Star } from "images/GreenStar.svg";
 
 const FeatureItem = styled.div`
     display: flex;
-    align-items: center; // Ensures vertical center alignment
-    margin-bottom: 20px; // Adds space between items
+    align-items: center;
+    
 `;
 
 const IconContainer = styled.div`
     display: flex;
-    align-items: center; // Centers the icon vertically
-    margin-right: 15px; // Space between icon and text
+    align-items: center;
+    margin-right: 15px;
+    flex-shrink: 0;  // Prevents the star from shrinking
 `;
-
 const Description = styled.p`
-    display: flex;
-    align-items: center; // Ensures text is centered with the icon
-    margin: 0; // Removes default margins
-    flex-grow: 1; // Takes the remaining space
-    font-size: 16px; // Ensures consistent font size
+    margin: 0;
+    font-size: 20px;
+    margin-left: 15px;
+     // Reduce this value to decrease the space between items
 `;
 
 const SectionContainer = styled.section`
@@ -60,6 +58,18 @@ const ContentAlignment = styled.div`
 const Prim = styled.span`
     ${tw`text-center text-primary-500 md:text-left`}
     color: #0ABD19;
+`;
+
+const SmallStar = styled(Star)`
+    width: 24px;  // Fixed width
+    height: 24px;  // Fixed height
+    flex-shrink: 0;  // Prevents resizing due to flex properties
+`;
+const LargerImage = styled.img`
+    width: 100%; // Increase width as needed
+    max-width: 1200px; // Adjust max width as necessary to control size limits
+    height: auto; // Keeps the aspect ratio intact
+    margin-top: 20px;
 `;
 
 export default () => {
@@ -92,21 +102,87 @@ export default () => {
                 showDecoratorBlob={false}
                 features={[
                     {
-                        Icon: Star,
-                        description: "Дешевые и фиксированные тарифы доставки",
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Дешевые и фиксированные тарифы доставки
+                                </Description>
+                            </FeatureItem>
+                        ),
                     },
                     {
-                        Icon: Star,
-                        description: "Отсутствие скрытых комиссий и дополнительных платежей",
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Отсутствие скрытых комиссий и дополнительных платежей
+                                </Description>
+                            </FeatureItem>
+                        ),
                     },
                     {
-                        Icon: Star,
-                        description: "Понятные и простые правила расчета посылок",
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Понятные и простые правила расчета посылок
+                                </Description>
+                            </FeatureItem>
+                        ),
                     },
-                    // Additional features can be added here
+                    {
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Выкуп товаров в других странах и доставка по всей России, даже в самые удаленные города
+                                </Description>
+                            </FeatureItem>
+                        ),
+                    },
+                    {
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Различные способы оплаты для максимального удобства наших клиентов.
+                                </Description>
+                            </FeatureItem>
+                        ),
+                    },
+                    {
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Большой выбор дополнительных услуг
+                                </Description>
+                            </FeatureItem>
+                        ),
+                    },
+                    {
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Индивидуальное консультирование по всем вопросам
+                                </Description>
+                            </FeatureItem>
+                        ),
+                    },
+                    {
+                        description: (
+                            <FeatureItem>
+                                <SmallStar />
+                                <Description>
+                                    Гарантия быстрой и качественной доставки
+                                </Description>
+                            </FeatureItem>
+                        ),
+                    },
                 ]}
             />
-
             <Footer/>
         </AnimationRevealPage>
     );

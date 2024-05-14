@@ -14,7 +14,6 @@ const PlanDurationSwitcher = tw.div`flex justify-center items-center my-5`;
 const SwitchButton = styled.button`
   ${tw`px-6 py-3 rounded-full focus:outline-none text-sm font-bold transition duration-300 mx-2`}
   ${props => props.active ? tw`bg-green-500 text-white border border-green-500` : tw`bg-transparent text-green-700 border border-green-500 hover:bg-green-700 hover:text-white`}
-
   &:hover {
     ${tw`bg-green-700 text-white border-green-700`}
   }
@@ -45,21 +44,23 @@ const PriceTransition = styled(CSSTransition)`
 
 const PlansContainer = tw.div`flex justify-center flex-wrap items-center md:items-start relative`;
 const Plan = styled.div`
-  ${tw`max-w-xs mt-16 text-center px-8 py-4 rounded-lg relative text-gray-900 bg-white shadow-raised m-2`}
+  ${tw`max-w-xs mt-16 text-center px-8 py-2 rounded-lg relative text-gray-900 bg-white shadow-raised m-2`}
 `;
 
 const PlanHeader = styled.div`
   ${tw`flex flex-col items-center py-4`}
   .name {
-    ${tw`font-bold text-lg mb-2`}
+    ${tw`font-bold text-lg mb-3`} // Добавляем отступ снизу
     .zone {
       ${tw`text-green-500`}
     }
   }
   .duration {
-    ${tw`text-gray-500 text-base`}
+    ${tw`text-gray-500 text-sm`}
   }
 `;
+
+
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 
@@ -71,9 +72,9 @@ const FeaturesColumn = styled.div`
   ${tw`w-full md:w-1/3 flex flex-col`}
 `;
 
-const Divider = tw.div`hidden md:block md:w-px md:bg-gray-300 md:h-full md:self-center`;
+const FeatureTitle = tw.div`font-semibold text-gray-900 mb-2`;
 
-const FeatureHeader = tw.div`font-semibold text-gray-600`;
+const Divider = tw.div`hidden md:block md:w-px md:bg-gray-300 md:h-full md:self-center`;
 
 const PriceListItem = styled.li`
   ${tw`text-sm text-gray-600 py-1`}
@@ -112,36 +113,44 @@ export default ({
       name: "Тарифная Зона 1",
       duration: "Тариф установлен для доставки посылок в Центральную часть России",
       mainFeature: "Посмотреть цены >",
-      features: ["Вес","Посылки от ПВЗ", "Курьер"],
-      durationPrices: ["$10", "$120"],
-      prices: ["0.5 кг = $1", "1 кг = $2", "1.5 кг = $3", "от 2 кг = $4", "от 3 кг = $5 (за один кг)"],
+      features: [
+        { title: "Вес", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
+        { title: "ПВЗ", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] },
+        { title: "Курьер", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
+
+      ]
     },
+    // Repeat the same structure for Zones 2 and 3
     {
       name: "Тарифная Зона 2",
       duration: "Тариф установлен для доставки посылок за Уралом",
       mainFeature: "Посмотреть цены >",
-      features: ["Вес","Посылки от ПВЗ", "Курьер"],
-      durationPrices: ["$10", "$120"],
-      prices: ["0.5 кг = $1", "1 кг = $2", "1.5 кг = $3", "от 2 кг = $4", "от 3 кг = $5 (за один кг)"],
+      features: [
+        { title: "Вес", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
+        { title: "ПВЗ", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] },
+        { title: "Курьер", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
+
+      ]
     },
     {
       name: "Тарифная Зона 3",
       duration: "Тариф установлен для доставки посылок в удаленные и труднодоступные города",
       mainFeature: "Посмотреть цены >",
-      features: ["Вес","Посылки от ПВЗ", "Курьер"],
-      durationPrices: ["$10", "$120"],
-      prices: ["0.5 кг = $1", "1 кг = $2", "1.5 кг = $3", "от 2 кг = $4", "от 3 кг = $5 (за один кг)"],
-    },
+      features: [
+        { title: "Вес", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
+        { title: " ПВЗ", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] },
+        { title: "Курьер", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
+
+      ]
+    }
   ];
 
   if (!plans) plans = defaultPlans;
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
-  const [activePrices, setActivePrices] = useState(plans.map(plan => plan.durationPrices[0]));
 
   const switchPrices = (newIndex) => {
     setActiveDurationIndex(newIndex);
-    setActivePrices(plans.map(plan => plan.durationPrices[newIndex]));
   };
 
   return (
@@ -171,50 +180,17 @@ export default ({
                     <span className="duration">{plan.duration}</span>
                   </PlanHeader>
                   <PlanFeatures>
-                    <FeaturesColumn>
-                      <FeatureHeader>{plan.features[0]}</FeatureHeader>
-                      <PricesContainer>
-                        <TransitionGroup>
-                          <PriceTransition
-                              key={`${index}-weight`}
-                              timeout={300}
-                              classNames="price"
-                          >
-                            <PriceListItem>{activePrices[index]}</PriceListItem>
-                          </PriceTransition>
-                        </TransitionGroup>
-                      </PricesContainer>
-                    </FeaturesColumn>
-                    <Divider />
-                    <FeaturesColumn>
-                      <FeatureHeader>{plan.features[1]}</FeatureHeader>
-                      <PricesContainer>
-                        <TransitionGroup>
-                          <PriceTransition
-                              key={`${index}-pvz`}
-                              timeout={300}
-                              classNames="price"
-                          >
-                            <PriceListItem>{activePrices[index]}</PriceListItem>
-                          </PriceTransition>
-                        </TransitionGroup>
-                      </PricesContainer>
-                    </FeaturesColumn>
-                    <Divider />
-                    <FeaturesColumn>
-                      <FeatureHeader>{plan.features[2]}</FeatureHeader>
-                      <PricesContainer>
-                        <TransitionGroup>
-                          <PriceTransition
-                              key={`${index}-courier`}
-                              timeout={300}
-                              classNames="price"
-                          >
-                            <PriceListItem>{activePrices[index]}</PriceListItem>
-                          </PriceTransition>
-                        </TransitionGroup>
-                      </PricesContainer>
-                    </FeaturesColumn>
+                    {plan.features.map((feature, idx) => (
+                        <FeaturesColumn key={idx}>
+                          <FeatureTitle>{feature.title}</FeatureTitle>
+                          {feature.prices && feature.prices.map((price, priceIdx) => (
+                              <PriceListItem key={priceIdx}>{price}</PriceListItem>
+                          ))}
+                          {feature.weights && feature.weights.map((weight, weightIdx) => (
+                              <PriceListItem key={weightIdx}>{weight}</PriceListItem>
+                          ))}
+                        </FeaturesColumn>
+                    ))}
                   </PlanFeatures>
                 </Plan>
             ))}
