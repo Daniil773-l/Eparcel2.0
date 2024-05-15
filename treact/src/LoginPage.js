@@ -144,7 +144,7 @@ export default ({
                                 </p>
                                 <p tw="mt-10 text-sm text-gray-600 text-center">
                                     Нету акаунта{" "}
-                                    <PlainLink href="./RegistrationPage">Зарегистрируйтесь</PlainLink>
+                                    <PlainLink href="/RegistrationPage">Зарегистрируйтесь</PlainLink>
                                 </p>
 
                             </FormContainer>

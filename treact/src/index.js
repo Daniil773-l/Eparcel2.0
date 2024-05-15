@@ -27,6 +27,8 @@ import ClothesSizes from "./pages/ClothesSizes";
 import ForBussinesPage from "./pages/ForBussinesPage";
 import News from "./News";
 import Questions from "./Questions";
+import RegistrationPage from "./RegistrationPage";
+import LoginPage from "./LoginPage";
 
 
 // Locate the root element from the DOM
@@ -37,14 +39,14 @@ const root = createRoot(rootElement);  // Create a root.
 root.render(
     <Router>
         <Routes>
-            <Route path="/" element={<App/>} />
+            <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />
             <Route path="/RedemptionOfGoods" element={<RedemptionOfGoods />} />
             <Route path="/AboutUS" element={<AboutUS />} />
             <Route path="/Contacts" element={<Contacts />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/Registration" element={<Registration />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/RegistrationPage" element={<RegistrationPage />} />
             <Route path="/CustomRegulations" element={<CustomsRegulations />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
             <Route path="/TermsOfService" element={<TermsOfService />} />
