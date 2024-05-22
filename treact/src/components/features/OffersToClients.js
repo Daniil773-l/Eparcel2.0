@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
+import { css } from "styled-components/macro"; // eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
@@ -9,6 +9,7 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import Ballon from "images/EparcelBallon.svg"
+
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
@@ -16,9 +17,9 @@ const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
 
 // Изменение ширины колонки в зависимости от размера экрана
 css`
-  @media (max-width: 768px) {
-    width: 100%;      // Колонка занимает 100% ширины на малых экранах
-  }
+    @media (max-width: 768px) {
+        width: 100%;      // Колонка занимает 100% ширины на малых экранах
+    }
 `;
 
 const TextColumn = styled(Column)(props => [
@@ -31,12 +32,12 @@ const Image = styled.img(props => [
     props.imageBorder && tw`border`,
     props.imageShadow && tw`shadow`,
     css`
-    width: 100%;      // Занимает всю доступную ширину
-    height: auto;     // Высота изменяется пропорционально, сохраняя аспект изображения
-    @media (max-width: 768px) {
-      max-width: 100%; // Ограничивает максимальную ширину на малых экранах
-    }
-  `
+        width: 100%;      // Занимает всю доступную ширину
+        height: auto;     // Высота изменяется пропорционально, сохраняя аспект изображения
+        @media (max-width: 768px) {
+            max-width: 100%; // Ограничивает максимальную ширину на малых экранах
+        }
+    `
 ]);
 
 
@@ -44,9 +45,9 @@ const DecoratorBlob = tw(SvgDotPattern)`w-20 h-20 absolute right-0 bottom-0 tran
 
 // Скрыть декоративные элементы на малых экранах, если они мешают восприятию контента
 css`
-  @media (max-width: 768px) {
-    display: none;    // Скрывает декоративный элемент на малых экранах
-  }
+    @media (max-width: 768px) {
+        display: none;    // Скрывает декоративный элемент на малых экранах
+    }
 `;
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
@@ -54,7 +55,7 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 const Subheading = styled(SubheadingBase)`
     ${tw`text-center md:text-left`}
     color: #0ABD19; // Set the color to bright green
-  `;
+`;
 
 const Heading = tw(
     SectionHeading
@@ -63,19 +64,19 @@ const Description = tw.p`mt-8 text-center md:text-left text-sm md:text-base lg:t
 
 const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-col max-w-xs lg:max-w-none w-full`;
 
-const Feature = tw.div`mt-10 lg:mt-8 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
+const Feature = tw.div`mt-6 lg:mt-4 flex items-center md:items-start flex-col md:mr-8 last:mr-0`; // Reduced the margin-top
 
 const FeatureHeadingContainer = tw.div`flex items-center`;
 const FeatureIconContainer = styled.div`
-  ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center p-2 flex-shrink-0`}
-  svg {
-    ${tw`w-6 h-6`}
-  }
+    ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center p-2 flex-shrink-0`}
+    svg {
+        ${tw`w-6 h-6`}
+    }
 `;
 
 const FeatureHeading = tw.div`ml-3 font-bold text-xl`;
 
-const FeatureDescription = tw.div`mt-4 text-center md:text-left text-gray-600 leading-relaxed`;
+const FeatureDescription = tw.div`mt-2 text-center md:text-left text-gray-600 leading-relaxed`; // Reduced the margin-top
 
 const PrimaryButton = styled(PrimaryButtonBase)(props => [
     tw`mt-12 text-sm inline-block mx-auto md:mx-0`,
@@ -89,8 +90,8 @@ export default ({
                             Designed & Developed by <span tw="text-primary-500">Professionals.</span>
                         </>
                     ),
-                    description="Eparcel - Ваш надежный мейлфорвард — с собственными методами доставки и удобными автоматизированными складами.",
-                    description1="Доставка товаров из-за границы — наша основная деятельность, сотни тысяч клиентов из России получают свои покупки благодаря нам.",
+                    description = "Eparcel - Ваш надежный мейлфорвард — с собственными методами доставки и удобными автоматизированными складами.",
+                    description1 = "Доставка товаров из-за границы — наша основная деятельность, сотни тысяч клиентов из России получают свои покупки благодаря нам.",
                     primaryButtonText = "Learn More",
                     primaryButtonUrl = "https://timerse.com",
                     imageSrc = TeamIllustrationSrc,
@@ -144,12 +145,10 @@ export default ({
                             {features.map((feature, index) => (
                                 <Feature key={index}>
                                     <FeatureHeadingContainer>
-
                                         <FeatureHeading>{feature.title}</FeatureHeading>
                                     </FeatureHeadingContainer>
                                     <FeatureDescription>{feature.description}</FeatureDescription>
                                 </Feature>
-
                             ))}
                         </Features>
                     </TextContent>
