@@ -63,10 +63,10 @@ export default ({ roundedHeaderButton }) => {
                 <TwoColumn>
                     <LeftColumn>
                         <Heading>
-                            Eparcel – самый выгодный мейлфорвард
+                            Eparcel – самый выгодный
                         </Heading>
                         <Paragraph>
-                            EPARCEL.ru является российской службой доставки и мейлфорвардом посылок из-за границы в Россию.
+                            EPARCEL.kz является  службой доставки и мейлфорвардом посылок из-за границы в Казахстан
                         </Paragraph>
                         <Actions>
                             <button>Получить адрес</button>

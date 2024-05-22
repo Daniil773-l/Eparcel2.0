@@ -83,26 +83,6 @@ function Header() {
                         </div>
                     </div>
                     <div className="input-group">
-                        <label className="delivery-method-label"><span className="green">Способ доставки:</span></label>
-                        <div className="radio-group">
-                            <div className="radio-option">
-                                <input type="radio" id="method1" name="delivery_method" value="pickup"
-                                       className="styled-radio"/>
-                                <label htmlFor="method1">ПВЗ</label>
-                            </div>
-                            <div className="radio-option">
-                                <input type="radio" id="method2" name="delivery_method" value="post"
-                                       className="styled-radio"/>
-                                <label htmlFor="method2">Постамат</label>
-                            </div>
-                            <div className="radio-option">
-                                <input type="radio" id="method3" name="delivery_method" value="courier"
-                                       className="styled-radio"/>
-                                <label htmlFor="method3">Курьер</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="input-group">
                         <label><span className="green">Габариты посылки (см):</span></label>
                         <div className="input-row">
                             <input

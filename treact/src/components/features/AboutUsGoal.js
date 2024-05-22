@@ -74,7 +74,7 @@ export default ({
                             Designed & Developed by <span tw="text-primary-500">Professionals.</span>
                         </>
                     ),
-                    description=" оказание качественных услуг, быстрой и надежной доставки посылок по минимальной стоимости для наших клиентов.",
+                    description=" оказание качественных услуг, быстрая и надежная доставка посылок с товарами по минимальной стоимости для наших клиентов",
                     primaryButtonText = "Learn More",
                     primaryButtonUrl = "https://timerse.com",
                     imageSrc= goal, // Updated image source to use goal.svg

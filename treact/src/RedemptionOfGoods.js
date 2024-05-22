@@ -8,9 +8,9 @@ import SectionApplication from "components/cta/ApplicationRedemption";
 import "./CSS/IncludedServicesSectionTariff.css";
 import tw from "twin.macro";
 import styled from "styled-components";
-import Step1 from "./images/Step1.png";
-import Step2 from "./images/Step2.png";
-import Step3 from "./images/PackageWoman.jpg";
+import Step1 from "./images/Step1.svg";
+import Step2 from "./images/Step2.svg";
+import Step3 from "./images/PacageWoman.svg";
 
 export default () => {
     const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;

@@ -82,10 +82,10 @@ export default ({ roundedHeaderButton }) => {
           <TwoColumn>
             <LeftColumn>
               <Heading>
-                Доставка товаров из США и Турции в <HighlightedText>Казахстан.</HighlightedText>
+                Доставка товаров из США и Турции в <HighlightedText>Казахстан</HighlightedText>
               </Heading>
               <Paragraph>
-                Помогаем с покупками в американских и турецких интернет-магазинах и привозим их вам в Россию
+                Помогаем с покупками в американских и турецких интернет-магазинах и привозим их вам в Казахстан
               </Paragraph>
               <Actions>
                 <input type="text" placeholder="Ваш e-mail" />

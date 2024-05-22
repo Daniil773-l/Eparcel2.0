@@ -43,7 +43,7 @@ const Card = styled.div`
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
     margin-bottom: 12px; /* Adjust space between icon and title */
     img {
-      ${tw`w-12 h-12`}
+      ${tw`w-20 h-20`}
     }
   }
 
@@ -83,13 +83,12 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "", d
     {
       imageSrc: ShieldIconImage,
       title: "Доставка",
-      description: "Дешевая и быстрая доставка зарубежных товаров в Казхстан"
+      description: "Дешевая и быстрая доставка зарубежных товаров в Казахстан"
     },
-    { imageSrc: SupportIconImage, title: "Пункты выдачи" ,      description: "Более 50 000 пунктов выдачи и постаматов по всему Казахстану"},
-    { imageSrc: CustomizeIconImage, title: "Обслуживание" ,description: "Адрес склада, получение,   упаковка посылки - бесплатно"},
+    { imageSrc: CustomizeIconImage, title: "Обслуживание" ,description: "Адрес склада, получение, регистрация,  упаковка посылки - бесплатно"},
     { imageSrc: ReliableIconImage, title: "Выгода" , description: "Покупайте товары в США и Турции с большой выгодой"},
-    { imageSrc: FastIconImage, title: "Пересылка" ,description: "Получи личный почтовый адрес в США и Турции для покупок в интернет-магазинах, а Eparcel вам доставит в Казахстан"},
-    { imageSrc: SimpleIconImage, title: "Экономдоставка" ,description: "Товары из США и Турции дешевле с экономной доставкой от Eparcel.\""}
+    { imageSrc: FastIconImage, title: "Пересылка" ,description: "Получи личный почтовый адрес в США и Турции для покупок в интернет-магазинах, а Eparcel  доставит в Казахстан"},
+    { imageSrc: SimpleIconImage, title: "Экономдоставка" ,description: "Товары из США и Турции дешевле с экономной доставкой.\""}
   ];
 
   if (!cards) cards = defaultCards;

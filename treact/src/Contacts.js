@@ -25,7 +25,7 @@ export default () => {
               <>
                 <Address>
                   <AddressLine>8 (800) 777-76-10</AddressLine>
-                    <AddressLine>info@eparcel.ru</AddressLine>
+                    <AddressLine>info@eparcel.kz</AddressLine>
                 </Address>
               </>
             )

@@ -132,12 +132,12 @@ export default ({
                                             {passwordShown ? <AiFillEyeInvisible size={24}/> : <AiFillEye size={24}/>}
                                         </TogglePasswordButton>
                                     </PasswordInputWrapper>
-                                    <Link to="/App">
+                                    <PlainLink href="/App">
                                         <SubmitButton type="button">
                                             <SubmitButtonIcon className="icon" />
                                             <span className="text">{submitButtonText}</span>
                                         </SubmitButton>
-                                    </Link>
+                                    </PlainLink>
                                 </Form>
                                 <p tw="mt-8 text-xs text-gray-600 text-center">
                                     <PlainLink href={forgotPasswordUrl}>Забыли свой пароль?</PlainLink>

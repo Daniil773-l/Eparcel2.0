@@ -6,6 +6,7 @@ import Footer from "components/footers/MainFooterWithLinks";
 import Choose from "images/GoodChoose.svg";
 import Purchase from "images/PurchaseGood.svg";
 import Delivery from "images/DeliveryIcon.svg";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`;
@@ -54,13 +55,14 @@ const Icon = styled.img`
 export default () => {
     return (
         <>
+            <AnimationRevealPage>
             <Header/>
             <Container>
                 <Content>
                     <HeadingColumn>
                         <HeadingTitle>Как покупать товары за границей</HeadingTitle>
                         <HeadingDescription>
-                            Покупка товаров из зарубежных интернет-магазинов стала очень популярной среди российских покупателей. Однако многие сталкиваются с проблемами при выборе и оплате товара, а также при его доставке в Россию. Как же все-таки правильно покупать товары за границей и как осуществляется их доставка в Россию?
+                            Покупка товаров из зарубежных интернет-магазинов стала очень популярной среди российских покупателей. Однако многие сталкиваются с проблемами при выборе и оплате товара, а также при его доставке в Казахстан. Как же все-таки правильно покупать товары за границей и как осуществляется их доставка в Казахстан?
                         </HeadingDescription>
                     </HeadingColumn>
                     <ImageWrapper>
@@ -95,6 +97,7 @@ export default () => {
                 </Content>
             </Container>
             <Footer/>
+            </AnimationRevealPage>
         </>
     );
 };

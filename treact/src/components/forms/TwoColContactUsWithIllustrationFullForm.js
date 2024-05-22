@@ -128,7 +128,7 @@ const optionsContact = [
 const ContactForm = ({
                          heading = (
                              <>
-                                 Не стесняйтесь <Highlight> связаться</Highlight> с нами.
+                                 Не стесняйтесь <Highlight> связаться</Highlight> с нами
                              </>
                          ),
                          submitButtonText = "Отправить",

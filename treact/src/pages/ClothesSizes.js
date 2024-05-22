@@ -7,7 +7,7 @@ import DressRoom from "images/DressRoom.svg"
 import UsaMap from "images/usa.svg"
 import TurkeyMap from "images/TurkeyMap.svg"
 import "CSS/calculator.css";
-
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`;
 const ImageWrapper = tw.div`flex justify-center items-center flex-col md:flex-row`; // Adjust for vertical stacking on small screens and horizontal on medium and up
@@ -102,6 +102,7 @@ const InfoText = styled.p`
 export default () => {
     return (
         <>
+<AnimationRevealPage>
             <Header/>
             <Container>
                 <Content>
@@ -585,6 +586,7 @@ export default () => {
                 </Content>
             </Container>
             <Footer/>
+</AnimationRevealPage>
         </>
     );
 };

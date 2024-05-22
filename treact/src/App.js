@@ -21,7 +21,7 @@ import { Container } from "components/misc/Layouts.js";
 import { ReactComponent as One } from "images/01.svg";
 import { ReactComponent as Two } from "images/02.svg";
 import { ReactComponent as Three } from "images/03.svg";
-
+import { ReactComponent as For } from "images/04.svg";
 export default () => {
     const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
     const HighlightedText = styled.span`
@@ -51,7 +51,7 @@ export default () => {
             />
 
             <FeatureWithSteps
-            subheading={<Steps>ШАГИ</Steps>}
+
             heading={
                 <>
                     Как это <HighlightedText>работает?</HighlightedText>
@@ -62,37 +62,11 @@ export default () => {
             imageDecoratorBlob={true}
             decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
         />
-                <Pricing
-
-                heading={
-                    <>
-                        Способы  <HighlightedText>доставки</HighlightedText>
-                    </>
-                }
-                plans={[
-                    {
-
-                        name: "Доставка до ПВЗ",
-                        icon: PVZ,
-                        mainFeature: "Доставка в пункты выдачи заказов наших партнеров",
-                    },
-                    {
-                        name: "Доставка до постамата",
-                        icon: PostMat,
-                        mainFeature: "Выбирайте постамат удобный для вас и мы доставим ваши покупки именно туда",
-                    },
-                    {
-                        name: "Доставка до двери",
-                        icon: Dostavka,
-                        mainFeature: "Скажите адрес и наш курьер доставит его прямо к вам до двери",
-                    },
-                ]}
-            />
             <MainFeature2
 
                 heading={
                     <>
-                        Преимущества нашей службы <HighlightedText>доставки.</HighlightedText>
+                        Преимущества нашей службы <HighlightedText>доставки</HighlightedText>
                     </>
                 }
                 imageSrc={prototypeIllustrationImageSrc}
@@ -100,20 +74,26 @@ export default () => {
                 features={[
                     {
                         Icon: One,
-                        title: "Дешевая доставка",
-                        description: "При регистрации на сайте вы бесплатно получаете почтовый адрес склада для доставки ваших товаров.\n",
+                        title: "Дешевая быстрая доставка",
+                        description: "При регистрации на сайте вы бесплатно получаете почтовый адрес склада для доставки ваших товаров",
 
                     },
                     {
                         Icon: Two,
-                        title: "Более 50 000 ПВЗ",
-                        description: "Вы сможете воспользоваться доставкой в любой пункт выдачи заказов или постамат и забрать посылку по всему Казахстану.",
+                        title: "Услуги склада",
+                        description: "Основные услуги  включены в стоимость доставки до адресата",
 
                     },
                     {
-                        Icon: Three, // Adding another feature as requested
-                        title: "Оплата и тенге",
-                        description: "Все услуги и товары оплачиваются в тенге и валюте на ваше усмотрение. Различные методы оплаты.",
+                        Icon: Three ,
+                        title: "Выкуп товаров",
+                        description: "Пришлите ссылку или описание товара. Мы выкупим товар по вашему желанию и быстро доставим вам",
+
+                    },
+                    {
+                        Icon: For ,
+                        title: "Оплата в тенге",
+                        description: "Все услуги и товары оплачиваются в тенге и валюте на ваше усмотрение. Различные методы оплаты",
 
                     },
                 ]}

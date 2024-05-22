@@ -1,4 +1,5 @@
 import React from "react";
+import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
@@ -52,13 +53,16 @@ const HeadingTitle = styled.h1`
     font-size: 32px;
     font-weight: normal;
     line-height: 42px;
-    font-family: 'Gilroy Semibold';
+    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
     color: #2D2D2D;
 `;
 
 const HighlightedText = styled.span`
     ${tw`font-semibold text-black`}
     color: #2D2D2D; // Make it slightly bolder and in the color specified
+    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 `;
 
 const MapTitle = styled.h2`
@@ -75,12 +79,14 @@ const TableTitle = styled.h2`
 
 const StyledTable = styled.table`
     ${tw`w-full text-sm md:text-base border-collapse`}
-    border: 2px solid #ccc; // Ensure the entire table has a border
+    border: 2px solid #ffffff; // Ensure the entire table has a border
     text-align: center; // Horizontally center the content
     vertical-align: middle; // Vertically center the content
+
     th, td {
-        ${tw`border border-gray-400 px-4 py-2 text-left`} // Apply borders to each cell
+        ${tw`border border-white px-4 py-2 text-left`} // Apply borders to each cell
     }
+
     th {
         ${tw`bg-gray-100`} // Optionally style the header differently
     }
@@ -118,7 +124,7 @@ const StyledShoeSizeConversionTable = styled.table`
     text-align: center; // Horizontally center the content
     vertical-align: middle; // Vertically center the content
   th, td {
-    ${tw`border border-gray-400 px-4 py-2 text-center`} // Center-align text in cells
+    ${tw`border border-white px-4 py-2 text-center`} // Center-align text in cells
   }
   th {
     ${tw`bg-gray-100`}
@@ -130,8 +136,10 @@ const InfoText = styled.p`
     font-size: 22px; // Set the font size
     line-height: 32px; // Set the line height
     color: #2D2D2D; // Maintain the color
-    font-family: 'Gilroy Medium', sans-serif; // Set the font family, ensure a fallback
+    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
     font-weight: normal; // Regular text less bold than HighlightedText
+    
 `;
 const TableText = styled.p`
     ${tw`my-4 text-base md:text-lg lg:text-xl xl:text-xl`}
@@ -140,7 +148,8 @@ const TableText = styled.p`
     line-height: 32px; // Set the line height
     color: #2D2D2D; // Maintain the color
     font-family: 'Gilroy Medium', sans-serif; // Set the font family, ensure a fallback
-    
+    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 `;
 
 const Break = styled.div`
@@ -151,7 +160,9 @@ const Break = styled.div`
 export default () => {
     return (
         <>
+            <AnimationRevealPage>
             <Header/>
+
             <Container>
                 <Content>
                     <InfoColumn>
@@ -353,6 +364,7 @@ export default () => {
                 </Content>
             </Container>
             <Footer/>
+            </AnimationRevealPage>
         </>
     );
 };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Header from "components/headers/light";
 import Footer from "components/footers/MainFooterWithLinks";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-1.svg";
@@ -94,6 +95,7 @@ const HighlightedText = styled.span`
 export default ({ roundedHeaderButton }) => {
     return (
         <>
+            <AnimationRevealPage>
             <Header roundedHeaderButton={roundedHeaderButton} />
             <Container>
                 <TwoColumn>
@@ -127,7 +129,7 @@ export default ({ roundedHeaderButton }) => {
                             На все посылки с товарами из-за рубежа применяются правила Таможенного союза: Таможенный
                             кодекс Евразийского экономического союза, глава 37.
                         </Paragraph>
-                        <Heading>Таможенное оформление, паспортные данные и ИНН</Heading>
+                        <Heading>Таможенное оформление, паспортные данные и ИИН</Heading>
                         <Paragraph>
                             Согласно Таможенному Кодексу, таможенному декларированию подлежат все грузы, пересекающие
                             границу ЕАЭС, вне зависимости от стоимости и веса. Все международные отправления в
@@ -151,11 +153,12 @@ export default ({ roundedHeaderButton }) => {
                             противном случае таможенные органы могут признать посылку коммерческой партией.</Paragraph>
                         <img src={Banner2} alt="Customs Banner" style={{maxWidth: '100%', marginBottom: '20px'}}/>
                         <Heading>Сроки прохождения таможни</Heading>
-                        <Paragraph>Срок таможенного оформления составляет от 1–3 рабочих дней с момента прибытия на территорию РФ. Если все паспортные данные и ИНН правильно заполнены, то посылка с товарами будет выпущена таможенными органами без каких-либо задержек.</Paragraph>
+                        <Paragraph>Срок таможенного оформления составляет от 1–3 рабочих дней с момента прибытия на территорию КЗ. Если все паспортные данные и ИИН правильно заполнены, то посылка с товарами будет выпущена таможенными органами без каких-либо задержек.</Paragraph>
                     </HeadingColumn>
                 </Content>
             </Container>
             <Footer/>
+            </AnimationRevealPage>
         </>
     );
 };

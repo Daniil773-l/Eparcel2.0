@@ -12,7 +12,7 @@ import "./CSS/IncludedServicesSectionTariff.css";
 import prototypeIllustrationImageSrc from "./images/EparcelBallon.svg";
 import styled from "styled-components";
 import tw from "twin.macro";
-import Partners from "images/Partners.png";
+import Partners from "images/Partners.svg";
 import Goal from "images/GoalPicture.svg";
 import { ReactComponent as Star } from "images/GreenStar.svg";
 
@@ -89,9 +89,9 @@ export default () => {
                 </ContentAlignment>
             </SectionContainer>
             <CenteredContainer>
-                <Heading>Наши партнеры</Heading>
+                <Heading style={{ marginBottom: '150px' }}>Наши партнеры</Heading>
             </CenteredContainer>
-            <CenteredContainer>
+            <CenteredContainer >
                 <img src={Partners} alt="Наши партнеры"/>
             </CenteredContainer>
             <Offerings
@@ -136,7 +136,7 @@ export default () => {
                             <FeatureItem>
                                 <SmallStar />
                                 <Description>
-                                    Выкуп товаров в других странах и доставка по всей России, даже в самые удаленные города
+                                    Выкуп товаров в других странах и доставка по всему Казахстану, даже в самые удаленные города
                                 </Description>
                             </FeatureItem>
                         ),

@@ -126,9 +126,6 @@ export default () => {
                             <LinkListItem>
                                 <Link href="Contacts">Контакты</Link>
                             </LinkListItem>
-                            <LinkListItem>
-                                <Link href="TermsOfService">Политика экспортного и санкционного контроля</Link>
-                            </LinkListItem>
                         </LinkList>
                     </Column>
                     <Column>
@@ -169,13 +166,6 @@ export default () => {
                             <LinkListItem>
                                 <Link href="ForBussinesPage">Для бизнеса</Link>
                             </LinkListItem>
-                            <LinkListItem>
-                                <Link href="PrivacyPolicy">Политика конфиденциальности</Link>
-                            </LinkListItem>
-                            <LinkListItem>
-                                <Link href="PublicOffer">Договор оферты</Link>
-                            </LinkListItem>
-
                         </LinkList>
                     </Column>
                 </FiveColumns>

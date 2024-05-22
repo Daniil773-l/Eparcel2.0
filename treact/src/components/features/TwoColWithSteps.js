@@ -96,11 +96,11 @@ export default ({
     },
     {
       heading: "Оформление",
-      description: "Оформляйте доставку в Россию. Отправляйте товары из заграницы друзьям, клиентам или себе"
+      description: "Оформляйте доставку в Казахстан. Отправляйте товары из заграницы друзьям, клиентам или себе"
     },
     {
       heading: "Получение",
-      description: "Получайте посылки прямо дома или в другом удобном пункте выдачи вашего города"
+      description: "Получайте посылки прямо до дома"
     }
 
   ];
@@ -116,7 +116,7 @@ export default ({
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
+
             <Heading>{heading}</Heading>
             <Steps>
               {steps.map((step, index) => (

@@ -39,6 +39,7 @@ const root = createRoot(rootElement);  // Create a root.
 root.render(
     <Router>
         <Routes>
+            <Route path="/" element={<App/>} />
             <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />

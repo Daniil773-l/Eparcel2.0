@@ -114,9 +114,9 @@ export default ({
       duration: "Тариф установлен для доставки посылок в Центральную часть России",
       mainFeature: "Посмотреть цены >",
       features: [
-        { title: "Вес", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
-        { title: "ПВЗ", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] },
-        { title: "Курьер", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
+        { title: "", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
+        { title: "" },
+        { title: "     ", prices: ["", "$15", "$20", "$25", "$30", "$35", "$45","$10/кг"] }
 
       ]
     },
@@ -126,9 +126,9 @@ export default ({
       duration: "Тариф установлен для доставки посылок за Уралом",
       mainFeature: "Посмотреть цены >",
       features: [
-        { title: "Вес", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
-        { title: "ПВЗ", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] },
-        { title: "Курьер", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
+        { title: "", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
+        { title: "", prices: ["", "", "", "", "", "", ""] },
+        { title: "", prices: ["$15", "$20", "$25", "$30", "$35", "$45", "$10/кг"] }
 
       ]
     },
@@ -137,9 +137,9 @@ export default ({
       duration: "Тариф установлен для доставки посылок в удаленные и труднодоступные города",
       mainFeature: "Посмотреть цены >",
       features: [
-        { title: "Вес", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
-        { title: " ПВЗ", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] },
-        { title: "Курьер", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
+        { title: "", weights: ["0.5 кг", "1 кг", "1.5 кг", "2 кг", "2.5 кг", "3 кг", "Более 3 кг"] },
+        { title: ""},
+        { title: "", prices: ["$10", "$15", "$20", "$25", "$30", "$35", "$10/кг"] }
 
       ]
     }
@@ -184,7 +184,7 @@ export default ({
                         <FeaturesColumn key={idx}>
                           <FeatureTitle>{feature.title}</FeatureTitle>
                           {feature.prices && feature.prices.map((price, priceIdx) => (
-                              <PriceListItem key={priceIdx}>{price}</PriceListItem>
+                              price && <PriceListItem key={priceIdx}>{price}</PriceListItem>
                           ))}
                           {feature.weights && feature.weights.map((weight, weightIdx) => (
                               <PriceListItem key={weightIdx}>{weight}</PriceListItem>
