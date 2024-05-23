@@ -118,7 +118,7 @@ function Header() {
                         <button type="submit" className="calculate-button">Рассчитать</button>
                         <div className="calculation-result">
                             <span>Стоимость доставки:</span>
-                            <strong>{deliveryCost.toFixed(2)} {country === "USA" ? "EUR" : "EUR"}</strong>
+                            <strong>{deliveryCost.toFixed(2)} {country === "USA" ? "USD" : "USD"}</strong>
                         </div>
                     </div>
                 </form>

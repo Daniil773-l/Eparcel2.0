@@ -137,30 +137,56 @@ export default () => {
                     </tr>
                     <tr>
                         <td>Зона покрытия</td>
-                        <td>Алматы, Астана, Караганда, Кокшетау, Костанай, Кызылорда, Павлодар, Петропавловск, Семей Тараз, Талдыкорган,
-                            Оскемен, Шымкент</td>
+                        <td>Алматы, Астана, Караганда, Кокшетау, Костанай, Кызылорда, Павлодар, Петропавловск, Семей
+                            Тараз, Талдыкорган,
+                            Оскемен, Шымкент
+                        </td>
                         <td>Актау, Атырау, Уральск, Актобе, Туркестан</td>
                         <td>Балхаш, Жезказган, Темиртау, Аксай, Аксу, Байконур, Степногорск, Экибастуз, Жанаозен</td>
-                        <td>Хромтау, Баутино, Шетпе, Курык, Алга, Кандыагаш, Кульсары, Аягоз, Шахтинск, Риддер, Рудный, Щучинск, Лисаковск, Зыряновск, Шемонаиха, Жаркент,
-                            Уштобе, Кордай, Арыс</td>
-                        <td>Бейнеу, Каратон, Тенгиз, Жанажол, Жетикара, Приозерск, Сатпаев, Сарыагаш и иные города и районы РК, не указанные в  <br/>Зоне 4</td>
+                        <td>Хромтау, Баутино, Шетпе, Курык, Алга, Кандыагаш, Кульсары, Аягоз, Шахтинск, Риддер, Рудный,
+                            Щучинск, Лисаковск, Зыряновск, Шемонаиха, Жаркент,
+                            Уштобе, Кордай, Арыс
+                        </td>
+                        <td>Бейнеу, Каратон, Тенгиз, Жанажол, Жетикара, Приозерск, Сатпаев, Сарыагаш и иные города и
+                            районы РК, не указанные в <br/>Зоне 4
+                        </td>
                     </tr>
                     </tbody>
                 </StyledTable>
             </TableContainer>
             <section className="included-services-section">
-                <div className="container">
-                    <h2>В стоимость тарифа включено:</h2>
-                    <div className="services-list">
-                        <img src={Icon1} alt="Описание"/>
-                        <img src={Icon2} alt="Описание"/>
-                        <img src={Icon3} alt="Описание"/>
-                        <img src={Icon4} alt="Описание"/>
-                        <img src={Icon5} alt="Описание"/>
-                        <img src={Icon6} alt="Описание"/>
+                <div className="container mx-auto">
+                    <h2 className="text-center text-2xl font-bold mb-8">В стоимость тарифа включено:</h2>
+                    <div className="services-list flex justify-between space-x-32">
+                        <div className="service-item text-center flex-1">
+                            <img src={Icon1} alt="Почтовый адрес" className="mx-auto mb-2"/>
+                            <p className="service-title text-2xl font-bold">Почтовый адрес</p>
+                        </div>
+                        <div className="service-item text-center flex-1">
+                            <img src={Icon2} alt="Получение" className="mx-auto mb-2"/>
+                            <p className="service-title text-2xl font-bold">Получение</p>
+                        </div>
+                        <div className="service-item text-center flex-1">
+                            <img src={Icon3} alt="Регистрация" className="mx-auto mb-2"/>
+                            <p className="service-title text-2xl font-bold">Регистрация</p>
+                        </div>
+                        <div className="service-item text-center flex-1">
+                            <img src={Icon4} alt="Упаковка" className="mx-auto mb-2"/>
+                            <p className="service-title text-2xl font-bold">Упаковка</p>
+                        </div>
+                        <div className="service-item text-center flex-1">
+                            <img src={Icon5} alt="Доставка" className="mx-auto mb-2"/>
+                            <p className="service-title text-2xl font-bold">Доставка</p>
+                        </div>
+                        <div className="service-item text-center flex-1">
+                            <img src={Icon6} alt="Таможенное оформление" className="mx-auto mb-2"/>
+                            <p className="service-title text-2xl font-bold">Таможенное оформление</p>
+                        </div>
                     </div>
                 </div>
             </section>
+
+
             <MainFeature1
                 subheading={< Prim></ Prim>}
                 heading={
