@@ -23,9 +23,9 @@ import { ReactComponent as ReceptionImage } from './images/ReceptionImage.svg';
 import { ReactComponent as PhototsImage  } from './images/PhototsImage.svg';
 import { ReactComponent as RefundImage  } from './images/RefundImage.svg';
 import { ReactComponent as PackaginImage  } from './images/PackagingImage.svg';
-import cardboardBoxImage from './images/cardboard-box.jpg';
-import plasticBagImage from './images/plastic-bag.png';
-import bubbleWrapImage from './images/bubbleWrapImage.png';
+import cardboardBoxImage from './images/Card-box.svg';
+import plasticBagImage from './images/Plastic-paket.svg';
+import bubbleWrapImage from './images/buble-bag.svg';
 import {ReactComponent as Weight} from './images/weight.svg';
 import {ReactComponent as Volume} from './images/Volume.svg';
 import { ReactComponent as BoxIcon } from './images/box.svg';
@@ -290,7 +290,7 @@ const tabs = [
             <div>
                 <Title>Почтовый адрес</Title>
                 <MailboxImage style={{ width: '100%', maxWidth: '400px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
-                <StyledParagraph>Обращаем ваше внимание, что вы можете указывать почтовый адрес нашего склада при покупке товаров в любых других странах и отправлять на склад в США.</StyledParagraph>
+                <StyledParagraph>Обращаем ваше внимание, что вы можете указывать почтовый адрес нашего склада при покупке товаров в любых других странах и отправлять на склад в США и Турции.</StyledParagraph>
                 <StyledParagraph>Почтовый адрес предоставляется вам после регистрации в личном кабинете, на который вы можете отправлять все покупки, сделанные в онлайн-магазинах в разных странах для последующей доставки в Казахстан.</StyledParagraph>
                 <StyledParagraph>Стоимость услуги <Highlight>– бесплатно</Highlight></StyledParagraph>
             </div>
@@ -302,10 +302,8 @@ const tabs = [
                 <Title>Доставка</Title>
                 <DiliveryImage  style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
                 <StyledParagraph>Все посылки, полученные на адреса наших складов в других странах, доставляются авиадоставкой на наш собственный склад в Астане. Далее все посылки передаются нашим партнерам в службы доставки по всему Казахстану.</StyledParagraph>
-                <StyledParagraph>При оформлении отправления вам будут предложены различные службы и сроки доставки в личном кабинете согласно габаритам и весу исходящей посылки.</StyledParagraph>
-                <StyledParagraph>Просим обратить внимание на сроки хранения вашей посылки в пункте выдачи заказов или постамате выбранной вами службы доставки. В случае просрочки срока хранения ваша посылка будет возвращена на наш склад в Астану и храниться в течение дополнительных 30 дней. По истечении указанного срока посылка будет утилизирована.</StyledParagraph>
                 <StyledParagraph>В случае повторной доставки до адресата по Казахстану вам необходимо заполнить запрос на доставку вашей посылки в личном кабинете и оплатить услугу повторно по Казахстану.</StyledParagraph>
-                <StyledParagraph>Сроки доставки из США в Казахстан  от 10 до 20 дней. Сроки доставки из Турции в Казахстан от 5 до 15 дней в зависимости от вашего региона.</StyledParagraph>
+                <StyledParagraph>Сроки доставки из США в Казахстан  от 7 до 10 дней. Сроки доставки из Турции в Казахстан от 5 до 10 дней в зависимости от вашего города.</StyledParagraph>
                 <StyledParagraph>Стоимость доставки посылки с зарубежного склада до адресата в  Казахстан вы можете рассчитать на нашем калькуляторе.</StyledParagraph>
             </div>
         )
@@ -314,7 +312,7 @@ const tabs = [
             <div>
                 <Title>Прием и регистрация посылки</Title>
                 <WarehouseImage  style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
-                <StyledParagraph>Все посылки, доставленные на наш склад, принимаются работниками склада. После чего каждая посылка регистрируется в онлайн-системе нашего склада по трекинг-номеру, полученному с интернет-магазина, где была совершена покупка. Каждой полученной посылке присваивается уникальный номер в нашей системе.</StyledParagraph>
+                <StyledParagraph>Все посылки, доставленные на наш склад, принимаются работниками склада. После чего каждая посылка регистрируется в онлайн-системе нашего склада по трекинг-номеру, полученному с интернет-магазина, где была совершена покупка.</StyledParagraph>
                 <StyledParagraph>Все складские действия будут отображены и доступны Вам для отслеживания статуса в личном кабинете и дальнейшей доставки в Казахстан.</StyledParagraph>
                 <StyledParagraph>Максимальный срок хранения входящей посылки 60 дней. По истечении этого срока посылка будет утилизирована.</StyledParagraph>
                 <StyledParagraph>Обращаем Ваше внимание, что при самостоятельной покупке товаров в интернет-магазинах, обязательно указывать Ваш персональный номер личного кабинета в адрес доставки до нашего склада и/или вносить трекинг номер доставки в личный кабинет до прихода посылки на наш склад для быстрой обработки в системе. Если на посылке не будет указан Ваш персональный номер личного кабинете или Вы не введете заранее трекинг номер до прихода посылки на склад, то при получении и обработке в нашей системе посылка автоматически попадает в список «Неизвестные посылки», что увеличивает сроки обработки вашей посылки.</StyledParagraph>
@@ -336,7 +334,7 @@ const tabs = [
                 <PhototsImage  style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
                 <StyledParagraph>Вам необходимо зайти в личный кабинет, в разделе «Услуги склада» выбрать нужную Вам посылку, затем нажать на услугу «Фото товаров в посылке». В течении 24-48 часов мы выполним данную услугу.</StyledParagraph>
                 <StyledParagraph>В стоимость услуги входит 3-5 фотографий всех товаров в посылке, а также Ваши товары сверяются на общее соответствие с описанием в личном кабинете. В случае несоответствия товаров мы уведомим Вас об этом в личном кабинете.</StyledParagraph>
-                <StyledParagraph>Стоимость услуги <Highlight>– 199 рублей (3-5 фото).</Highlight></StyledParagraph>
+                <StyledParagraph>Стоимость услуги <Highlight>– 3$ (3-5 фото).</Highlight></StyledParagraph>
             </div>
         ), Icon: PhotoIcon },
     { name: "Возврат посылки или товара", content: (
@@ -439,7 +437,7 @@ const tabs = [
             <div>
                 <Title>Страхование</Title>
                 <Insurances  style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
-                <StyledParagraph>Каждая исходящая посылка подлежит обязательному страхованию на общую сумму оценочной стоимости товаров в каждой посылке. В случае, если Ваша посылка не доставлена в течение 30 дней с момента отправки с зарубежного склада или утеряна в процессе доставки по Казахстану, то мы вернем Вам полную стоимость за доставку и оценочную стоимость товаров в посылке, указанную при оформлении. Необходимо заполнить заявку в личном кабинете в разделе «Претензия». Срок рассмотрения претензии 24-48 часов.</StyledParagraph>
+                <StyledParagraph>Предлагаем застраховать посылку на общую сумму оценочной стоимости товаров в каждой посылке. В случае, если Ваша посылка не доставлена в течение 30 дней с момента отправки с зарубежного склада или утеряна в процессе доставки по Казахстану, то мы вернем Вам полную стоимость за доставку и оценочную стоимость товаров в посылке, указанную при оформлении. Необходимо заполнить заявку в личном кабинете в разделе «Претензия». Срок рассмотрения претензии 24-48 часов.</StyledParagraph>
                 <StyledParagraph>Обращаем Ваше внимание на лимит страховой суммы оценочной стоимости посылки при выборе службы доставки.</StyledParagraph>
                 <StyledParagraph>Стоимость услуги <Highlight>– платная, 5% от общей стоимости товаров.</Highlight></StyledParagraph>
             </div>
@@ -461,8 +459,6 @@ const tabs = [
                 <Title>Таможенное оформление
                 </Title>
                 <Tomozhka style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
-                <StyledParagraph>Для упрощения процедуры оплаты таможенного сбора и пошлины в случае превышение стоимости товаров в посылке, Вам будет предложена обязательная услуга по оформлению таможенных услуг. Мы произведем все необходимые оплаты, что сократит время прохождения всего груза, отправленного с зарубежных складов, и соответственно сократит сроки доставки посылки.</StyledParagraph>
-                <StyledParagraph>Общую стоимость данной услуги Вы можете рассчитать, воспользовавшись таможенным калькулятором на нашем сайте.</StyledParagraph>
                 <StyledParagraph>Стоимость услуги <Highlight>–   платная, 5% от оценочной стоимости товаров в вашей посылки плюс таможенная пошлина.</Highlight></StyledParagraph>
             </div>
         ), Icon: Customs},
@@ -471,7 +467,7 @@ const tabs = [
                 <Title>Оплата и возврат денежных средств
                 </Title>
                 <Oplata style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
-                <Title>Предлагаем различные методы оплаты. Оплата за услуги производиться в различных валютах по курсу платежной системы в рублях. Мы принимаем к оплате:</Title>
+                <Title>Предлагаем различные методы оплаты. Оплата за услуги производиться в различных валютах по курсу платежной системы в тенге. Мы принимаем к оплате:</Title>
                 <StyledParagraph><Highlight>Карты Казахстана:</Highlight> VISA International, MasterCard Worldwide, UnionPay International, American Express International и Diners Club International.</StyledParagraph>
                 <StyledParagraph><Highlight>Карты Казахстана:</Highlight>  MasterCard Worldwide, UnionPay International</StyledParagraph>
                 <StyledParagraph><Highlight>Оплата без ввода данных:</Highlight>Yandex.Pay</StyledParagraph>
@@ -495,275 +491,275 @@ const tabs = [
                 </Title>
                 <Ogranicenia style={{ width: '100%', maxWidth: '700px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
                 <StyledParagraph>Службы доставки осуществляют перевозку грузов, которые соответствуют стандартным габаритам, но если Ваша посылка имеет нестандартные размеры, то лучше проверить возможность ее доставки при помощи таблицы ниже.</StyledParagraph>
-                <Table>
-                    <thead>
-                    <tr>
-                        <TableHeader rowSpan="2">Служба доставки</TableHeader>
-                        <TableHeader colSpan="3">Макс. вес посылки, кг</TableHeader>
-                        <TableHeader colSpan="2">Макс. сумма сторон, см</TableHeader>
-                        <TableHeader colSpan="2">Макс. сторона, см</TableHeader>
-                        <TableHeader rowSpan="2">Макс. габариты, см</TableHeader>
-                        <TableHeader colSpan="2">Срок хранения, дн</TableHeader>
-                        <TableHeader rowSpan="1">Лимит, Р</TableHeader>
+                {/*<Table>*/}
+                {/*    <thead>*/}
+                {/*    <tr>*/}
+                {/*        <TableHeader rowSpan="2">Служба доставки</TableHeader>*/}
+                {/*        <TableHeader colSpan="3">Макс. вес посылки, кг</TableHeader>*/}
+                {/*        <TableHeader colSpan="2">Макс. сумма сторон, см</TableHeader>*/}
+                {/*        <TableHeader colSpan="2">Макс. сторона, см</TableHeader>*/}
+                {/*        <TableHeader rowSpan="2">Макс. габариты, см</TableHeader>*/}
+                {/*        <TableHeader colSpan="2">Срок хранения, дн</TableHeader>*/}
+                {/*        <TableHeader rowSpan="1">Лимит, Р</TableHeader>*/}
 
-                    </tr>
-                    <tr>
-                        <TableHeader>Курьер</TableHeader>
-                        <TableHeader>ПВЗ</TableHeader>
-                        <TableHeader>Постамат</TableHeader>
-                        <TableHeader>Курьер</TableHeader>
-                        <TableHeader>ПВЗ</TableHeader>
-                        <TableHeader>Курьер</TableHeader>
-                        <TableHeader>ПВЗ</TableHeader>
-                        <TableHeader>ПВЗ</TableHeader>
-                        <TableHeader>Постамат</TableHeader>
-                        <TableHeader>Страховой суммы</TableHeader>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <TableCell>CDEK</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>14</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableHeader>Курьер</TableHeader>*/}
+                {/*        <TableHeader>ПВЗ</TableHeader>*/}
+                {/*        <TableHeader>Постамат</TableHeader>*/}
+                {/*        <TableHeader>Курьер</TableHeader>*/}
+                {/*        <TableHeader>ПВЗ</TableHeader>*/}
+                {/*        <TableHeader>Курьер</TableHeader>*/}
+                {/*        <TableHeader>ПВЗ</TableHeader>*/}
+                {/*        <TableHeader>ПВЗ</TableHeader>*/}
+                {/*        <TableHeader>Постамат</TableHeader>*/}
+                {/*        <TableHeader>Страховой суммы</TableHeader>*/}
+                {/*    </tr>*/}
+                {/*    </thead>*/}
+                {/*    <tbody>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>CDEK</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>14</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
 
-                    </tr>
-                    <tr>
-                        <TableCell>CDEK economy</TableCell>
-                        <TableCell>50</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>14</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>CDEK economy</TableCell>*/}
+                {/*        <TableCell>50</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>14</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
 
-                    </tr>
-                    <tr>
-                        <TableCell>CDEK omni</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>15</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>64.5 x 36.5 x 40.5</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>7</TableCell>
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>CDEK omni</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>15</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>64.5 x 36.5 x 40.5</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
 
-                    </tr>
-                    <tr>
-                        <TableCell>Boxberry</TableCell>
-                        <TableCell>31</TableCell>
-                        <TableCell>31</TableCell>
-                        <TableCell>5</TableCell>
-                        <TableCell>250</TableCell>
-                        <TableCell>250</TableCell>
-                        <TableCell>120</TableCell>
-                        <TableCell>120</TableCell>
-                        <TableCell>35 x 20 x 20</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>300 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>PickPoint</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>15</TableCell>
-                        <TableCell>15</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>150</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>62.5 x 56.5 x 40.5</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>3</TableCell>
-                        <TableCell>Без огранич.</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>5Post</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>15</TableCell>
-                        <TableCell>15</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>135</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>60</TableCell>
-                        <TableCell>36.5 x 40.5 x 36</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>Без огранич.</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>DPD</TableCell>
-                        <TableCell>1000</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>690</TableCell>
-                        <TableCell>200</TableCell>
-                        <TableCell>350</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>4</TableCell>
-                        <TableCell>30 000 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>DPD economy</TableCell>
-                        <TableCell>1000</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>690</TableCell>
-                        <TableCell>200</TableCell>
-                        <TableCell>350</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>7</TableCell>
-                        <TableCell>4</TableCell>
-                        <TableCell>30 000 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Почта</TableCell>
-                        <TableCell>31.5</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>300</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>150</TableCell>
-                        <TableCell>53 x 36 x 22</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>3</TableCell>
-                        <TableCell>100 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Почта Онлайн</TableCell>
-                        <TableCell>31.5</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>220</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>150</TableCell>
-                        <TableCell>53 x 36 x 22</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>3</TableCell>
-                        <TableCell>300 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Почта 1 класс</TableCell>
-                        <TableCell>31.5</TableCell>
-                        <TableCell>5</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>70</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>36</TableCell>
-                        <TableCell>53 x 36 x 22</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>3</TableCell>
-                        <TableCell>100 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Почта зарубеж.</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>20</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>200</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>53 x 36 x 22</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Деловые Линии</TableCell>
-                        <TableCell>20 000</TableCell>
-                        <TableCell>20 000</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>1840</TableCell>
-                        <TableCell>1360</TableCell>
-                        <TableCell>1360</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>2</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>300 000 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Dostavista</TableCell>
-                        <TableCell>1500</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>790</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>400</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>50 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Яндекс Go</TableCell>
-                        <TableCell>1500</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>790</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>400</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>Без огранич.</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Яндекс Доставка</TableCell>
-                        <TableCell>200</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>300</TableCell>
-                        <TableCell>110</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>250 000</TableCell>
-                    </tr>
-                    <tr>
-                        <TableCell>Logsis</TableCell>
-                        <TableCell>50</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>180</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>100</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>—</TableCell>
-                        <TableCell>Без огранич.</TableCell>
-                    </tr>
-                    </tbody>
-                </Table>
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Boxberry</TableCell>*/}
+                {/*        <TableCell>31</TableCell>*/}
+                {/*        <TableCell>31</TableCell>*/}
+                {/*        <TableCell>5</TableCell>*/}
+                {/*        <TableCell>250</TableCell>*/}
+                {/*        <TableCell>250</TableCell>*/}
+                {/*        <TableCell>120</TableCell>*/}
+                {/*        <TableCell>120</TableCell>*/}
+                {/*        <TableCell>35 x 20 x 20</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>300 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>PickPoint</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>15</TableCell>*/}
+                {/*        <TableCell>15</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>150</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>62.5 x 56.5 x 40.5</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>3</TableCell>*/}
+                {/*        <TableCell>Без огранич.</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>5Post</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>15</TableCell>*/}
+                {/*        <TableCell>15</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>135</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>60</TableCell>*/}
+                {/*        <TableCell>36.5 x 40.5 x 36</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>Без огранич.</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>DPD</TableCell>*/}
+                {/*        <TableCell>1000</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>690</TableCell>*/}
+                {/*        <TableCell>200</TableCell>*/}
+                {/*        <TableCell>350</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>4</TableCell>*/}
+                {/*        <TableCell>30 000 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>DPD economy</TableCell>*/}
+                {/*        <TableCell>1000</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>690</TableCell>*/}
+                {/*        <TableCell>200</TableCell>*/}
+                {/*        <TableCell>350</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>7</TableCell>*/}
+                {/*        <TableCell>4</TableCell>*/}
+                {/*        <TableCell>30 000 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Почта</TableCell>*/}
+                {/*        <TableCell>31.5</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>300</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>150</TableCell>*/}
+                {/*        <TableCell>53 x 36 x 22</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>3</TableCell>*/}
+                {/*        <TableCell>100 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Почта Онлайн</TableCell>*/}
+                {/*        <TableCell>31.5</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>220</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>150</TableCell>*/}
+                {/*        <TableCell>53 x 36 x 22</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>3</TableCell>*/}
+                {/*        <TableCell>300 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Почта 1 класс</TableCell>*/}
+                {/*        <TableCell>31.5</TableCell>*/}
+                {/*        <TableCell>5</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>70</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>36</TableCell>*/}
+                {/*        <TableCell>53 x 36 x 22</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>3</TableCell>*/}
+                {/*        <TableCell>100 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Почта зарубеж.</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>20</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>200</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>53 x 36 x 22</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Деловые Линии</TableCell>*/}
+                {/*        <TableCell>20 000</TableCell>*/}
+                {/*        <TableCell>20 000</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>1840</TableCell>*/}
+                {/*        <TableCell>1360</TableCell>*/}
+                {/*        <TableCell>1360</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>2</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>300 000 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Dostavista</TableCell>*/}
+                {/*        <TableCell>1500</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>790</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>400</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>50 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Яндекс Go</TableCell>*/}
+                {/*        <TableCell>1500</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>790</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>400</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>Без огранич.</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Яндекс Доставка</TableCell>*/}
+                {/*        <TableCell>200</TableCell>*/}
+                {/*        <TableCell>30</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>300</TableCell>*/}
+                {/*        <TableCell>110</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>250 000</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    <tr>*/}
+                {/*        <TableCell>Logsis</TableCell>*/}
+                {/*        <TableCell>50</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>180</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>100</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>—</TableCell>*/}
+                {/*        <TableCell>Без огранич.</TableCell>*/}
+                {/*    </tr>*/}
+                {/*    </tbody>*/}
+                {/*</Table>*/}
             </div>
         ), Icon: Limitations
     },
