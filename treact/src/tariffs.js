@@ -37,7 +37,10 @@ export default () => {
         margin: 0 auto;
         overflow-x: auto;
     `;
-
+    const Descrip = styled.div`
+        ${tw`mt-8 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
+      
+    `;
     const StyledTable = styled.table`
         ${tw`w-full text-sm md:text-base border-collapse`}
         border: 2px solid #0ABD19;
@@ -156,31 +159,33 @@ export default () => {
             </TableContainer>
             <section className="included-services-section">
                 <div className="container mx-auto">
-                    <h2 className="text-center text-2xl font-bold mb-8">В стоимость тарифа включено:</h2>
-                    <div className="services-list flex justify-between space-x-32">
+                    <h2 className="text-center text-2xl font-bold mb-12">В стоимость тарифа включено:</h2>
+
+
+                    <div className="services-list flex justify-between space-x-32 mt-12">
                         <div className="service-item text-center flex-1">
                             <img src={Icon1} alt="Почтовый адрес" className="mx-auto mb-2"/>
-                            <p className="service-title text-2xl font-bold">Почтовый адрес</p>
+                            <Descrip>Почтовый адрес</Descrip>
                         </div>
                         <div className="service-item text-center flex-1">
                             <img src={Icon2} alt="Получение" className="mx-auto mb-2"/>
-                            <p className="service-title text-2xl font-bold">Получение</p>
+                            <Descrip>Получение</Descrip>
                         </div>
                         <div className="service-item text-center flex-1">
                             <img src={Icon3} alt="Регистрация" className="mx-auto mb-2"/>
-                            <p className="service-title text-2xl font-bold">Регистрация</p>
+                            <Descrip>Регистрация</Descrip>
                         </div>
                         <div className="service-item text-center flex-1">
                             <img src={Icon4} alt="Упаковка" className="mx-auto mb-2"/>
-                            <p className="service-title text-2xl font-bold">Упаковка</p>
+                            <Descrip>Упаковка</Descrip>
                         </div>
                         <div className="service-item text-center flex-1">
                             <img src={Icon5} alt="Доставка" className="mx-auto mb-2"/>
-                            <p className="service-title text-2xl font-bold">Доставка</p>
+                            <Descrip>Доставка</Descrip>
                         </div>
                         <div className="service-item text-center flex-1">
                             <img src={Icon6} alt="Таможенное оформление" className="mx-auto mb-2"/>
-                            <p className="service-title text-2xl font-bold">Таможенное оформление</p>
+                            <Descrip>Таможенное оформление</Descrip>
                         </div>
                     </div>
                 </div>

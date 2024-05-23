@@ -41,7 +41,7 @@ import { ReactComponent as Ogranicenia } from './images/Ogranicenia.svg';
 
 import AnimationRevealPage from "./helpers/AnimationRevealPage";
 import Hero from "./components/headers/RatesHeders";
-import Footer from "./components/footers/MiniCenteredFooter";
+import Footer from "./components/footers/MainFooterWithLinks";
 
 const Layout = styled.div`
     display: flex;
@@ -214,12 +214,13 @@ const CardContainer = styled.div`
 const Card = styled.div`
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 90%; // Adjust the width as necessary
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Добавляем тень
+    width: 30%; // Устанавливаем ширину каждой карточки (можно изменить по желанию)
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 `;
 
 const CardTitle = styled.h2`
@@ -243,25 +244,25 @@ const Fraction = styled.div`
 `;
 
 const Numerator = styled.span`
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
 `;
 
 const Denominator = styled.span`
-  padding-top: 5px;
+    padding-top: 5px;
 `;
 const CardIcon = styled.div`
-  width: 60px;  // Set the width of the icon container
-  height: 60px;  // Set the height of the icon container
-  margin-bottom: 15px;  // Space between the icon and the title
-  display: flex;  // Use flexbox to center the icon
-  align-items: center;  // Center the icon vertically
-  justify-content: center;  // Center the icon horizontally
+    width: 60px;  // Set the width of the icon container
+    height: 60px;  // Set the height of the icon container
+    margin-bottom: 15px;  // Space between the icon and the title
+    display: flex;  // Use flexbox to center the icon
+    align-items: center;  // Center the icon vertically
+    justify-content: center;  // Center the icon horizontally
 
-  svg {
-    width: 100%;  // Ensure the SVG fills the container
-    height: auto;  // Maintain the aspect ratio of the icon
-  }
+    svg {
+        width: 100%;  // Ensure the SVG fills the container
+        height: auto;  // Maintain the aspect ratio of the icon
+    }
 `;
 const Table = styled.table`
     width: 100%;
@@ -282,6 +283,14 @@ const TableCell = styled.td`
     padding: 8px;
     border: 1px solid #ccc;
     text-align: center;
+`;
+const CardContainer1 = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap; // Отключить перенос на новую строку
+    overflow-x: auto; // Добавить горизонтальную прокрутку, если карточки не влезают по ширине
+    padding-bottom: 20px; // Добавить отступ снизу, чтобы не перекрывалась горизонтальная прокрутка
 `;
 const tabs = [
     {
@@ -391,7 +400,7 @@ const tabs = [
 
                     </InfoContainer>
                 </SectionContainer>
-                <CardContainer>
+                <CardContainer1>
                     <Card>
                         <CardIcon>
                             <BoxIcon/>
@@ -400,8 +409,7 @@ const tabs = [
                         <CardFormula>
                             <div>Объемный вес (kr) =</div>
                             <Fraction>
-                                <Numerator>Длина (см) · Ширина (см) · Высота (см)</Numerator>
-                                <Denominator>5000</Denominator>
+                                Длина (см) · Ширина (см) · Высота (см)/5000
                             </Fraction>
                         </CardFormula>
                     </Card>
@@ -427,7 +435,7 @@ const tabs = [
                             <div>Площадь треугольника = (Ширина (cm) × Ширина (cm) × 1.73) / 4</div>
                         </CardFormula>
                     </Card>
-                </CardContainer>
+                </CardContainer1>
             </div>
         ),
         Icon: Packaging

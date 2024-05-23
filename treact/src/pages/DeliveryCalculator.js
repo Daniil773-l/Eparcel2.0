@@ -12,6 +12,7 @@ import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefc
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 
 import Calculator from "calculator";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 
 
 const Container = tw.div`relative`;
@@ -121,6 +122,7 @@ export default ({
 
     return (
         <>
+            <AnimationRevealPage>
             <Header/>
             <Container>
                 <TwoColumn>
@@ -148,6 +150,7 @@ export default ({
                 </TwoColumn>
             </Container>
             <Footer/>
+            </AnimationRevealPage>
         </>
 
     );

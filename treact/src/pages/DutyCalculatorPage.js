@@ -6,6 +6,7 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import "CSS/calculator.css";
 import Header from 'components/headers/LoginPageHeader';
 import Footer from "components/footers/MainFooterWithLinks";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -85,6 +86,7 @@ const CustomsDutyCalculator = ({ subheading = "", heading = (
 
     return (
         <>
+            <AnimationRevealPage>
             <Header/>
             <Container>
                 <TwoColumn>
@@ -112,7 +114,7 @@ const CustomsDutyCalculator = ({ subheading = "", heading = (
                                 <div className="calculation-container">
                                     <button type="submit" className="calculate-button">Рассчитать</button>
                                     <div className="calculation-result">
-                                        <span>Размер пошлины:</span>
+                                        <span>Размер пошлины</span><br/><br/>
                                         <strong>{customsDuty.toFixed(2)} {currency}</strong>
                                     </div>
                                 </div>
@@ -135,6 +137,7 @@ const CustomsDutyCalculator = ({ subheading = "", heading = (
                 </TwoColumn>
             </Container>
             <Footer/>
+            </AnimationRevealPage>
         </>
 
     );

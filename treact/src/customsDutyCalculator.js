@@ -72,7 +72,7 @@ const CustomsDutyCalculator = ({ subheading = "", heading = (
                             <div className="calculation-container">
                                 <button type="submit" className="calculate-button">Рассчитать</button>
                                 <div className="calculation-result">
-                                    <span>Размер пошлины:</span>
+                                    <span>Размер пошлины</span><br/><br/>
                                     <strong>{customsDuty.toFixed(2)} {currency}</strong>
                                 </div>
                             </div>
