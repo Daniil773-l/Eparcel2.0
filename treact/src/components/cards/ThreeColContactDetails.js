@@ -39,7 +39,7 @@ const Card = styled.div`
   .title {
     ${tw`mt-4 tracking-wide font-bold text-2xl leading-none`}
   }
-
+    
   .description {
     ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 leading-loose`}
   }

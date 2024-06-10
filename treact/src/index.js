@@ -29,6 +29,7 @@ import News from "./News";
 import Questions from "./Questions";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
+import SinglePage from "./SinglePageApplication";
 
 
 // Locate the root element from the DOM
@@ -39,7 +40,7 @@ const root = createRoot(rootElement);  // Create a root.
 root.render(
     <Router>
         <Routes>
-            <Route path="/" element={<App/>} />
+            <Route path="/" element={<SinglePage/>} />
             <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />

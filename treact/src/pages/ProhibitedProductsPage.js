@@ -58,111 +58,66 @@ const HeadingTitle = styled.h1`
     color: #2D2D2D;
 `;
 
-const HighlightedText = styled.span`
-    ${tw`font-semibold text-black`}
-    color: #2D2D2D; // Make it slightly bolder and in the color specified
-    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-`;
-
-const MapTitle = styled.h2`
-  ${tw`text-lg md:text-xl lg:text-2xl font-semibold`}
-  margin-bottom: 20px;
-  color: #2D2D2D;
-  text-align: center; // Center the title
-`;
-
-const TableTitle = styled.h2`
-  ${tw`font-semibold text-2xl my-4`}
-  color: #2D2D2D;
-`;
-
-const StyledTable = styled.table`
-    ${tw`w-full text-sm md:text-base border-collapse`}
-    border: 2px solid #ffffff; // Ensure the entire table has a border
-    text-align: center; // Horizontally center the content
-    vertical-align: middle; // Vertically center the content
-
-    th, td {
-        ${tw`border border-white px-4 py-2 text-left`} // Apply borders to each cell
+const CardWrapper = tw.div`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8`;
+const Card = styled.div`
+    ${tw`flex flex-col items-center p-4 bg-white shadow-lg rounded-lg text-center`}
+    img {
+        ${tw`w-16 h-16 mb-4`}
     }
-
-    th {
-        ${tw`bg-gray-100`} // Optionally style the header differently
+    p {
+        ${tw`flex-grow`}
+            /* Allow text to expand horizontally */
+        min-width: 0; /* Reset min-width */
+        overflow: hidden; /* Hide overflow text */
+        text-overflow: ellipsis; /* Show ellipsis for overflow text */
+        width: ${props => props.expanded ? '70%' : '100%'}; /* Set width to 70% if expanded, otherwise 100% */
+        margin: auto; /* Center align text */
     }
 `;
 
-const StyledClothingSizeTable = styled.table`
-  ${tw`w-full text-sm md:text-base border-collapse`}
-  border: 2px solid #ccc;
-    text-align: center; // Horizontally center the content
-    vertical-align: middle; // Vertically center the content
-  th, td {
-    ${tw`border border-gray-400 px-4 py-2 text-center`} // Center-align text in cells
-  }
-  th {
-    ${tw`bg-gray-100`}
-  }
-`;
+const InfoText = tw.p`text-base text-gray-700 mt-4`;
+const Break = tw.br``;
 
-const StyledShoeSizeTable = styled.table`
-  ${tw`w-full text-sm md:text-base border-collapse`}
-  border: 2px solid #ccc;
-    text-align: center; // Horizontally center the content
-    vertical-align: middle; // Vertically center the content
-  th, td {
-    ${tw`border border-gray-400 px-4 py-2 text-center`} // Center-align text in cells
-  }
-  th {
-    ${tw`bg-gray-100`}
-  }
-`;
+const prohibitedItems = [
+    { icon: DataIcon, description: "Информация на печатных, аудиовизуальных и иных носителях информации", },
+    { icon: GunIcon, description: "Служебное и гражданское оружие, его основные части, и патроны к нему" },
+    { icon: ToxicIcon, description: "Опасные отходы" },
+    { icon: SprayIcon, description: "Озоноразрушающие вещества и продукция, содержащая озоноразрушающие вещества" },
+    { icon: PoisonIcon, description: "Ядовитые вещества, не являющиеся прекурсорами наркотических средств и психотропных веществ" },
+    { icon: HeartIcon, description: "Органы и (или) ткани человека, кровь и ее компоненты" },
+    { icon: SobelIcon, description: "Соболи живые" },
+    { icon: CandleIcon, description: "Ароматизаторы и свечи" },
+    { icon: MineralIcon, description: "Виды минерального сырья" },
+    { icon: MapIcon, description: "Информация о недрах по районам и месторождениям топливно-энергетического и минерального сырья" },
+    { icon: TreeIcon, description: "Средства защиты растений и другие стойкие органические загрязнители" },
+    { icon: FishIcon, description: "Орудия добычи (вылова) водных биологических ресурсов" },
+    { icon: DrugIcon, description: "Наркотические средства, психотропные вещества и их прекурсоры, за исключением ограниченных количеств наркотических средств и психотропных веществ в виде лекарственных средств для личного применения по медицинским показаниям при наличии подтверждающих медицинских документов с указанием наименования и количества товара, а также прекурсоров в объемах, определенных законодательством государства - члена Союза", },
+    { icon: MoneyIcon, description: "Информация на печатных, аудиовизуальных и иных носителях информации: подарочные карты, монеты, наличные деньги и их эквиваленты, банкноты и любых финансовых инструментов, включая (но не ограничиваясь) платежные и дисконтные карты, купоны, подарочные сертификаты, а равно их реквизиты" },
+    { icon: CrossIcon, description: "Служебное и гражданское оружие, его основные части и патроны к нему: приборов ночного видения, электрошокеров, оптических прицелов, аксессуаров (приспособлений, улучшающих эксплуатационные характеристики оружия), инструментов, экипировки, а также тепловизоров для смартфонов, охотничьих, строительных и прочих подобных товаров. Продукция военного и двойного назначения" },
+    { icon: BunnyIcon, description: "Видеопродукция и печатные издания порнографического содержания" },
+    { icon: DogIcon, description: "Дикие и (или) домашние животные, корма для животных" },
+    { icon: SeedIcon, description: "Растения и семена, удобрения" },
+    { icon: DrugIcon, description: "Лекарственные средства содержащие наркотические средства, психотропные вещества и их прекурсоры" },
+    { icon: DiamondIcon, description: "Необработанные драгоценные металлы, лом и отходы драгоценных металлов, руды и концентраты драгоценных металлов и сырьевых товаров, содержащих драгоценные металлы" },
+    { icon: FireIcon, description: "Взрывчатые, озоноразрушающие легковоспламеняющиеся, окисляющие, ядовитые, токсичные, отравляющие, жидкости и предметы" },
+    { icon: PictureIcon, description: "Коллекции и предметы коллекционирования, культурные ценности, документы национальных; архивных фондов, оригиналы архивных документов: антиквариата, картин и прочих предметов, представляющих художественную и музейную ценность" },
+    { icon: CamIcon, description: "Специальные технические средства, предназначенные для негласного получения информации, шифровальные (криптографические) средства, радиоэлектронные средства и (или) высокочастотные устройства гражданского назначения, в том числе встроенные либо входящие в состав других товаров" },
+    { icon: DiamondIcon, description: "Драгоценные камни и металлы, сырьевые товары" },
+    { icon: GearIcon, description: "Автозапчасти содержащие жидкости и масло" },
+    { icon: FishIcon, description: "Орудия добычи (вылова) водных биологических ресурсов" },
+    { icon: AccIcon, description: "Товары, содержащие аккумуляторными батарейками Li-ion АКБ" },
+    { icon: MedicIcon, description: "Медицинские товары приборы" },
+    { icon: FruitIcon, description: "Скоропортящиеся товары" },
+    { icon: SmokeIcon, description: "Табачная продукция" },
+    { icon: TimerIcon, description: "Товары, на которые наложены временные запреты на их ввоз на территорию РФ и ЕАЭС" },
+    { icon: WtfIcon, description: "Неопознанные товары, не имеющих никаких данных и информации" },
+    { icon: AnyIcon, description: "Товары не относящиеся для личного пользования согласно Решению Коллегии ЕЭК от 21 апреля 2015 г. № 30" }
+];
 
-const StyledShoeSizeConversionTable = styled.table`
-  ${tw`w-full text-sm md:text-base border-collapse`}
-  border: 2px solid #ccc;
-    text-align: center; // Horizontally center the content
-    vertical-align: middle; // Vertically center the content
-  th, td {
-    ${tw`border border-white px-4 py-2 text-center`} // Center-align text in cells
-  }
-  th {
-    ${tw`bg-gray-100`}
-  }
-`;
-
-const InfoText = styled.p`
-    ${tw`my-4 text-base md:text-lg lg:text-xl xl:text-xl`}
-    font-size: 22px; // Set the font size
-    line-height: 32px; // Set the line height
-    color: #2D2D2D; // Maintain the color
-    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-    font-weight: normal; // Regular text less bold than HighlightedText
-    
-`;
-const TableText = styled.p`
-    ${tw`my-4 text-base md:text-lg lg:text-xl xl:text-xl`}
-    font-size: 30px; // Set the font size
-    font-weight: normal; // Regular text less bold than HighlightedText
-    line-height: 32px; // Set the line height
-    color: #2D2D2D; // Maintain the color
-    font-family: 'Gilroy Medium', sans-serif; // Set the font family, ensure a fallback
-    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-`;
-
-const Break = styled.div`
-  ${tw`my-4`}
-`;
-
-
-export default () => {
-    return (
-        <>
-            <AnimationRevealPage>
-            <Header/>
-
+const ProhibitedItems = () => (
+    <>
+        <AnimationRevealPage>
+            <Header />
             <Container>
                 <Content>
                     <InfoColumn>
@@ -176,195 +131,29 @@ export default () => {
                             Согласно Решению Коллегии ЕЭК от 21 апреля 2015 г. № 30 при ввозе товаров физическими лицами
                             для личного пользования применяются запреты на ввоз и ввоз товаров, а также ряд ограничений
                             (в том числе разрешительный порядок ввоза и вывоза).
-                            <Break/>
-                            <br/>
+                            <Break />
+                            <br />
                             Запрещенные к ввозу товары вообще нельзя перемещать через таможенную границу ни при каких
                             обстоятельствах ни физическим, ни юридическим лицам.
-                            <Break/>
-
+                            <Break />
                             Перечень товаров, в отношении которых установлен запрет ввоза на таможенную территорию ЕАЭС:
-                            <Break/>
-
+                            <Break />
                         </InfoText>
                     </InfoColumn>
-                    <InfoColumn>
-                        <TableText>
-                            <StyledTable>
-                                <tbody>
-                                <tr>
-                                    <td><img src={DataIcon}/></td>
-                                    <td>Информация на печатных, аудиовизуальных и иных носителях информации</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={GunIcon}/></td>
-                                    <td>Служебное и гражданское оружие, его основные части, и патроны к нему</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={ToxicIcon}/></td>
-                                    <td>Опасные отходы</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={SprayIcon}/></td>
-                                    <td>Озоноразрушающие вещества и продукция, содержащая озоноразрушающие вещества</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={DrugIcon}/></td>
-                                    <td>Наркотические средства, психотропные вещества и их прекурсоры, за исключением
-                                        ограниченных количеств наркотических средств и психотропных веществ в виде
-                                        лекарственных средств для личного применения по медицинским показаниям при
-                                        наличии подтверждающих медицинских документов с указанием наименования и
-                                        количества товара, а также прекурсоров в объемах, определенных законодательством
-                                        государства - члена Союза
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={HeartIcon}/></td>
-                                    <td>Органы и (или) ткани человека, кровь и ее компоненты</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={SobelIcon}/></td>
-                                    <td>Соболи живые</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={DiamondIcon}/></td>
-                                    <td>Необработанные драгоценные металлы, лом и отходы драгоценных металлов, руды и
-                                        концентраты драгоценных металлов и сырьевых товаров, содержащих драгоценные
-                                        металлы
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={MineralIcon}/></td>
-                                    <td>Виды минерального сырья</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={MapIcon}/></td>
-                                    <td>Информация о недрах по районам и месторождениям топливно-энергетического и
-                                        минерального сырья
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={TreeIcon}/></td>
-                                    <td>Средства защиты растений и другие стойкие органические загрязнители
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={FishIcon}/></td>
-                                    <td>Орудия добычи (вылова) водных биологических ресурсов
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={PoisonIcon}/></td>
-                                    <td>Ядовитые вещества, не являющиеся прекурсорами наркотических средств и психотропных веществ
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </StyledTable>
-                        </TableText>
-                        <InfoText>Дополнительный перечень товаров, которые наша компания не доставляет:</InfoText>
-                        <TableText>
-                            <StyledTable>
-                                <tbody>
-                                <tr>
-                                    <td><img src={MoneyIcon}/></td>
-                                    <td>Информация на печатных, аудиовизуальных и иных носителях информации: подарочные карты, монеты, наличные деньги и их эквиваленты, банкноты и любых финансовых инструментов, включая (но не ограничиваясь) платежные и дисконтные карты, купоны, подарочные сертификаты, а равно их реквизиты</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={CrossIcon}/></td>
-                                    <td>Служебное и гражданское оружие, его основные части и патроны к нему: приборов ночного видения, электрошокеров, оптических прицелов, аксессуаров (приспособлений, улучшающих эксплуатационные характеристики оружия), инструментов, экипировки, а также тепловизоров для смартфонов, охотничьих, строительных и прочих подобных товаров. Продукция военного и двойного назначения</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={BunnyIcon}/></td>
-                                    <td>Видеопродукция и печатные издания порнографического содержания</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={DogIcon}/></td>
-                                    <td>Дикие и (или) домашние животные, корма для животных</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={SeedIcon}/></td>
-                                    <td>Растения и семена, удобрения
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={GearIcon}/></td>
-                                    <td>Автозапчасти содержащие жидкости и масло</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={CandleIcon}/></td>
-                                    <td>Ароматизаторы и свечи</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={FireIcon}/></td>
-                                    <td>Взрывчатые, озоноразрушающие легковоспламеняющиеся, окисляющие, ядовитые, токсичные, отравляющие, жидкости и предметы
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={FishIcon}/></td>
-                                    <td>Орудия добычи (вылова) водных биологических ресурсов</td>
-                                </tr>
-                                <tr>
-                                    <td><img src={CamIcon}/></td>
-                                    <td>Специальные технические средства, предназначенные для негласного получения информации, шифровальные (криптографические) средства, радиоэлектронные средства и (или) высокочастотные устройства гражданского назначения, в том числе встроенные либо входящие в состав других товаров
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={DiamondIcon}/></td>
-                                    <td>Драгоценные камни и металлы, сырьевые товары
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={DrugIcon}/></td>
-                                    <td>Лекарственные средства содержащие наркотические средства, психотропные вещества и их прекурсоры
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={PictureIcon}/></td>
-                                    <td>Коллекции и предметы коллекционирования, культурные ценности, документы национальных; архивных фондов, оригиналы архивных документов: антиквариата, картин и прочих предметов, представляющих художественную и музейную ценность
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={AccIcon}/></td>
-                                    <td>Товары, содержащие аккумуляторными батарейками Li-ion АКБ
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={MedicIcon}/></td>
-                                    <td>Медицинские товары приборы
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={FruitIcon}/></td>
-                                    <td>Скоропортящиеся товары
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={SmokeIcon}/></td>
-                                    <td>Табачная продукция
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={TimerIcon}/></td>
-                                    <td>Товары, на которые наложены временные запреты на их ввоз на территорию РФ и ЕАЭС
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={WtfIcon}/></td>
-                                    <td>Неопознанные товары, не имеющих никаких данных и информации
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src={AnyIcon}/></td>
-                                    <td>Товары не относящиеся для личного пользования согласно Решению Коллегии ЕЭК от 21 апреля 2015 г. № 30
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </StyledTable>
-                        </TableText>
-                    </InfoColumn>
+                    <CardWrapper>
+                        {prohibitedItems.map((item, index) => (
+                            <Card key={index} expanded={index === 0}>
+                                <img src={item.icon} alt="Icon" />
+                                <p>{item.description}</p>
+                            </Card>
+                        ))}
+
+                    </CardWrapper>
                 </Content>
             </Container>
-            <Footer/>
-            </AnimationRevealPage>
-        </>
-    );
-};
+            <Footer />
+        </AnimationRevealPage>
+    </>
+);
+
+export default ProhibitedItems;
