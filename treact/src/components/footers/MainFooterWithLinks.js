@@ -12,7 +12,7 @@ import VkIcon  from "images/icon/vk.svg";
 
 
 const Container = styled.div`
-    ${tw`relative text-gray-100 -mx-8 -mb-8 px-8`}
+    ${tw`relative text-gray-100 -mx-8 -mb-8 px-8 p-10`}
     background-color: #e2ffe2;!important; // Using !important to ensure it takes precedence
     color: #2D2D2D;
 `;

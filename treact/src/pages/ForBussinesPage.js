@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
 import Footer from "components/footers/MainFooterWithLinks";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 const Container = tw.div`relative `;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`; // Уменьшенные отступы
 const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
@@ -36,28 +37,31 @@ const Break = styled.div`
 export default () => {
     return (
         <>
-            <Header/>
-            <Container>
-                <Content>
-                    <HeadingColumn>
-                        <HeadingTitle>Для бизнеса</HeadingTitle>
-                        <HeadingDescription>
-                            Мы рады предложить нашим клиентам-юридическим лицам возможность воспользоваться услугами Eparcel.<br/> <br/>
-                            <Break />
+            <AnimationRevealPage>
+                <Header/>
+                <Container>
+                    <Content>
+                        <HeadingColumn>
+                            <HeadingTitle>Для бизнеса</HeadingTitle>
+                            <HeadingDescription>
+                                Мы рады предложить нашим клиентам-юридическим лицам возможность воспользоваться услугами Eparcel.<br/> <br/>
+                                <Break />
 
-                            Если Вы занимаетесь бизнесом и хотите купить товары из США или Турции для своей деятельности, то мы поможем Вам с <br/>
-                            этим. Мы предоставляем услуги по выкупу товаров, их доставке и таможенному оформлению. Вам не нужно будет тратить <br/>
-                            время на поиск надежных поставщиков и заниматься таможенными процедурами. <br/> <br/>
-                            <Break />
+                                Если Вы занимаетесь бизнесом и хотите купить товары из США или Турции для своей деятельности, то мы поможем Вам с <br/>
+                                этим. Мы предоставляем услуги по выкупу товаров, их доставке и таможенному оформлению. Вам не нужно будет тратить <br/>
+                                время на поиск надежных поставщиков и заниматься таможенными процедурами. <br/> <br/>
+                                <Break />
 
-                            Наши клиенты могут рассчитывать на выгодные условия сотрудничества. Мы гарантируем быструю и надежную доставку <br/>
-                            товаров и возможность получить нужные товары из-за границы без лишних затрат времени и средств. Обратившись к <br/>
-                            нам, Вы можете быть уверены в качестве услуг и безопасности Вашего груза.  <GreenLink href="#">Начните работать с нами в один клик!!!</GreenLink>
-                        </HeadingDescription>
-                    </HeadingColumn>
-                </Content>
-            </Container>
-            <Footer/>
+                                Наши клиенты могут рассчитывать на выгодные условия сотрудничества. Мы гарантируем быструю и надежную доставку <br/>
+                                товаров и возможность получить нужные товары из-за границы без лишних затрат времени и средств. Обратившись к <br/>
+                                нам, Вы можете быть уверены в качестве услуг и безопасности Вашего груза.  <GreenLink href="#">Начните работать с нами в один клик!!!</GreenLink>
+                            </HeadingDescription>
+                        </HeadingColumn>
+                    </Content>
+                </Container>
+                <Footer/>
+            </AnimationRevealPage>
+
         </>
 
     );

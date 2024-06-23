@@ -7,8 +7,11 @@ import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/ThreeColWithSideImage.js";
 import MainFeature2 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
 import FeatureWithSteps from "components/features/TwoColWithSteps.js";
+import ProfileCard from "./components/cards/ProfileCard";
+
 import Pricing from "components/pricing/ThreePlans.js";
 import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
+import Header from "components/headers/RoomHeader"
 import Footer from "components/footers/MainFooterWithLinks";
 import StepImg from "images/steps.svg"
 import PVZ from "images/PBZ.svg"
@@ -18,10 +21,12 @@ import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
 import { ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { Container } from "components/misc/Layouts.js";
 
+
 import { ReactComponent as One } from "images/01.svg";
 import { ReactComponent as Two } from "images/02.svg";
 import { ReactComponent as Three } from "images/03.svg";
 import { ReactComponent as For } from "images/04.svg";
+
 export default () => {
     const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
     const HighlightedText = styled.span`
@@ -40,7 +45,9 @@ export default () => {
         color: #0ABD19; // Устанавливаем желаемый цвет
     `;
     return (
+
         <AnimationRevealPage>
+
             <Hero roundedHeaderButton={true} />
             <Features
                 heading={
@@ -62,6 +69,7 @@ export default () => {
             imageDecoratorBlob={true}
             decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
         />
+
             <MainFeature2
 
                 heading={
@@ -135,7 +143,6 @@ export default () => {
                     }
                 ]}
             />
-
             <Footer />
         </AnimationRevealPage>
     );

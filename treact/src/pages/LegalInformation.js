@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
 import Footer from "components/footers/MainFooterWithLinks";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 const Container = tw.div`relative `;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`; // Уменьшенные отступы
 const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
@@ -39,22 +40,25 @@ const Break = styled.div`
 export default () => {
     return (
         <>
-            <Header/>
-            <Container>
-                <Content>
-                    <HeadingColumn>
-                        <HeadingTitle>Правовая информация</HeadingTitle>
-                        <HeadingDescription>
-                            1. <GreenLink href="/TermsOfService">"Таможенный кодекс Евразийского экономического союза" (ред. от 29.05.2019, с изм. от 18.03.2023) (приложение N 1 к Договору о Таможенном кодексе Евразийского экономического союза)</GreenLink><br/> <br/>
-                            <Break />
-                            2. <GreenLink href="/TermsOfService"> Приказ ФТС России от 05.07.2018 N 1060 "О Порядке использования в качестве пассажирской таможенной декларации реестра экспресс-грузов товаров для личного пользования, доставляемых перевозчиком (транспортной экспедиторской компанией или            службой курьерской доставки) в адрес физических лиц, содержащего сведения, необходимые для выпуска товаров для личного пользования, с применением Единой автоматизированной информационной системы таможенных органов"</GreenLink>
-                            <Break />
-                            3. <GreenLink href="/PublicOffer"> Решение Совета Евразийской экономической комиссии от 20 декабря 2017 г. N 107 "Об отдельных вопросах, связанных с товарами для личного пользования"</GreenLink>
-                        </HeadingDescription>
-                    </HeadingColumn>
-                </Content>
-            </Container>
-            <Footer/>
+            <AnimationRevealPage>
+                <Header/>
+                <Container>
+                    <Content>
+                        <HeadingColumn>
+                            <HeadingTitle>Правовая информация</HeadingTitle>
+                            <HeadingDescription>
+                                1. <GreenLink href="/TermsOfService">"Таможенный кодекс Евразийского экономического союза" (ред. от 29.05.2019, с изм. от 18.03.2023) (приложение N 1 к Договору о Таможенном кодексе Евразийского экономического союза)</GreenLink><br/> <br/>
+                                <Break />
+                                2. <GreenLink href="/TermsOfService"> Приказ ФТС России от 05.07.2018 N 1060 "О Порядке использования в качестве пассажирской таможенной декларации реестра экспресс-грузов товаров для личного пользования, доставляемых перевозчиком (транспортной экспедиторской компанией или            службой курьерской доставки) в адрес физических лиц, содержащего сведения, необходимые для выпуска товаров для личного пользования, с применением Единой автоматизированной информационной системы таможенных органов"</GreenLink>
+                                <Break />
+                                3. <GreenLink href="/PublicOffer"> Решение Совета Евразийской экономической комиссии от 20 декабря 2017 г. N 107 "Об отдельных вопросах, связанных с товарами для личного пользования"</GreenLink>
+                            </HeadingDescription>
+                        </HeadingColumn>
+                    </Content>
+                </Container>
+                <Footer/>
+            </AnimationRevealPage>
+
         </>
 
     );

@@ -41,7 +41,7 @@ import { ReactComponent as Ogranicenia } from './images/Ogranicenia.svg';
 
 import AnimationRevealPage from "./helpers/AnimationRevealPage";
 import Hero from "./components/headers/RatesHeders";
-import Footer from "./components/footers/MiniCenteredFooter";
+import Footer from "./components/footers/MainFooterWithLinks";
 
 const Layout = styled.div`
     display: flex;

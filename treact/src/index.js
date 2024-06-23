@@ -30,6 +30,11 @@ import Questions from "./Questions";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
 import SinglePage from "./SinglePageApplication";
+import IncomingParcels from "./pages/IncomingParcels";
+import OutgoingParcels from "./pages/OutgoingParcels";
+import DeliveredParcels from "./pages/DeliveredParcels";
+import WarehouseServices from "./pages/WarehouseServices";
+import ChangePassword from "./pages/ChangePassword";
 
 
 // Locate the root element from the DOM
@@ -40,7 +45,7 @@ const root = createRoot(rootElement);  // Create a root.
 root.render(
     <Router>
         <Routes>
-            <Route path="/" element={<SinglePage/>} />
+            <Route path="/" element={<OutgoingParcels/>} />
             <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />
@@ -48,6 +53,11 @@ root.render(
             <Route path="/AboutUS" element={<AboutUS />} />
             <Route path="/Contacts" element={<Contacts />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/OutgoingParcels" element={<OutgoingParcels/>} />
+            <Route path="/DeliveredParcels" element={<DeliveredParcels/>} />
+            <Route path="/WarehouseServices" element={<WarehouseServices/>} />
+            <Route path="/IncomingParcels" element={<IncomingParcels />} />
+            <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path="/RegistrationPage" element={<RegistrationPage />} />
             <Route path="/CustomRegulations" element={<CustomsRegulations />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />

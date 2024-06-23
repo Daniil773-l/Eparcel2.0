@@ -13,7 +13,7 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 const Header = tw.header`
   flex justify-between items-center
   max-w-screen-xl mx-auto
-  mt-8 // Больший отступ сверху
+  mt-4 // Больший отступ сверху
   mb-16 // Добавленный отступ снизу
 `;
 

@@ -12,6 +12,7 @@ import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefc
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 
 import Calculator from "calculator";
+import AnimationRevealPage from "../helpers/AnimationRevealPage";
 
 
 const Container = tw.div`relative`;
@@ -121,33 +122,36 @@ export default ({
 
     return (
         <>
-            <Header/>
-            <Container>
-                <TwoColumn>
-                    <ImageColumn>
-                        <Calculator />
-                        {showDecoratorBlob && <DecoratorBlob />}
-                    </ImageColumn>
-                    <TextColumn textOnLeft={textOnLeft}>
-                        <TextContent>
-                            <Subheading>{subheading}</Subheading>
-                            <Heading>{heading}</Heading>
-                            <Description>
-                                <span style={{ color: "#0ABD19" }}>Заказывайте</span> товары на наш склад, при необходимости мы переупаковываем посылки для снижения веса и отправляем вам надежно упакованными.
-                            </Description>
-                            <Description>
-                                <span style={{ color: "#0ABD19" }}>Онлайн калькулятор</span> стоимости доставки товара поможет рассчитать приблизительную стоимость доставки.
-                            </Description>
-                            <Description>
-                                <span style={{ color: "#0ABD19" }}>Задайте</span> необходимые параметры посылки и кликните на кнопку “Рассчитать”.
-                            </Description>
+            <AnimationRevealPage>
+                <Header/>
+                <Container>
+                    <TwoColumn>
+                        <ImageColumn>
+                            <Calculator />
+                            {showDecoratorBlob && <DecoratorBlob />}
+                        </ImageColumn>
+                        <TextColumn textOnLeft={textOnLeft}>
+                            <TextContent>
+                                <Subheading>{subheading}</Subheading>
+                                <Heading>{heading}</Heading>
+                                <Description>
+                                    <span style={{ color: "#0ABD19" }}>Заказывайте</span> товары на наш склад, при необходимости мы переупаковываем посылки для снижения веса и отправляем вам надежно упакованными.
+                                </Description>
+                                <Description>
+                                    <span style={{ color: "#0ABD19" }}>Онлайн калькулятор</span> стоимости доставки товара поможет рассчитать приблизительную стоимость доставки.
+                                </Description>
+                                <Description>
+                                    <span style={{ color: "#0ABD19" }}>Задайте</span> необходимые параметры посылки и кликните на кнопку “Рассчитать”.
+                                </Description>
 
 
-                        </TextContent>
-                    </TextColumn>
-                </TwoColumn>
-            </Container>
-            <Footer/>
+                            </TextContent>
+                        </TextColumn>
+                    </TwoColumn>
+                </Container>
+                <Footer/>
+            </AnimationRevealPage>
+
         </>
 
     );
