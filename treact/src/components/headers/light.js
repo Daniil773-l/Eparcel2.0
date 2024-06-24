@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
-import styled, { keyframes, createGlobalStyle } from "styled-components";
-import { css } from "styled-components/macro"; // eslint-disable-line
+import styled, { keyframes, createGlobalStyle, css } from "styled-components";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/logo.svg";
@@ -78,12 +77,21 @@ const LogoLink = styled(NavLink)`
   }
 `;
 
-const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
+const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between lg:hidden`;
 const NavToggle = styled.button`
-  ${tw`lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300`}
+  ${tw`lg:hidden z-20 focus:outline-none transition duration-300`}
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  border: none;
+  color: ${({ open }) => (open ? "#0ABD19" : "currentColor")};
+
+  svg {
+    path {
+      stroke: ${({ open }) => (open ? "#0ABD19" : "currentColor")};
+    }
+  }
 `;
 
 const iconStyles = tw`w-6 h-6`;
@@ -154,12 +162,12 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
           {links}
         </DesktopNavLinks>
 
-        <MobileNavLinksContainer css={collapseBreakpointCss.mobileNavLinksContainer}>
+        <MobileNavLinksContainer>
           {logoLink}
           <MobileNavLinks initial={{ x: "150%", display: "none" }} animate={animation} css={collapseBreakpointCss.mobileNavLinks}>
             {links}
           </MobileNavLinks>
-          <NavToggle onClick={toggleNavbar} className={showNavLinks ? "open" : "closed"}>
+          <NavToggle onClick={toggleNavbar} open={showNavLinks}>
             {showNavLinks ? <CloseIcon css={iconStyles} /> : <MenuIcon css={iconStyles} />}
           </NavToggle>
         </MobileNavLinksContainer>

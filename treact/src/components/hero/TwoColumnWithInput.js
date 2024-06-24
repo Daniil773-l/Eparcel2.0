@@ -19,21 +19,24 @@ const Heading = styled.h1`
 const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
 const Actions = styled.div`
-  ${tw`relative max-w-md text-center mx-auto lg:mx-0`}
+  ${tw`relative max-w-md text-center mx-auto lg:mx-0 flex items-center`}
+  margin-top: 20px;
 
   input {
-    ${tw`sm:pr-48 pl-8 py-4 sm:py-5 rounded-full border-2 w-[225px] font-medium focus:outline-none transition duration-300`}
+    ${tw`py-4 pl-8 pr-32 sm:py-5 rounded-full border-2 w-full lg:w-[450px] font-medium focus:outline-none transition duration-300`}
     &:hover, &:focus {
       border-color: #0ABD19;
     }
   }
 
   button {
-    ${tw`w-[180px] sm:absolute right-0 top-0 bottom-0 bg-green-500 text-white font-bold mr-2 my-4 sm:my-2 rounded-full py-4 flex items-center justify-center sm:leading-none focus:outline-none transition duration-300`}
+    ${tw`absolute right-0 h-full bg-green-500 text-white font-bold rounded-full py-1 px-8 flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
+    transform: translateX(-10%); // Adjust the button's position to be inside the input field
+    height: calc(100% - 12px); // Set button height to slightly smaller than the input height
     &:hover, &:focus {
-      transform: scale(1.1);
+      transform: scale(1.1) translateX(-10%);
     }
   }
 `;
