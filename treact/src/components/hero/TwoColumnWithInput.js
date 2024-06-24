@@ -30,10 +30,10 @@ const Actions = styled.div`
   }
 
   button {
-    ${tw`absolute right-0 h-full bg-green-500 text-white font-bold rounded-full py-1 px-8 flex items-center justify-center leading-none focus:outline-none transition duration-300`}
+    ${tw`absolute right-0 h-full bg-green-500 text-white font-bold rounded-full py-1 px-6 flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
-    transform: translateX(-10%); // Adjust the button's position to be inside the input field
+    transform: translateX(-10%); // Move the button more to the left
     height: calc(100% - 12px); // Set button height to slightly smaller than the input height
     &:hover, &:focus {
       transform: scale(1.1) translateX(-10%);
@@ -46,7 +46,7 @@ const IllustrationContainer = styled.div`
   width: 100%; // Makes sure the container is full width
   overflow: hidden; // Hides any overflowing parts of the children
   position: relative; // Needed for absolute positioning of children
-  height: 600px; // Set a fixed height or adjust as needed
+  height: 500px; // Reduced height to adjust the bottom margin
   img {
     position: absolute; // Absolute positioning to overlay images during transition
     top: 0;
@@ -54,7 +54,7 @@ const IllustrationContainer = styled.div`
     transform: translateX(-50%);
     transition: opacity 0.5s ease-in-out;
     width: 100%; // Adjust width as necessary
-    height: 600px ; // Maintain aspect ratio
+    height: 500px ; // Maintain aspect ratio
   }
 `;
 
