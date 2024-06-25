@@ -8,9 +8,8 @@ import logo from "../../images/logo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
-const Header = tw.header`
-  flex justify-between items-center
-  max-w-screen-xl mx-auto
+const Header = styled.header`
+  ${tw`flex justify-between items-center max-w-screen-xl mx-auto p-4`}
 `;
 
 const GlobalStyles = createGlobalStyle`
@@ -22,11 +21,13 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const NavLinks = tw.div`inline-block`;
+const NavLinks = styled.div`
+  ${tw`inline-block lg:flex lg:items-center`}
+`;
 
 const NavLink = styled.a`
   font-family: 'SFUIText', sans-serif;
-  ${tw`text-lg my-2 lg:text-sm lg:mx-6 lg:my-0 font-semibold tracking-wide transition duration-300 pb-1`}
+  ${tw`text-lg my-2 lg:text-sm lg:mx-4 lg:my-0 font-semibold tracking-wide transition duration-300 pb-1`}
   ${tw`hover:border-primary-500 hover:text-primary-500 focus:text-primary-500`}
   ${css`
     text-decoration: none;
@@ -52,10 +53,7 @@ const pulsateAnimation = keyframes`
 `;
 
 const PrimaryLink = styled(NavLink)`
-  ${tw`lg:mx-0
-    px-8 py-3 rounded text-gray-100
-    hocus:text-gray-200 focus:shadow-outline rounded-full
-    border-b-0`}
+  ${tw`lg:mx-0 px-8 py-3 rounded-full text-gray-100 hocus:text-gray-200 focus:shadow-outline border-b-0`}
   background-color: #0ABD19;
   border: none;
   transition: background-color 0.3s ease;
@@ -70,10 +68,10 @@ const PrimaryLink = styled(NavLink)`
   }
 `;
 
-const LogoLink = styled(NavLink)`
+const LogoLink = styled.a`
   ${tw`flex items-center font-black border-b-0`}
   img {
-    ${tw`w-40 h-10 w-auto h-auto`}
+    ${tw`w-40 h-auto`}
   }
 `;
 
@@ -103,8 +101,8 @@ const MobileNavLinks = motion(styled.div`
   }
 `);
 
-const DesktopNavLinks = tw.nav`
-  hidden lg:flex flex-1 justify-between items-center
+const DesktopNavLinks = styled.nav`
+  ${tw`hidden lg:flex flex-1 justify-between items-center`}
 `;
 
 const collapseBreakPointCssMap = {
@@ -131,6 +129,9 @@ const collapseBreakPointCssMap = {
 };
 
 export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
+  const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
+  const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
+
   const defaultLinks = [
     <NavLinks key={1}>
       <NavLink href="/tariffs">Тарифы</NavLink>
@@ -138,13 +139,10 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       <NavLink href="/Shops">Магазины</NavLink>
       <NavLink href="/RedemptionOfGoods">Выкуп товаров</NavLink>
       <NavLink href="/AboutUS">О нас</NavLink>
-      <NavLink href="/Contacts"> Контакты</NavLink>
+      <NavLink href="/Contacts">Контакты</NavLink>
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/Login">Войти</PrimaryLink>
     </NavLinks>
   ];
-
-  const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
-  const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
       <LogoLink href="/">
@@ -156,21 +154,24 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   links = links || defaultLinks;
 
   return (
-      <Header className={className || "header-light"}>
-        <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
-          {logoLink}
-          {links}
-        </DesktopNavLinks>
-
-        <MobileNavLinksContainer>
-          {logoLink}
-          <MobileNavLinks initial={{ x: "150%", display: "none" }} animate={animation} css={collapseBreakpointCss.mobileNavLinks}>
+      <>
+        <GlobalStyles />
+        <Header className={className || "header-light"}>
+          <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
+            {logoLink}
             {links}
-          </MobileNavLinks>
-          <NavToggle onClick={toggleNavbar} open={showNavLinks}>
-            {showNavLinks ? <CloseIcon css={iconStyles} /> : <MenuIcon css={iconStyles} />}
-          </NavToggle>
-        </MobileNavLinksContainer>
-      </Header>
+          </DesktopNavLinks>
+
+          <MobileNavLinksContainer>
+            {logoLink}
+            <NavToggle onClick={toggleNavbar} open={showNavLinks}>
+              {showNavLinks ? <CloseIcon css={iconStyles} /> : <MenuIcon css={iconStyles} />}
+            </NavToggle>
+            <MobileNavLinks initial={{ x: "150%", display: "none" }} animate={animation} css={collapseBreakpointCss.mobileNavLinks}>
+              {links}
+            </MobileNavLinks>
+          </MobileNavLinksContainer>
+        </Header>
+      </>
   );
 };
