@@ -6,57 +6,14 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../images/svg-decorator-blo
 import RoomHeader from "../components/headers/RoomHeader";
 import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Footer from "components/footers/MainFooterWithLinks";
-import ProfileCard from "../components/cards/ProfileCard";
+
+
 
 const Container = styled.div`
     ${tw`relative w-full min-h-screen`}
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-`;
-
-const InfoContainer = styled.div`
-    ${tw`flex w-full items-center justify-between gap-2 mt-4`}
-    ${tw`p-4 sm:px-4 md:px-8 lg:px-12 xl:px-16 sm:px-0 md:px-0 lg:px-0 xl:px-0`}
-`;
-
-const InfoBox = styled.div`
-    ${tw`flex items-center justify-between bg-white shadow-md rounded-lg p-2`}
-    border: 2px solid #e2e8f0;
-    width: 250px; // Adjust width as needed
-`;
-
-const InfoText = styled.span`
-    ${tw`text-gray-600`}
-`;
-
-const IconButton = styled.a`
-    ${tw`ml-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
-    background-color: #0ABD19;
-    border: none;
-    margin-left: auto; // Automatically push the button to the end
-    margin-top: 0; // Remove top margin
-    width: 20px; // Set button width
-    height: 20px; // Set button height
-
-    &:hover, &:focus {
-        transform: scale(1.1);
-    }
-`;
-
-const BaseButtonStyles = css`
-    ${tw`px-6 py-2 font-semibold rounded-lg shadow-md bg-gray-300 text-lg text-gray-600`}
-    ${tw`h-10 w-full sm:w-auto`}
-    ${tw`m-2`}
-    border: 2px solid #0ABD19;
-
-    &:hover {
-        ${tw`text-black bg-green-200`}
-    }
-
-    &:focus {
-        ${tw`text-black bg-green-200`}
-    }
 `;
 
 const TwoColumn = styled.div`
@@ -73,7 +30,7 @@ const RightColumn = styled.div`
 `;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-2xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -81,34 +38,27 @@ const Heading = styled.h1`
 `;
 
 const PrimaryButton = styled.button`
-    ${BaseButtonStyles}
+    ${tw`px-6 py-2 font-semibold rounded-lg shadow-md bg-gray-300 text-lg text-gray-600 h-10 w-full sm:w-auto m-2 border-2 border-solid border-green-600`}
     ${({ selected }) =>
-            selected &&
-            css`
-                ${tw`bg-green-200 border-green-600 text-black`}
-            `}
+    selected &&
+    css`
+            ${tw`bg-green-200 text-black`}
+        `}
+    &:hover, &:focus {
+        ${tw`text-black bg-green-200`}
+    }
 `;
-
-const ButtonContainer = styled.div`
-    ${tw`flex flex-wrap items-center justify-start gap-4`}
-    ${tw`p-0`} // Remove padding
-    ${tw`sm:px-0 md:px-0 lg:px-0 xl:px-0`} // Ensure no extra padding
-    ${tw`mt-8`} // Add top margin
-`;
-
-const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
 const Actions = styled.div`
-    ${tw`relative flex items-center w-full gap-8`} // Add gap between containers
+    ${tw`relative flex flex-wrap items-center w-full gap-8`} // Add gap between containers
 `;
 
 const InputContainer = styled.div`
     ${tw`relative flex-1`} // Use flex-1 to ensure proper spacing
-    width: 50%;
 `;
 
 const Label = styled.label`
-    ${tw`block text-gray-700 text-sm font-bold mb-2`}
+    ${tw`block text-gray-700 text-sm font-bold mb-2 mt-4`}
 `;
 
 const SearchInput = styled.input`
@@ -159,33 +109,6 @@ const BottomButton = styled.button`
     }
 `;
 
-const IllustrationContainer = styled.div`
-    ${tw`flex justify-center lg:justify-end items-center`}
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    height: 600px;
-
-    img {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: opacity 0.5s ease-in-out;
-        width: 100%;
-        height: 600px;
-    }
-`;
-
-const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
-    ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3 -z-10`}
-`;
-
-const HighlightedText = styled.span`
-    ${tw`font-bold`}
-    color: #0ABD19;
-`;
-
 const BackButton = styled(AddInput)`
     ${tw`w-auto bg-gray-300 text-gray-600 font-bold py-3 px-4 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     margin-left: 0; // Remove left margin
@@ -193,8 +116,6 @@ const BackButton = styled(AddInput)`
 
 export default ({ roundedHeaderButton }) => {
     const [showFirstImage, setShowFirstImage] = useState(true);
-    const [selectedCountry, setSelectedCountry] = useState("США");
-    const [selectedCategory, setSelectedCategory] = useState("Детский мир");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -213,7 +134,7 @@ export default ({ roundedHeaderButton }) => {
                     <TwoColumn>
                         <LeftColumn>
                             <Heading>
-                                Смена пароля
+                                Изменение контактных данных
                                 <BackButton
                                     type="button"
                                     value="Назад в личный кабинет"
@@ -222,24 +143,65 @@ export default ({ roundedHeaderButton }) => {
                             </Heading>
                             <Actions>
                                 <InputContainer>
-                                    <Label>Новый пароль</Label>
+                                    <Label>Название личного кабинета</Label>
                                     <SearchInput
-                                        type="password"
-                                        placeholder="Введите новый пароль"
+                                        type="text"
+                                        placeholder="Ромашка"
+                                    />
+                                </InputContainer>
+                            </Actions>
+                            <Heading>
+                                Контактное лицо:
+                            </Heading>
+                            <Actions>
+                                <InputContainer>
+                                    <Label>Имя</Label>
+                                    <SearchInput
+                                        type="text"
+                                        placeholder="Zhaksyllyk"
                                     />
                                 </InputContainer>
                                 <InputContainer>
-                                    <Label>Повторите пароль</Label>
+                                    <Label>Фамилия</Label>
                                     <SearchInput
-                                        type="password"
-                                        placeholder="Повторите новый пароль"
+                                        type="text"
+                                        placeholder="Yernur"
+                                    />
+                                </InputContainer>
+                                <InputContainer>
+                                    <Label>Телефон</Label>
+                                    <SearchInput
+                                        type="text"
+                                        placeholder="+7(771) 151-65-61"
+                                    />
+                                </InputContainer>
+                            </Actions>
+                            <Actions>
+                                <InputContainer>
+                                    <Label>E-mail</Label>
+                                    <SearchInput
+                                        type="email"
+                                        placeholder="ernurov07ernur@gmail.com"
+                                    />
+                                </InputContainer>
+                                <InputContainer>
+                                    <Label>Страна</Label>
+                                    <SearchInput
+                                        type="text"
+                                        placeholder="Пример: Россия"
+                                    />
+                                </InputContainer>
+                                <InputContainer>
+                                    <Label>Город</Label>
+                                    <SearchInput
+                                        type="text"
+                                        placeholder="Пример: Санкт-Петербург"
                                     />
                                 </InputContainer>
                             </Actions>
                             <BottomButtonsContainer>
                                 <BottomButton>Сохранить</BottomButton>
                             </BottomButtonsContainer>
-                            <ProfileCard/>
                         </LeftColumn>
                     </TwoColumn>
                 </Container>

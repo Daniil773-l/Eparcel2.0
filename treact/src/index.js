@@ -35,7 +35,8 @@ import OutgoingParcels from "./pages/OutgoingParcels";
 import DeliveredParcels from "./pages/DeliveredParcels";
 import WarehouseServices from "./pages/WarehouseServices";
 import ChangePassword from "./pages/ChangePassword";
-
+import ChangingContactDetails from "./pages/ChangingContactDetails";
+import PersonalArea from "./pages/PersonalArea";
 
 // Locate the root element from the DOM
 const rootElement = document.getElementById('root');
@@ -43,6 +44,7 @@ const root = createRoot(rootElement);  // Create a root.
 
 // Render your component tree using the root
 root.render(
+
     <Router>
         <Routes>
             <Route path="/" element={<OutgoingParcels/>} />
@@ -57,7 +59,11 @@ root.render(
             <Route path="/DeliveredParcels" element={<DeliveredParcels/>} />
             <Route path="/WarehouseServices" element={<WarehouseServices/>} />
             <Route path="/IncomingParcels" element={<IncomingParcels />} />
+            <Route path="/PersonalArea" element={<PersonalArea />} />
+
+
             <Route path="/ChangePassword" element={<ChangePassword />} />
+            <Route path="/ChangingContactDetails" element={<ChangingContactDetails />} />
             <Route path="/RegistrationPage" element={<RegistrationPage />} />
             <Route path="/CustomRegulations" element={<CustomsRegulations />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />

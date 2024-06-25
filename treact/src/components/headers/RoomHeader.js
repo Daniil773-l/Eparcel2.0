@@ -104,9 +104,9 @@ const HeaderContainer = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                             >
-                                <DropdownItem href="/profile">Профиль</DropdownItem>
+                                <DropdownItem href="/PersonalArea">Профиль</DropdownItem>
                                 <DropdownItem href="/recipients">Получатели</DropdownItem>
-                                <DropdownItem href="/change-contact">Изменить контактные данные</DropdownItem>
+                                <DropdownItem href="/ChangingContactDetails">Изменить контактные данные</DropdownItem>
                                 <DropdownItem href="/ChangePassword">Сменить пароль</DropdownItem>
                                 <DropdownItem href="/logout">Выйти из аккаунта</DropdownItem>
                             </DropdownMenu>

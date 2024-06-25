@@ -74,7 +74,7 @@ const RightColumn = styled.div`
 `;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
     margin-bottom: 20px;
 `;
 

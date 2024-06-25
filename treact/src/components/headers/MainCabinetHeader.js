@@ -8,7 +8,6 @@ import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import logo from "../../images/logo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
-import ProfileCard from "../cards/ProfileCard";
 
 const HeaderContainer = styled.header`
   ${tw`flex justify-between items-center max-w-screen-xl mx-auto`}
@@ -127,7 +126,7 @@ const collapseBreakPointCssMap = {
 export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
     const defaultLinks = [
         <NavLinks key={1}>
-            <NavLink href="/tariffs">Личный кабинет</NavLink>
+            <NavLink href="/PersonalArea">Личный кабинет</NavLink>
             <NavLink href="/IncomingParcels">Входящие посылки</NavLink>
             <NavLink href="/OutgoingParcels">Исходящие посылки</NavLink>
             <NavLink href="/DeliveredParcels">Доставленные посылки</NavLink>
