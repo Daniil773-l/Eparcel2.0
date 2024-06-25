@@ -1,7 +1,6 @@
 import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Header from "components/hero/HeaderTariff";
-import Pricing from "components/pricing/TwoPlansWithDurationSwitcher.js";
 import Footer from "components/footers/MainFooterWithLinks";
 import "./CSS/IncludedServicesSectionTariff.css";
 import Icon1 from "./images/TarifPost.svg";
@@ -10,7 +9,6 @@ import Icon3 from "./images/TarrifReg.svg";
 import Icon4 from "./images/TarrifYpokovka.svg";
 import Icon5 from "./images/TarrifDost.svg";
 import Icon6 from "./images/TarrifOform.svg";
-
 
 import tw from "twin.macro";
 import DutyCalculator from "./customsDutyCalculator";
@@ -38,8 +36,7 @@ export default () => {
         overflow-x: auto;
     `;
     const Descrip = styled.div`
-        ${tw`mt-8 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
-      
+        ${tw`mt-8 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-black`} // Changed to black
     `;
     const StyledTable = styled.table`
         ${tw`w-full text-sm md:text-base border-collapse`}
@@ -57,6 +54,39 @@ export default () => {
         tbody tr:nth-child(even) {
             ${tw`bg-gray-100`} // Alternate row background color
         }
+        @media (max-width: 768px) {
+            display: block; // Make table block on small screens
+            overflow-x: auto; // Add horizontal scrolling
+            white-space: nowrap; // Prevent cell wrapping
+        }
+    `;
+
+    const ServicesSection = styled.section`
+        ${tw`mt-16`}
+    `;
+
+    const ServicesContainer = styled.div`
+        ${tw`container mx-auto`}
+    `;
+
+    const ServicesHeading = styled.h2`
+        ${tw`text-center text-2xl font-bold mb-12`}
+    `;
+
+    const ServicesList = styled.div`
+        ${tw`flex flex-wrap justify-between mt-12`}
+    `;
+
+    const ServiceItem = styled.div`
+        ${tw`text-center flex-1 px-4 mb-8`}
+    `;
+
+    const ServiceIcon = styled.img`
+        ${tw`mx-auto mb-2`}
+    `;
+
+    const ServiceDescription = styled(Descrip)`
+        ${tw`mt-4`}
     `;
 
     return (
@@ -157,54 +187,47 @@ export default () => {
                     </tbody>
                 </StyledTable>
             </TableContainer>
-            <section className="included-services-section">
-                <div className="container mx-auto">
-                    <h2 className="text-center text-2xl font-bold mb-12">В стоимость тарифа включено:</h2>
-
-
-                    <div className="services-list flex justify-between space-x-32 mt-12">
-                        <div className="service-item text-center flex-1">
-                            <img src={Icon1} alt="Почтовый адрес" className="mx-auto mb-2"/>
-                            <Descrip>Почтовый адрес</Descrip>
-                        </div>
-                        <div className="service-item text-center flex-1">
-                            <img src={Icon2} alt="Получение" className="mx-auto mb-2"/>
-                            <Descrip>Получение</Descrip>
-                        </div>
-                        <div className="service-item text-center flex-1">
-                            <img src={Icon3} alt="Регистрация" className="mx-auto mb-2"/>
-                            <Descrip>Регистрация</Descrip>
-                        </div>
-                        <div className="service-item text-center flex-1">
-                            <img src={Icon4} alt="Упаковка" className="mx-auto mb-2"/>
-                            <Descrip>Упаковка</Descrip>
-                        </div>
-                        <div className="service-item text-center flex-1">
-                            <img src={Icon5} alt="Доставка" className="mx-auto mb-2"/>
-                            <Descrip>Доставка</Descrip>
-                        </div>
-                        <div className="service-item text-center flex-1">
-                            <img src={Icon6} alt="Таможенное оформление" className="mx-auto mb-2"/>
-                            <Descrip>Таможенное оформление</Descrip>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
+            <ServicesSection>
+                <ServicesContainer>
+                    <ServicesHeading>В стоимость тарифа включено</ServicesHeading>
+                    <ServicesList>
+                        <ServiceItem>
+                            <ServiceIcon src={Icon1} alt="Почтовый адрес" />
+                            <ServiceDescription>Почтовый адрес</ServiceDescription>
+                        </ServiceItem>
+                        <ServiceItem>
+                            <ServiceIcon src={Icon2} alt="Получение" />
+                            <ServiceDescription>Получение</ServiceDescription>
+                        </ServiceItem>
+                        <ServiceItem>
+                            <ServiceIcon src={Icon3} alt="Регистрация" />
+                            <ServiceDescription>Регистрация</ServiceDescription>
+                        </ServiceItem>
+                        <ServiceItem>
+                            <ServiceIcon src={Icon4} alt="Упаковка" />
+                            <ServiceDescription>Упаковка</ServiceDescription>
+                        </ServiceItem>
+                        <ServiceItem>
+                            <ServiceIcon src={Icon5} alt="Доставка" />
+                            <ServiceDescription>Доставка</ServiceDescription>
+                        </ServiceItem>
+                        <ServiceItem>
+                            <ServiceIcon src={Icon6} alt="Таможенное оформление" />
+                            <ServiceDescription>Таможенное оформление</ServiceDescription>
+                        </ServiceItem>
+                    </ServicesList>
+                </ServicesContainer>
+            </ServicesSection>
             <MainFeature1
-                subheading={< Prim></ Prim>}
+                subheading={<Prim></Prim>}
                 heading={
                     <>
                         Рассчитайте стоимость <Prim>доставки</Prim>
                     </>
                 }
-
                 showDecoratorBlob={false}
             />
             <DutyCalculator/>
-
-
             <Footer/>
         </AnimationRevealPage>
     );

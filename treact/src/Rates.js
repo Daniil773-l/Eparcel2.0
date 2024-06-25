@@ -45,27 +45,33 @@ import Footer from "./components/footers/MainFooterWithLinks";
 
 const Layout = styled.div`
     display: flex;
+    flex-direction: column;
     background: #fff;
     border-radius: 15px;
     box-shadow: 2px 2px 10px rgba(45, 45, 45, 0.08);
     overflow: hidden;
-    margin:60px;
-    height: 108vh; // Set to full viewport height or adjust as needed
+    margin: 20px;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        height: 83vh;
+    }
 `;
 
 const SidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 400px; // Adjust width as needed
+    width: 100%;
     background: #ffffff;
     border-right: 1px solid #F5F5F5;
-
+    @media (min-width: 768px) {
+        width: 400px;
+    }
 `;
 
 const TabButton = styled.button`
     display: flex;
     align-items: center;
-    background: ${({ active }) => active ? '#DDF2E6' : 'transparent'};
+    background: ${({ active }) => (active ? '#DDF2E6' : 'transparent')};
     color: #000000;
     border: none;
     padding: 10px 22px;
@@ -73,11 +79,10 @@ const TabButton = styled.button`
     line-height: 18px;
     font-family: 'Gilroy Medium', sans-serif;
     cursor: pointer;
-
+    text-align: left;
     &:hover {
         background-color: #DDF2E6;
     }
-
     svg {
         margin-right: 20px;
         width: 30px;
@@ -90,16 +95,16 @@ const Title = styled.h1`
     line-height: 29px;
     color: #2D2D2D;
     margin-bottom: 20px;
-    font-weight: 700; // Bold font weight
-    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    text-align: left; // If you want the title to be centered
+    font-weight: 700;
+    font-family: 'Gilroy Medium', sans-serif;
 `;
 const SectionContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: start;
     padding: 20px;
-    gap: 20px; // Adjust the space between cards
+    gap: 20px;
 `;
 
 const InfoContainer = styled.div`
@@ -109,13 +114,13 @@ const InfoContainer = styled.div`
     padding: 15px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    flex: 1;  // Each container takes up equal space
-    min-width: 300px;  // Minimum width for each card
-    height: 250px;  // Fixed height for consistency
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px;
+    height: 250px;
 `;
 
-const Icon = styled.img`  // Assuming you're using an <img> tag for icons
+const Icon = styled.img`
     width: 50px;
     height: 50px;
     margin-bottom: 15px;
@@ -127,8 +132,8 @@ const Text = styled.p`
     text-align: center;
     line-height: 1.4;
     margin: 0;
-    flex-grow: 1;  // Allows the text to fill the container for equal height
-    overflow: hidden;  // Prevents text overflow
+    flex-grow: 1;
+    overflow: hidden;
 `;
 
 
@@ -137,11 +142,10 @@ const Text = styled.p`
 const ContentContainer = styled.div`
     flex: 1;
     padding: 20px;
-    overflow-y: auto; // Allows scrolling if content is taller than the view area
-    transition: opacity 0.5s ease; // Transition for the fade effect
-    opacity: ${({ isActive }) => (isActive ? 1 : 0)}; // Control the opacity based on active state
+    overflow-y: auto;
+    transition: opacity 0.5s ease;
+    opacity: ${({ isActive }) => (isActive ? 1 : 0)};
 `;
-
 
 const IconContainer = styled.span``;
 
