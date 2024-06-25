@@ -9,31 +9,29 @@ import Slide2 from "images/Slide2.svg"; // Ensure correct path
 
 const Container = tw.div`relative -mx-8 -mt-20`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row`;
-const LeftColumn = tw.div`ml-8 mr-8 xl:pl-10 py-8`;
-const RightColumn = styled.div`
-    ${tw`relative xl:ml-24 h-96 lg:h-auto lg:w-1/2 lg:flex-1`}
+const LeftColumn = styled.div`
+    ${tw`w-full lg:w-1/2 ml-8 mr-8 xl:pr-10 py-8 lg:order-first`}
 `;
 
+const RightColumn = styled.div`
+    ${tw`w-full lg:w-1/2 ml-8 mr-8 xl:pl-10 py-8 lg:order-last`}
+`;
 
 const Content = tw.div`mt-24 lg:mt-24 lg:mb-24 flex flex-col sm:items-center lg:items-stretch`;
 const Heading = tw.h1`text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-black leading-none`;
 const Paragraph = tw.p`max-w-md my-8 lg:my-5 lg:my-8 sm:text-lg lg:text-base xl:text-lg leading-loose`;
 
 const StyledSlider = styled(Slider)`
-    margin-top: 150px; // Adds top margin to the slider
-
-   
+    margin-top: 150px;
 `;
 
 const Actions = styled.div`
     ${tw`mb-8 lg:mb-0`}
     button {
-        ${tw`w-[200px] sm:relative sm:right-0 sm:top-0 sm:bottom-0 bg-green-500 text-white font-bold mr-2 my-4 sm:my-2 rounded-full py-4 flex items-center justify-center sm:leading-none focus:outline-none transition duration-300`}
-        background-color: #0ABD19; // Bright green button background
+        ${tw`w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] bg-green-500 text-white font-bold mr-2 my-4 sm:my-2 rounded-full py-4 flex items-center justify-center sm:leading-none focus:outline-none transition duration-300`}
+        background-color: #0ABD19;
         border: none;
-
-        &:hover,
-        &:focus {
+        &:hover, &:focus {
             transform: scale(1.1);
             background-color: #0ABD50;
         }

@@ -21,20 +21,33 @@ import Footer from "components/footers/MainFooterWithLinks";
 
 const Layout = styled.div`
     display: flex;
+    flex-direction: column;
     background: #fff;
     border-radius: 15px;
     box-shadow: 2px 2px 10px rgba(45, 45, 45, 0.08);
     overflow: hidden;
-    margin: 60px;
-    height: 100vh;
+    margin: 20px;
+    height: auto;
+
+    @media(min-width: 1024px) {
+        flex-direction: row;
+        height: 100vh;
+    }
 `;
 
 const SidebarContainer = styled.div`
     display: flex;
-    flex-direction: column;
-    width: 400px;
+    flex-direction: row;
+    overflow-x: auto;
     background: #ffffff;
-    border-right: 1px solid #F5F5F5;
+    border-bottom: 1px solid #F5F5F5;
+
+    @media(min-width: 1024px) {
+        flex-direction: column;
+        width: 400px;
+        border-right: 1px solid #F5F5F5;
+        border-bottom: none;
+    }
 `;
 
 const TabButton = styled.button`
@@ -44,19 +57,31 @@ const TabButton = styled.button`
     color: #000000;
     border: none;
     padding: 10px 22px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 18px;
     font-family: 'Gilroy Medium', sans-serif;
     cursor: pointer;
+    flex: 1;
+    white-space: nowrap;
 
     &:hover {
         background-color: #DDF2E6;
     }
 
     svg {
-        margin-right: 20px;
-        width: 30px;
-        height: 30px;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+
+        @media(min-width: 1024px) {
+            margin-right: 20px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    @media(min-width: 1024px) {
+        font-size: 16px;
     }
 `;
 
@@ -69,7 +94,6 @@ const ContentContainer = styled.div`
 `;
 
 const IconContainer = styled.span``;
-
 const tabs = [
     {
         name: "Личный кабинет",

@@ -45,27 +45,33 @@ import Footer from "./components/footers/MainFooterWithLinks";
 
 const Layout = styled.div`
     display: flex;
+    flex-direction: column;
     background: #fff;
     border-radius: 15px;
     box-shadow: 2px 2px 10px rgba(45, 45, 45, 0.08);
     overflow: hidden;
-    margin:60px;
-    height: 108vh; // Set to full viewport height or adjust as needed
+    margin: 20px;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        height: 83vh;
+    }
 `;
 
 const SidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 400px; // Adjust width as needed
+    width: 100%;
     background: #ffffff;
     border-right: 1px solid #F5F5F5;
-
+    @media (min-width: 768px) {
+        width: 400px;
+    }
 `;
 
 const TabButton = styled.button`
     display: flex;
     align-items: center;
-    background: ${({ active }) => active ? '#DDF2E6' : 'transparent'};
+    background: ${({ active }) => (active ? '#DDF2E6' : 'transparent')};
     color: #000000;
     border: none;
     padding: 10px 22px;
@@ -73,11 +79,10 @@ const TabButton = styled.button`
     line-height: 18px;
     font-family: 'Gilroy Medium', sans-serif;
     cursor: pointer;
-
+    text-align: left;
     &:hover {
         background-color: #DDF2E6;
     }
-
     svg {
         margin-right: 20px;
         width: 30px;
@@ -90,16 +95,16 @@ const Title = styled.h1`
     line-height: 29px;
     color: #2D2D2D;
     margin-bottom: 20px;
-    font-weight: 700; // Bold font weight
-    font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    text-align: left; // If you want the title to be centered
+    font-weight: 700;
+    font-family: 'Gilroy Medium', sans-serif;
 `;
 const SectionContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: start;
     padding: 20px;
-    gap: 20px; // Adjust the space between cards
+    gap: 20px;
 `;
 
 const InfoContainer = styled.div`
@@ -109,13 +114,13 @@ const InfoContainer = styled.div`
     padding: 15px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    flex: 1;  // Each container takes up equal space
-    min-width: 300px;  // Minimum width for each card
-    height: 250px;  // Fixed height for consistency
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px;
+    height: 250px;
 `;
 
-const Icon = styled.img`  // Assuming you're using an <img> tag for icons
+const Icon = styled.img`
     width: 50px;
     height: 50px;
     margin-bottom: 15px;
@@ -127,8 +132,8 @@ const Text = styled.p`
     text-align: center;
     line-height: 1.4;
     margin: 0;
-    flex-grow: 1;  // Allows the text to fill the container for equal height
-    overflow: hidden;  // Prevents text overflow
+    flex-grow: 1;
+    overflow: hidden;
 `;
 
 
@@ -137,11 +142,10 @@ const Text = styled.p`
 const ContentContainer = styled.div`
     flex: 1;
     padding: 20px;
-    overflow-y: auto; // Allows scrolling if content is taller than the view area
-    transition: opacity 0.5s ease; // Transition for the fade effect
-    opacity: ${({ isActive }) => (isActive ? 1 : 0)}; // Control the opacity based on active state
+    overflow-y: auto;
+    transition: opacity 0.5s ease;
+    opacity: ${({ isActive }) => (isActive ? 1 : 0)};
 `;
-
 
 const IconContainer = styled.span``;
 
@@ -214,12 +218,13 @@ const CardContainer = styled.div`
 const Card = styled.div`
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 90%; // Adjust the width as necessary
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Добавляем тень
+    width: 30%; // Устанавливаем ширину каждой карточки (можно изменить по желанию)
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 `;
 
 const CardTitle = styled.h2`
@@ -243,25 +248,25 @@ const Fraction = styled.div`
 `;
 
 const Numerator = styled.span`
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
 `;
 
 const Denominator = styled.span`
-  padding-top: 5px;
+    padding-top: 5px;
 `;
 const CardIcon = styled.div`
-  width: 60px;  // Set the width of the icon container
-  height: 60px;  // Set the height of the icon container
-  margin-bottom: 15px;  // Space between the icon and the title
-  display: flex;  // Use flexbox to center the icon
-  align-items: center;  // Center the icon vertically
-  justify-content: center;  // Center the icon horizontally
+    width: 60px;  // Set the width of the icon container
+    height: 60px;  // Set the height of the icon container
+    margin-bottom: 15px;  // Space between the icon and the title
+    display: flex;  // Use flexbox to center the icon
+    align-items: center;  // Center the icon vertically
+    justify-content: center;  // Center the icon horizontally
 
-  svg {
-    width: 100%;  // Ensure the SVG fills the container
-    height: auto;  // Maintain the aspect ratio of the icon
-  }
+    svg {
+        width: 100%;  // Ensure the SVG fills the container
+        height: auto;  // Maintain the aspect ratio of the icon
+    }
 `;
 const Table = styled.table`
     width: 100%;
@@ -282,6 +287,14 @@ const TableCell = styled.td`
     padding: 8px;
     border: 1px solid #ccc;
     text-align: center;
+`;
+const CardContainer1 = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap; // Отключить перенос на новую строку
+    overflow-x: auto; // Добавить горизонтальную прокрутку, если карточки не влезают по ширине
+    padding-bottom: 20px; // Добавить отступ снизу, чтобы не перекрывалась горизонтальная прокрутка
 `;
 const tabs = [
     {
@@ -391,7 +404,7 @@ const tabs = [
 
                     </InfoContainer>
                 </SectionContainer>
-                <CardContainer>
+                <CardContainer1>
                     <Card>
                         <CardIcon>
                             <BoxIcon/>
@@ -400,8 +413,7 @@ const tabs = [
                         <CardFormula>
                             <div>Объемный вес (kr) =</div>
                             <Fraction>
-                                <Numerator>Длина (см) · Ширина (см) · Высота (см)</Numerator>
-                                <Denominator>5000</Denominator>
+                                Длина (см) · Ширина (см) · Высота (см)/5000
                             </Fraction>
                         </CardFormula>
                     </Card>
@@ -427,7 +439,7 @@ const tabs = [
                             <div>Площадь треугольника = (Ширина (cm) × Ширина (cm) × 1.73) / 4</div>
                         </CardFormula>
                     </Card>
-                </CardContainer>
+                </CardContainer1>
             </div>
         ),
         Icon: Packaging

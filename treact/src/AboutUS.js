@@ -19,20 +19,19 @@ import { ReactComponent as Star } from "images/GreenStar.svg";
 const FeatureItem = styled.div`
     display: flex;
     align-items: center;
-    
 `;
 
 const IconContainer = styled.div`
     display: flex;
     align-items: center;
     margin-right: 15px;
-    flex-shrink: 0;  // Prevents the star from shrinking
+    flex-shrink: 0;
 `;
+
 const Description = styled.p`
     margin: 0;
     font-size: 20px;
     margin-left: 15px;
-     // Reduce this value to decrease the space between items
 `;
 
 const SectionContainer = styled.section`
@@ -43,33 +42,53 @@ const SectionContainer = styled.section`
 `;
 
 const CenteredContainer = tw.div`
-  flex items-center justify-center h-full
+    flex items-center justify-center h-full
 `;
 
 const Heading = tw.h1`
-  text-3xl sm:text-5xl md:text-6xl lg:text-4xl font-black leading-none
+    text-3xl sm:text-5xl md:text-6xl lg:text-4xl font-black leading-none
 `;
 
 const ContentAlignment = styled.div`
+    ${tw`text-left mx-auto max-w-screen-xl flex flex-col lg:flex-row lg:items-center`}
+    padding: 4rem 1rem;
+`;
+
+const SliderContentBlock = styled.div`
     ${tw`text-left mx-auto max-w-screen-xl`}
     padding: 0 1rem;
 `;
 
 const Prim = styled.span`
-    ${tw`text-center text-primary-500 md:text-left`}
+    ${tw`text-center md:text-left font-bold`}
     color: #0ABD19;
+    font-size: 3rem;
+    line-height: 1.2;
 `;
 
 const SmallStar = styled(Star)`
-    width: 24px;  // Fixed width
-    height: 24px;  // Fixed height
-    flex-shrink: 0;  // Prevents resizing due to flex properties
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
 `;
+
 const LargerImage = styled.img`
-    width: 100%; // Increase width as needed
-    max-width: 1200px; // Adjust max width as necessary to control size limits
-    height: auto; // Keeps the aspect ratio intact
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     margin-top: 20px;
+`;
+
+const GoalDescription = styled.p`
+    ${tw`text-lg md:text-xl lg:text-2xl text-gray-700`}
+    margin-top: 20px;
+`;
+
+const ResponsiveImage = styled.img`
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    ${tw`mx-auto`}
 `;
 
 export default () => {
@@ -79,25 +98,27 @@ export default () => {
             <Explanation/>
             <SectionContainer>
                 <ContentAlignment>
-                    <MainFeature2
-                        heading={<Prim>Наша цель</Prim>}
-                        imageSrc={Goal}
-                        showDecoratorBlob={false}
-                    />
+                    <div>
+                        <Prim>Наша цель</Prim>
+                        <GoalDescription>
+                            Оказание качественных услуг, быстрая и надежная доставка посылок с товарами по минимальной стоимости для наших клиентов
+                        </GoalDescription>
+                    </div>
+                    <LargerImage src={Goal} alt="Goal Illustration" />
+                </ContentAlignment>
+                <SliderContentBlock>
                     <Slider images={['Slide1', 'Slide2']} showDecoratorBlob={false}/>
                     <Slider2 images={['Slide1', 'Slide2']} showDecoratorBlob={false}/>
-                </ContentAlignment>
+                </SliderContentBlock>
             </SectionContainer>
             <CenteredContainer>
                 <Heading style={{ marginBottom: '150px' }}>Наши партнеры</Heading>
             </CenteredContainer>
-            <CenteredContainer >
-                <img src={Partners} alt="Наши партнеры"/>
+            <CenteredContainer>
+                <ResponsiveImage src={Partners} alt="Наши партнеры"/>
             </CenteredContainer>
             <Offerings
-                heading={<>
-                    Что мы предлагаем для наших клиентов:
-                </>}
+                heading={<>Что мы предлагаем для наших клиентов:</>}
                 imageSrc={prototypeIllustrationImageSrc}
                 showDecoratorBlob={false}
                 features={[
@@ -105,9 +126,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Дешевые и фиксированные тарифы доставки
-                                </Description>
+                                <Description>Дешевые и фиксированные тарифы доставки</Description>
                             </FeatureItem>
                         ),
                     },
@@ -115,9 +134,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Отсутствие скрытых комиссий и дополнительных платежей
-                                </Description>
+                                <Description>Отсутствие скрытых комиссий и дополнительных платежей</Description>
                             </FeatureItem>
                         ),
                     },
@@ -125,9 +142,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Понятные и простые правила расчета посылок
-                                </Description>
+                                <Description>Понятные и простые правила расчета посылок</Description>
                             </FeatureItem>
                         ),
                     },
@@ -135,9 +150,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Выкуп товаров в других странах и доставка по всему Казахстану, даже в самые удаленные города
-                                </Description>
+                                <Description>Выкуп товаров в других странах и доставка по всему Казахстану, даже в самые удаленные города</Description>
                             </FeatureItem>
                         ),
                     },
@@ -145,9 +158,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Различные способы оплаты для максимального удобства наших клиентов.
-                                </Description>
+                                <Description>Различные способы оплаты для максимального удобства наших клиентов.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -155,9 +166,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Большой выбор дополнительных услуг
-                                </Description>
+                                <Description>Большой выбор дополнительных услуг</Description>
                             </FeatureItem>
                         ),
                     },
@@ -165,9 +174,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Индивидуальное консультирование по всем вопросам
-                                </Description>
+                                <Description>Индивидуальное консультирование по всем вопросам</Description>
                             </FeatureItem>
                         ),
                     },
@@ -175,9 +182,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>
-                                    Гарантия быстрой и качественной доставки
-                                </Description>
+                                <Description>Гарантия быстрой и качественной доставки</Description>
                             </FeatureItem>
                         ),
                     },

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './CSS/calculator.css'; // Assuming you save the CSS in a file named Header.css
 
 function Header() {
     const [country, setCountry] = useState("USA");
@@ -117,7 +118,7 @@ function Header() {
                     <div className="calculation-container">
                         <button type="submit" className="calculate-button">Рассчитать</button>
                         <div className="calculation-result">
-                            <span>Стоимость доставки:</span>
+                            <span>Стоимость доставки: <br /> <br /></span>
                             <strong>{deliveryCost.toFixed(2)} {country === "USA" ? "USD" : "USD"}</strong>
                         </div>
                     </div>

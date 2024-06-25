@@ -1,12 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import tw from "twin.macro";
 import styled from "styled-components";
 import Header from 'components/headers/LoginPageHeader';
 import Footer from "components/footers/MainFooterWithLinks";
-import {TbDashboard} from "react-icons/tb";
-import Products from "images/ProhibitedProducts.svg"
-import "CSS/calculator.css";
+import Products from "images/ProhibitedProducts.svg";
+import HeaderProhib from "../components/headers/HeaferProducts"
 import DataIcon from "images/data.jpg";
 import GunIcon from "images/gun.jpg";
 import ToxicIcon from "images/toxic.jpg";
@@ -38,24 +38,21 @@ import TimerIcon from "images/timer.jpg";
 import WtfIcon from "images/wtf.jpg";
 import AnyIcon from "images/any.jpg";
 
-import {fireEvent} from "@testing-library/react";
-import {SiMoleculer} from "react-icons/si";
-
-
-
-const Container = tw.div`relative`;
+const Container = tw.div`relative bg-white min-h-screen`;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`;
-const ImageWrapper = tw.div`flex justify-center items-center flex-col md:flex-row`; // Adjust for vertical stacking on small screens and horizontal on medium and up
-const InfoColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
+const ImageWrapper = tw.div`flex justify-center items-center flex-col md:flex-row mt-8`;
+const InfoColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0 mb-8`;
 
 const HeadingTitle = styled.h1`
-    ${tw`text-4xl md:text-4xl lg:text-3xl xl:text-4xl leading-tight`}
-    font-size: 32px;
-    font-weight: normal;
-    line-height: 42px;
+    ${tw`text-4xl md:text-4xl lg:text-3xl xl:text-4xl leading-tight font-medium`}
     font-family: 'Gilroy Medium', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
     color: #2D2D2D;
+`;
+
+const InfoText = styled.p`
+    ${tw`tracking-wide font-bold text-2xl leading-none mt-20 mb-20`}
+
+    text-align: center;
 `;
 
 const CardWrapper = tw.div`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8`;
@@ -65,18 +62,9 @@ const Card = styled.div`
         ${tw`w-16 h-16 mb-4`}
     }
     p {
-        ${tw`flex-grow`}
-            /* Allow text to expand horizontally */
-        min-width: 0; /* Reset min-width */
-        overflow: hidden; /* Hide overflow text */
-        text-overflow: ellipsis; /* Show ellipsis for overflow text */
-        width: ${props => props.expanded ? '70%' : '100%'}; /* Set width to 70% if expanded, otherwise 100% */
-        margin: auto; /* Center align text */
+        ${tw`mt-2`}
     }
 `;
-
-const InfoText = tw.p`text-base text-gray-700 mt-4`;
-const Break = tw.br``;
 
 const prohibitedItems = [
     { icon: DataIcon, description: "Информация на печатных, аудиовизуальных и иных носителях информации", },
@@ -91,69 +79,47 @@ const prohibitedItems = [
     { icon: MapIcon, description: "Информация о недрах по районам и месторождениям топливно-энергетического и минерального сырья" },
     { icon: TreeIcon, description: "Средства защиты растений и другие стойкие органические загрязнители" },
     { icon: FishIcon, description: "Орудия добычи (вылова) водных биологических ресурсов" },
-    { icon: DrugIcon, description: "Наркотические средства, психотропные вещества и их прекурсоры, за исключением ограниченных количеств наркотических средств и психотропных веществ в виде лекарственных средств для личного применения по медицинским показаниям при наличии подтверждающих медицинских документов с указанием наименования и количества товара, а также прекурсоров в объемах, определенных законодательством государства - члена Союза", },
-    { icon: MoneyIcon, description: "Информация на печатных, аудиовизуальных и иных носителях информации: подарочные карты, монеты, наличные деньги и их эквиваленты, банкноты и любых финансовых инструментов, включая (но не ограничиваясь) платежные и дисконтные карты, купоны, подарочные сертификаты, а равно их реквизиты" },
-    { icon: CrossIcon, description: "Служебное и гражданское оружие, его основные части и патроны к нему: приборов ночного видения, электрошокеров, оптических прицелов, аксессуаров (приспособлений, улучшающих эксплуатационные характеристики оружия), инструментов, экипировки, а также тепловизоров для смартфонов, охотничьих, строительных и прочих подобных товаров. Продукция военного и двойного назначения" },
+    { icon: DrugIcon, description: "Наркотические средства, психотропные вещества и их прекурсоры" },
+    { icon: MoneyIcon, description: "Информация на печатных, аудиовизуальных и иных носителях информации: подарочные карты, монеты, наличные деньги и их эквиваленты, банкноты и любых финансовых инструментов" },
+    { icon: CrossIcon, description: "Служебное и гражданское оружие, его основные части и патроны к нему: приборы ночного видения, электрошокеры, оптические прицела" },
     { icon: BunnyIcon, description: "Видеопродукция и печатные издания порнографического содержания" },
     { icon: DogIcon, description: "Дикие и (или) домашние животные, корма для животных" },
     { icon: SeedIcon, description: "Растения и семена, удобрения" },
     { icon: DrugIcon, description: "Лекарственные средства содержащие наркотические средства, психотропные вещества и их прекурсоры" },
-    { icon: DiamondIcon, description: "Необработанные драгоценные металлы, лом и отходы драгоценных металлов, руды и концентраты драгоценных металлов и сырьевых товаров, содержащих драгоценные металлы" },
+    { icon: DiamondIcon, description: "Необработанные драгоценные металлы, лом и отходы драгоценных металлов" },
     { icon: FireIcon, description: "Взрывчатые, озоноразрушающие легковоспламеняющиеся, окисляющие, ядовитые, токсичные, отравляющие, жидкости и предметы" },
-    { icon: PictureIcon, description: "Коллекции и предметы коллекционирования, культурные ценности, документы национальных; архивных фондов, оригиналы архивных документов: антиквариата, картин и прочих предметов, представляющих художественную и музейную ценность" },
-    { icon: CamIcon, description: "Специальные технические средства, предназначенные для негласного получения информации, шифровальные (криптографические) средства, радиоэлектронные средства и (или) высокочастотные устройства гражданского назначения, в том числе встроенные либо входящие в состав других товаров" },
+    { icon: PictureIcon, description: "Коллекции и предметы коллекционирования, культурные ценности, документы национальных архивных фондов, оригиналы архивных документов" },
+    { icon: CamIcon, description: "Специальные технические средства, предназначенные для негласного получения информации" },
     { icon: DiamondIcon, description: "Драгоценные камни и металлы, сырьевые товары" },
     { icon: GearIcon, description: "Автозапчасти содержащие жидкости и масло" },
     { icon: FishIcon, description: "Орудия добычи (вылова) водных биологических ресурсов" },
-    { icon: AccIcon, description: "Товары, содержащие аккумуляторными батарейками Li-ion АКБ" },
-    { icon: MedicIcon, description: "Медицинские товары приборы" },
+    { icon: AccIcon, description: "Товары, содержащие аккумуляторные батарейки Li-ion АКБ" },
+    { icon: MedicIcon, description: "Медицинские товары и приборы" },
     { icon: FruitIcon, description: "Скоропортящиеся товары" },
     { icon: SmokeIcon, description: "Табачная продукция" },
     { icon: TimerIcon, description: "Товары, на которые наложены временные запреты на их ввоз на территорию РФ и ЕАЭС" },
-    { icon: WtfIcon, description: "Неопознанные товары, не имеющих никаких данных и информации" },
-    { icon: AnyIcon, description: "Товары не относящиеся для личного пользования согласно Решению Коллегии ЕЭК от 21 апреля 2015 г. № 30" }
+    { icon: WtfIcon, description: "Неопознанные товары, не имеющие никаких данных и информации" },
+    { icon: AnyIcon, description: "Товары не относящиеся для личного пользования согласно Решению Коллегии ЕЭК" }
 ];
 
 const ProhibitedItems = () => (
-    <>
-        <AnimationRevealPage>
-            <Header />
-            <Container>
-                <Content>
-                    <InfoColumn>
-                        <HeadingTitle>Запрещенные товары</HeadingTitle>
-                    </InfoColumn>
-                    <ImageWrapper>
-                        <img src={Products} alt="ProhibitedProducts" />
-                    </ImageWrapper>
-                    <InfoColumn>
-                        <InfoText>
-                            Согласно Решению Коллегии ЕЭК от 21 апреля 2015 г. № 30 при ввозе товаров физическими лицами
-                            для личного пользования применяются запреты на ввоз и ввоз товаров, а также ряд ограничений
-                            (в том числе разрешительный порядок ввоза и вывоза).
-                            <Break />
-                            <br />
-                            Запрещенные к ввозу товары вообще нельзя перемещать через таможенную границу ни при каких
-                            обстоятельствах ни физическим, ни юридическим лицам.
-                            <Break />
-                            Перечень товаров, в отношении которых установлен запрет ввоза на таможенную территорию ЕАЭС:
-                            <Break />
-                        </InfoText>
-                    </InfoColumn>
-                    <CardWrapper>
-                        {prohibitedItems.map((item, index) => (
-                            <Card key={index} expanded={index === 0}>
-                                <img src={item.icon} alt="Icon" />
-                                <p>{item.description}</p>
-                            </Card>
-                        ))}
+    <AnimationRevealPage>
+        <HeaderProhib/>
+        <Container>
+            <Content>
 
-                    </CardWrapper>
-                </Content>
-            </Container>
-            <Footer />
-        </AnimationRevealPage>
-    </>
+                <CardWrapper>
+                    {prohibitedItems.map((item, index) => (
+                        <Card key={index}>
+                            <img src={item.icon} alt="Icon" />
+                            <p>{item.description}</p>
+                        </Card>
+                    ))}
+                </CardWrapper>
+            </Content>
+        </Container>
+        <Footer />
+    </AnimationRevealPage>
 );
 
 export default ProhibitedItems;

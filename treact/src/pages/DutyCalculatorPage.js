@@ -87,56 +87,56 @@ const CustomsDutyCalculator = ({ subheading = "", heading = (
     return (
         <>
             <AnimationRevealPage>
-                <Header/>
-                <Container>
-                    <TwoColumn>
-                        <CalculatorColumn>
-                            <div className="duty-calculator-section">
-                                <h3>Калькулятор таможенной пошлины</h3>
-                                <form className="calculator-form" onSubmit={handleCalculate}>
+            <Header/>
+            <Container>
+                <TwoColumn>
+                    <CalculatorColumn>
+                        <div className="duty-calculator-section">
+                            <h3>Калькулятор таможенной пошлины</h3>
+                            <form className="calculator-form" onSubmit={handleCalculate}>
+                                <div className="input-group">
+                                    <div className="custom-select-container">
+                                        <select className="custom-select" id="currency" name="currency" required value={currency} onChange={e => setCurrency(e.target.value)}>
+                                            <option value="USD">Доллар (USD)</option>
+                                            <option value="EUR">Евро (EUR)</option>
+                                            <option value="TRY">Турецкая лира (TRY)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="input-row">
                                     <div className="input-group">
-                                        <div className="custom-select-container">
-                                            <select className="custom-select" id="currency" name="currency" required value={currency} onChange={e => setCurrency(e.target.value)}>
-                                                <option value="USD">Доллар (USD)</option>
-                                                <option value="EUR">Евро (EUR)</option>
-                                                <option value="TRY">Турецкая лира (TRY)</option>
-                                            </select>
-                                        </div>
+                                        <input type="text" id="item-price" name="item_price" placeholder="Цена товара" className="input-placeholder-fade" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} />
                                     </div>
-                                    <div className="input-row">
-                                        <div className="input-group">
-                                            <input type="text" id="item-price" name="item_price" placeholder="Цена товара" className="input-placeholder-fade" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} />
-                                        </div>
-                                        <div className="input-group">
-                                            <input type="number" id="item-weight" name="item_weight" placeholder="Вес посылки" className="input-placeholder-fade" value={itemWeight} onChange={(e) => setItemWeight(e.target.value)} />
-                                        </div>
+                                    <div className="input-group">
+                                        <input type="number" id="item-weight" name="item_weight" placeholder="Вес посылки" className="input-placeholder-fade" value={itemWeight} onChange={(e) => setItemWeight(e.target.value)} />
                                     </div>
-                                    <div className="calculation-container">
-                                        <button type="submit" className="calculate-button">Рассчитать</button>
-                                        <div className="calculation-result">
-                                            <span>Размер пошлины:</span>
-                                            <strong>{customsDuty.toFixed(2)} {currency}</strong>
-                                        </div>
+                                </div>
+                                <div className="calculation-container">
+                                    <button type="submit" className="calculate-button">Рассчитать</button>
+                                    <div className="calculation-result">
+                                        <span>Размер пошлины</span><br/><br/>
+                                        <strong>{customsDuty.toFixed(2)} {currency}</strong>
                                     </div>
-                                </form>
-                            </div>
-                        </CalculatorColumn>
-                        <TextColumn textOnLeft={textOnLeft}>
-                            <TextContent>
-                                <Subheading>{subheading}</Subheading>
-                                <Heading>{heading}</Heading>
-                                <Description>
-                                    <span style={{ color: "#0ABD19" }}>Если стоимость товаров</span> более 200 евро -
-                                    оплачивается таможенная пошлина 15% на
-                                    то, что свыше 200 евро + 5% оформление
-                                    документации таможенной пошлины. Лимит
-                                    31 кг., объёмный вес (габариты).
-                                </Description>
-                            </TextContent>
-                        </TextColumn>
-                    </TwoColumn>
-                </Container>
-                <Footer/>
+                                </div>
+                            </form>
+                        </div>
+                    </CalculatorColumn>
+                    <TextColumn textOnLeft={textOnLeft}>
+                        <TextContent>
+                            <Subheading>{subheading}</Subheading>
+                            <Heading>{heading}</Heading>
+                            <Description>
+                                <span style={{ color: "#0ABD19" }}>Если стоимость товаров</span> более 200 евро -
+                                оплачивается таможенная пошлина 15% на
+                                то, что свыше 200 евро + 5% оформление
+                                документации таможенной пошлины. Лимит
+                                31 кг., объёмный вес (габариты).
+                            </Description>
+                        </TextContent>
+                    </TextColumn>
+                </TwoColumn>
+            </Container>
+            <Footer/>
             </AnimationRevealPage>
         </>
 

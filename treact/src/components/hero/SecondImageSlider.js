@@ -28,7 +28,7 @@ const StyledSlider = styled(Slider)`
 const Actions = styled.div`
     ${tw`mb-8 lg:mb-0`}
     button {
-        ${tw`w-[200px] sm:relative sm:right-0 sm:top-0 sm:bottom-0 bg-green-500 text-white font-bold mr-2 my-4 sm:my-2 rounded-full py-4 flex items-center justify-center sm:leading-none focus:outline-none transition duration-300`}
+        ${tw`w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] bg-green-500 text-white font-bold mr-2 my-4 sm:my-2 rounded-full py-4 flex items-center justify-center sm:leading-none focus:outline-none transition duration-300`}
         background-color: #0ABD19;
         border: none;
         &:hover, &:focus {

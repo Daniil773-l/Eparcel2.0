@@ -21,7 +21,11 @@ const Container = tw.div`relative`;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-6`}
+  @media (max-width: 768px) {
+  ${tw`pt-4`} /* Уменьшаем верхний отступ на маленьких экранах */
+}
 `;
+
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center`;
@@ -65,7 +69,6 @@ const Card = styled.div`
   }
 `;
 
-
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
@@ -94,29 +97,28 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "", d
   if (!cards) cards = defaultCards;
 
   return (
-    <Container>
-      <ThreeColumnContainer>
-        {subheading && <Subheading>{subheading}</Subheading>}
-        <Heading>{heading}</Heading>
-
-        <VerticalSpacer />
-        {cards.map((card, i) => (
-          <Column key={i}>
-            <Card>
+      <Container>
+        <ThreeColumnContainer>
+          {subheading && <Subheading>{subheading}</Subheading>}
+          <Heading>{heading}</Heading>
+          <VerticalSpacer />
+          {cards.map((card, i) => (
+              <Column key={i}>
+                <Card>
               <span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
               </span>
-              <span className="textContainer">
+                  <span className="textContainer">
                 <span className="title">{card.title || "Fully Secure"}</span>
                 <p className="description">
                   {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
                 </p>
               </span>
-            </Card>
-          </Column>
-        ))}
-      </ThreeColumnContainer>
-      <DecoratorBlob />
-    </Container>
+                </Card>
+              </Column>
+          ))}
+        </ThreeColumnContainer>
+        <DecoratorBlob />
+      </Container>
   );
 };
