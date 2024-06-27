@@ -9,7 +9,7 @@ import Tariffs from "./tariffs";
 import Shops from "./Shops";
 import RedemptionOfGoods from "./RedemptionOfGoods";
 import Contacts from "./Contacts";
-
+import ExpectedLink from "./ExpectedLink";
 import LegalInformation from "./pages/LegalInformation";
 
 import DeliveryCalculator from "./pages/DeliveryCalculator";
@@ -47,7 +47,7 @@ root.render(
 
     <Router>
         <Routes>
-            <Route path="/" element={<OutgoingParcels/>} />
+            <Route path="/" element={<ExpectedLink/>} />
             <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />
