@@ -31,6 +31,8 @@ import Questions from "./Questions";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
 import SinglePage from "./SinglePageApplication";
+
+import ExpectedLink from "./ExpectedLink";
 import IncomingParcels from "./pages/IncomingParcels";
 import OutgoingParcels from "./pages/OutgoingParcels";
 import DeliveredParcels from "./pages/DeliveredParcels";
@@ -61,8 +63,9 @@ root.render(
             <Route path="/WarehouseServices" element={<WarehouseServices/>} />
             <Route path="/IncomingParcels" element={<IncomingParcels />} />
             <Route path="/PersonalArea" element={<PersonalArea />} />
-
-
+            <Route path="/ExpectedLink" element={<ExpectedLink />} />
+<Route path="/Purchaseofgoods" element={<Purchaseofgoods />} />
+            <Route path="/ServisApplication" element={<ServiseApplication/>}/>
             <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path="/ChangingContactDetails" element={<ChangingContactDetails />} />
             <Route path="/RegistrationPage" element={<RegistrationPage />} />

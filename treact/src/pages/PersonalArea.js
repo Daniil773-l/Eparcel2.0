@@ -108,10 +108,10 @@ const PersonalCabinet = ({ roundedHeaderButton }) => {
                         <WarehouseServiceCard /> {/* Add the new card */}
                     </CardsContainer>
                     <NavigationBanner>
-                        <NavigationLink href="/custom-rules">Таможенные правила</NavigationLink>
-                        <NavigationLink href="/delivery-calculator">Калькулятор доставки</NavigationLink>
-                        <NavigationLink href="/prohibited-goods">Запрещенные товары к пересылке</NavigationLink>
-                        <NavigationLink href="/ask-question">Задать вопрос</NavigationLink>
+                        <NavigationLink href="/CustomRegulations">Таможенные правила</NavigationLink>
+                        <NavigationLink href="/DeliveryCalculator">Калькулятор доставки</NavigationLink>
+                        <NavigationLink href="/ProhibitedProductsPage">Запрещенные товары к пересылке</NavigationLink>
+                        <NavigationLink href="/Contacts">Задать вопрос</NavigationLink>
                         <NavigationLink href="/add-package">Добавить посылку</NavigationLink>
                     </NavigationBanner>
                     <FAQ/>
