@@ -26,7 +26,7 @@ const Layout = styled.div`
     max-width: 1200px; /* Adjust this value to reduce the size */
     @media (min-width: 768px) {
         flex-direction: row;
-        height: 56vh;
+        height: 42vh;
     }
     margin-top: 60px; /* Add margin-top for spacing from header */
 `;
