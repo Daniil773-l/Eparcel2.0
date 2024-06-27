@@ -7,10 +7,11 @@ import RoomHeader from "../components/headers/RoomHeader";
 import { ReactComponent as SearchIcon } from "../images/search-icon.svg";
 import AnimationRevealPage from "../helpers/AnimationRevealPage"; // Ensure you have the search icon SVG file
 import Footer from "components/footers/MainFooterWithLinks";
+
 import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg"; // Импортируем PlusIcon
 
 const Container = styled.div`
-    ${tw`relative w-full min-h-screen`}
+    ${tw`relative w-full`}
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -73,8 +74,9 @@ const RightColumn = styled.div`
 `;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl leading-tight`}
     margin-bottom: 20px;
+    color: #2D2D2D;
 `;
 
 const PrimaryButton = styled.button`
@@ -244,6 +246,7 @@ export default ({ roundedHeaderButton }) => {
                             </BottomButtonsContainer>
                         </LeftColumn>
                     </TwoColumn>
+
                 </Container>
                 <Footer />
             </AnimationRevealPage>

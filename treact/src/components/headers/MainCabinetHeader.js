@@ -33,7 +33,7 @@ const NavLink = styled.a`
     ${tw`hover:border-primary-500 hover:text-primary-500 focus:text-primary-500`}
     ${css`
         text-decoration: none;
-        color: #000000;
+        color: #2D2D2D;
 
         &:hover, &:focus {
             color: #0ABD19;

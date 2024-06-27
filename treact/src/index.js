@@ -47,7 +47,7 @@ root.render(
 
     <Router>
         <Routes>
-            <Route path="/" element={<OutgoingParcels/>} />
+            <Route path="/" element={<PersonalArea/>} />
             <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />

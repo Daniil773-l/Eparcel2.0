@@ -19,7 +19,7 @@ const NavLink = styled.a`
     font-family: 'SFUIText', sans-serif;
     ${tw`text-lg lg:text-sm font-semibold tracking-wide transition duration-300`}
     text-decoration: none;
-    color: #000000;
+    color: #2D2D2D;
 
     &:hover, &:focus {
         color: #0ABD19;
@@ -36,6 +36,7 @@ const ProfileDropdownContainer = tw.div`relative inline-block text-left`;
 
 const DropdownMenu = styled(motion.div)`
     ${tw`origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50`}
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Added shadow */
 `;
 
 const DropdownItem = styled.a`

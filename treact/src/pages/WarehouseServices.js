@@ -10,7 +10,7 @@ import Footer from "components/footers/MainFooterWithLinks";
 import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg"; // Импортируем PlusIcon
 
 const Container = styled.div`
-    ${tw`relative w-full min-h-screen`}
+    ${tw`relative w-full`}
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -74,8 +74,9 @@ const RightColumn = styled.div`
 `;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-4xl leading-tight`}
     margin-bottom: 20px;
+    color: #2D2D2D;
 `;
 
 const PrimaryButton = styled.button`
@@ -152,7 +153,7 @@ const BottomButtonsContainer = styled.div`
 `;
 
 const BottomButton = styled.button`
-    ${tw`w-auto bg-green-500 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
+    ${tw`w-auto mt-6 bg-green-500 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
 

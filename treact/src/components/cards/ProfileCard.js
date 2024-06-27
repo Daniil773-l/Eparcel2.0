@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import iconBalance from "images/icon/BalanceCard.svg";
+import icon1 from "images/icon/MyPackages.svg";
+import icon2 from "images/icon/Receivers.svg";
+import icon3 from "images/icon/ProfileIconCard.svg";
+import icon4 from "images/icon/ChangeContactDetailsIcon.svg";
+import icon5 from "images/icon/ChangePasswordIcon.svg";
 
-const Container = tw.div`p-8`;
+
+const Container = tw.div``;
 const Header = tw.div`flex justify-between items-center mb-8`;
 const Title = tw.h1`text-3xl font-semibold`;
 const Breadcrumb = tw.div`text-sm text-gray-500`;
 
 const AddButton = styled.button`
     ${tw`ml-2 w-auto bg-green-500 text-white font-bold py-3 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
-    width: 250px; // Set fixed width
-    height: 40px; // Set fixed height
+    width: 250px;
+    height: 40px;
     background-color: #0ABD19;
     border: none;
 
@@ -25,8 +32,8 @@ const Content = styled.div`
 
 const Card = styled.div`
     ${tw`bg-white shadow-lg rounded-lg p-6 relative`}
-    width: calc(100% - 32px); // Adjust width to increase size
-    min-height: 320px; // Increase card height
+    width: calc(100% - 40px);
+    min-height: 320px;
 `;
 
 const CardHeader = styled.div`
@@ -39,13 +46,13 @@ const GreenStrip = styled.div`
 
 const Avatar = styled.div`
     ${tw`w-20 h-20 bg-white rounded-full flex items-center justify-center text-green-500 text-xl font-bold absolute shadow-lg`}
-    top: 4px; // Adjusted to move higher
+    top: 4px;
     left: 16px;
 `;
 
 const CardTitle = styled.div`
     ${tw`ml-24 relative`}
-    top: 20px; // Adjusted to align text correctly
+    top: 20px;
 `;
 
 const CardSubtitle = styled.div`
@@ -53,7 +60,8 @@ const CardSubtitle = styled.div`
 `;
 
 const Name = styled.div`
-    ${tw`text-black font-bold text-lg mt-1`}
+    ${tw`font-bold text-lg mt-2 ml-2`}
+    color: #2D2D2D;
 `;
 
 const Balance = styled.div`
@@ -87,16 +95,55 @@ const LogoutText = styled.div`
 `;
 
 const TabContainer = styled.div`
-    ${tw`flex justify-center space-x-4 mb-4`}
+    ${tw`flex justify-center mb-4`}
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
 `;
 
 const Tab = styled.button`
-    ${tw`py-2 px-4 rounded-full border-2 border-gray-200 bg-gray-100 hover:bg-gray-200`}
-    ${({ active }) => active && tw`bg-green-100 border-green-500`}
+    ${tw`py-3 px-8 rounded-full w-full transition-all duration-300 text-gray-700`}
+    ${({ active }) => active ? tw`bg-green-100 text-green-700 border border-green-500` : tw`bg-white`}
+    border: none;
+
+    &:not(:last-child) {
+        margin-right: 4px;
+    }
 `;
 
 const Address = styled.div`
     ${tw`text-gray-700 mt-4`}
+`;
+
+const AddressHeader = styled.div`
+    ${tw`font-bold text-lg mb-2`}
+    color: #2D2D2D;
+`;
+
+const AddressID = styled.div`
+    ${tw`text-green-500 mb-1`}
+`;
+
+const AddressInfo = styled.div`
+    ${tw`text-gray-400 mb-2`}
+`;
+
+const AddressDetails = styled.div`
+    ${tw`text-gray-700 mt-6`}
+`;
+
+const AddressLine = styled.div`
+    ${tw`mb-1`}
+`;
+
+const IDText = styled.div`
+    ${tw`font-semibold ml-2`}
+    color: #999999;
+    font-size: 12px;
 `;
 
 const SecondCardGreenStrip = styled.div`
@@ -105,6 +152,9 @@ const SecondCardGreenStrip = styled.div`
 
 const SecondCardText = styled.div`
     ${tw`text-gray-400 mt-4`}
+    position: absolute;
+    bottom: 20px;
+    left: 26px;
 `;
 
 const PersonalCabinet = () => {
@@ -113,12 +163,22 @@ const PersonalCabinet = () => {
     const addressInfo = {
         usa: {
             id: "EPL-1021",
-            address: "4 Lewis Circle\nWilmington DE 19804",
+            address: (
+                <>
+                    <AddressLine>4 Lewis Circle</AddressLine>
+                    <AddressLine>Wilmington DE 19804</AddressLine>
+                </>
+            ),
             phone: "+1-929-999-57-97",
         },
         turkey: {
             id: "EPL-1021",
-            address: "Güzelyurt mahallesi 2128. Sokak no:4/1\nFAST DEPO ESENYURT İSTANBUL",
+            address: (
+                <>
+                    <AddressLine>Güzelyurt mahallesi 2128. Sokak no:4/1</AddressLine>
+                    <AddressLine>FAST DEPO ESENYURT İSTANBUL</AddressLine>
+                </>
+            ),
             phone: "+90 534 081 3187",
         },
     };
@@ -140,20 +200,23 @@ const PersonalCabinet = () => {
                     <CardHeader>
                         <Avatar>ZY</Avatar>
                         <CardTitle>
-                            <div>Ваш ID: #{currentInfo.id}</div>
+                            <IDText>Ваш ID: #{currentInfo.id}</IDText>
                             <Name>Zhaksyllyk Yernur</Name>
                         </CardTitle>
                         <Balance>Баланс: 0.00 ₽</Balance>
                     </CardHeader>
                     <List>
                         <ListItem>
-                            <Icon>👤</Icon> Профиль
+                            <Icon><img src={icon3} alt="Profile" /></Icon> Профиль
                         </ListItem>
                         <ListItem>
-                            <Icon>👥</Icon> Получатели
+                            <Icon><img src={icon2} alt="Receivers" /></Icon> Получатели
                         </ListItem>
                         <ListItem>
-                            <Icon>🔒</Icon> Сменить пароль
+                            <Icon><img src={icon4} alt="Change Contact Details" /></Icon> Изменить контактные данные
+                        </ListItem>
+                        <ListItem>
+                            <Icon><img src={icon5} alt="Change Password" /></Icon> Сменить парол
                         </ListItem>
                     </List>
                     <Divider />
@@ -166,16 +229,13 @@ const PersonalCabinet = () => {
                         <Tab active={activeTab === "turkey"} onClick={() => setActiveTab("turkey")}>Турция</Tab>
                     </TabContainer>
                     <Address>
-                        <div>Ваш адрес склада:</div>
-                        <div tw="mt-2">
-                            <strong>Ваш ID: #{currentInfo.id}</strong>
-                            <div>* Не забывайте указывать Ваш ID при покупке товаров</div>
-                            <div tw="mt-2">
-                                {currentInfo.address}
-                                <br />
-                                tel: {currentInfo.phone}
-                            </div>
-                        </div>
+                        <AddressHeader>Ваш адрес склада:</AddressHeader>
+                        <AddressID>Ваш ID: #{currentInfo.id}</AddressID>
+                        <AddressInfo>* Не забывайте указывать Ваш ID при покупке товаров</AddressInfo>
+                        <AddressDetails>
+                            {currentInfo.address}
+                            tel: {currentInfo.phone}
+                        </AddressDetails>
                     </Address>
                     <Divider />
                     <SecondCardText>Как правильно указывать адрес для доставки?</SecondCardText>

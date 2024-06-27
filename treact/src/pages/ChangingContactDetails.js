@@ -6,7 +6,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../images/svg-decorator-blo
 import RoomHeader from "../components/headers/RoomHeader";
 import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Footer from "components/footers/MainFooterWithLinks";
-
+import BalanceCard from "../components/cards/TopUpCard";
 
 
 const Container = styled.div`
@@ -51,6 +51,27 @@ const PrimaryButton = styled.button`
 
 const Actions = styled.div`
     ${tw`relative flex flex-wrap items-center w-full gap-8`} // Add gap between containers
+`;
+
+const NavigationBanner = styled.div`
+    ${tw`w-full py-8 mb-12 mt-10`}
+    background: #EBFAE5;
+    text-align: center;
+    font-size: 1rem;
+    color: #2D2D2D;
+`;
+
+const NavigationLink = styled.a`
+    font-family: 'SFUIText', sans-serif;
+    ${tw`text-lg my-2 lg:text-sm lg:mx-6 lg:my-0 font-semibold tracking-wide transition duration-300 pb-1`}
+    ${tw`hover:border-primary-500 hover:text-primary-500 focus:text-primary-500`}
+    text-decoration: none;
+    color: #2D2D2D;
+
+    &:hover, &:focus {
+        color: #0ABD19;
+        text-decoration: none;
+    }
 `;
 
 const InputContainer = styled.div`
@@ -204,6 +225,13 @@ export default ({ roundedHeaderButton }) => {
                             </BottomButtonsContainer>
                         </LeftColumn>
                     </TwoColumn>
+                    <NavigationBanner>
+                        <NavigationLink href="/custom-rules">Таможенные правила</NavigationLink>
+                        <NavigationLink href="/delivery-calculator">Калькулятор доставки</NavigationLink>
+                        <NavigationLink href="/prohibited-goods">Запрещенные товары к пересылке</NavigationLink>
+                        <NavigationLink href="/ask-question">Задать вопрос</NavigationLink>
+                        <NavigationLink href="/add-package">Добавить посылку</NavigationLink>
+                    </NavigationBanner>
                 </Container>
                 <Footer />
             </AnimationRevealPage>
