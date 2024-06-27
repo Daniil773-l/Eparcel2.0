@@ -26,6 +26,7 @@ import HowToBuyGoodsAbroadPage from "./pages/HowToBuyGoodsAbroadPage";
 import ClothesSizes from "./pages/ClothesSizes";
 import ForBussinesPage from "./pages/ForBussinesPage";
 import News from "./News";
+import ServiseApplication from "./ServiseApplication";
 import Questions from "./Questions";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
@@ -37,7 +38,7 @@ import WarehouseServices from "./pages/WarehouseServices";
 import ChangePassword from "./pages/ChangePassword";
 import ChangingContactDetails from "./pages/ChangingContactDetails";
 import PersonalArea from "./pages/PersonalArea";
-
+import Purchaseofgoods from "./Purchaseofgoods";
 // Locate the root element from the DOM
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);  // Create a root.
@@ -47,7 +48,7 @@ root.render(
 
     <Router>
         <Routes>
-            <Route path="/" element={<OutgoingParcels/>} />
+            <Route path="/" element={<ServiseApplication/>} />
             <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />
