@@ -13,17 +13,24 @@ const CardHeaderContainer = styled.div`
     ${tw`flex`}
 `;
 
-const CardHeader = styled.div`
-    ${tw`text-blue-600 text-lg font-bold relative flex-shrink-0 h-auto py-8`}
+const CardHeaderLink = styled.a`
+    ${tw`text-blue-600 text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
     border-left: 2px solid #45A1E3;
     padding-left: 20px;
+    cursor: pointer;
+
     &:after {
         content: "";
         ${tw`absolute right-0 top-0 bottom-0 border-r border-blue-500`}
+    }
+
+    &:hover, &:focus {
+        color: #0ABD19;
+        text-decoration: none;
     }
 `;
 
@@ -56,7 +63,7 @@ const OutgoingPackagesCard = () => {
     return (
         <CardContainer>
             <CardHeaderContainer>
-                <CardHeader>Исходящие посылки</CardHeader>
+                <CardHeaderLink href="/OutgoingParcels">Исходящие посылки</CardHeaderLink> {/* Change the href to your desired page */}
                 <CardContentContainer>
                     <CardContent>
                         Отправленные и доставленные посылки:

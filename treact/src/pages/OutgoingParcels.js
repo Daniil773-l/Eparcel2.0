@@ -153,7 +153,7 @@ const BottomButtonsContainer = styled.div`
 `;
 
 const BottomButton = styled.button`
-    ${tw`w-auto bg-green-500 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
+    ${tw`w-auto bg-green-500 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
 

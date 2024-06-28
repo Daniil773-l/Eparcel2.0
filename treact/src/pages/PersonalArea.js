@@ -30,7 +30,7 @@ const LeftColumn = styled.div`
 `;
 
 const Banner = styled.div`
-    ${tw`w-full py-8`}
+    ${tw`w-full py-8 mb-16`}
     background: #FEFBE1;
     text-align: center;
     font-size: 1rem;
@@ -44,7 +44,7 @@ const BannerLink = styled.a`
 `;
 
 const CardsContainer = styled.div`
-    ${tw`grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-screen-xl mx-auto`}
+    ${tw`grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-screen-xl mx-auto `}
     margin-top: 16px; /* Reduced top margin */
 `;
 

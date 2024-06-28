@@ -13,17 +13,24 @@ const CardHeaderContainer = styled.div`
     ${tw`flex`}
 `;
 
-const CardHeader = styled.div`
-    ${tw`text-green-600 text-lg font-bold relative flex-shrink-0 h-auto py-10`}
+const CardHeaderLink = styled.a`
+    ${tw`text-green-600 text-lg font-bold relative flex-shrink-0 h-auto py-10 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    text-align: center; 
+    text-align: center;
     padding-right: 20px;
     border-left: 2px solid #1BA557;
     padding-left: 20px;
+    cursor: pointer;
+
     &:after {
         content: "";
         ${tw`absolute right-0 top-0 bottom-0 border-r border-green-500`}
+    }
+
+    &:hover, &:focus {
+        color: #0ABD19;
+        text-decoration: none;
     }
 `;
 
@@ -79,7 +86,7 @@ const IncomingPackagesCard = () => {
     return (
         <CardContainer>
             <CardHeaderContainer>
-                <CardHeader>Входящие посылки</CardHeader>
+                <CardHeaderLink href="/IncomingParcels">Входящие посылки</CardHeaderLink> {/* Change the href to your desired page */}
                 <CardContentContainer>
                     <CardContent>
                         Ожидаемые посылки и посылки прибывшие на склад:

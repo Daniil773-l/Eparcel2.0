@@ -106,7 +106,7 @@ const HeaderContainer = () => {
                                 exit={{ opacity: 0, y: -20 }}
                             >
                                 <DropdownItem href="/PersonalArea">Профиль</DropdownItem>
-                                <DropdownItem href="/recipients">Получатели</DropdownItem>
+                                <DropdownItem href="/RecipientsPrivateCabinet">Получатели</DropdownItem>
                                 <DropdownItem href="/ChangingContactDetails">Изменить контактные данные</DropdownItem>
                                 <DropdownItem href="/ChangePassword">Сменить пароль</DropdownItem>
                                 <DropdownItem href="/logout">Выйти из аккаунта</DropdownItem>

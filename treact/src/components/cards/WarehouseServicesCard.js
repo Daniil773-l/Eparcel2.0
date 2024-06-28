@@ -13,17 +13,24 @@ const CardHeaderContainer = styled.div`
     ${tw`flex`}
 `;
 
-const CardHeader = styled.div`
-    ${tw`text-red-600 text-lg font-bold relative flex-shrink-0 h-auto py-8`}
+const CardHeaderLink = styled.a`
+    ${tw`text-red-600 text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    text-align: center; /* Center the text */
+    text-align: center;
     padding-right: 20px;
-    border-left: 2px solid #FFC0B7; 
+    border-left: 2px solid #FFC0B7;
     padding-left: 20px;
+    cursor: pointer;
+
     &:after {
         content: "";
         ${tw`absolute right-0 top-0 bottom-0 border-r border-red-500`}
+    }
+
+    &:hover, &:focus {
+        color: #0ABD19;
+        text-decoration: none;
     }
 `;
 
@@ -80,7 +87,7 @@ const WarehouseServiceCard = () => {
     return (
         <CardContainer>
             <CardHeaderContainer>
-                <CardHeader>Услуги склада</CardHeader>
+                <CardHeaderLink href="/WarehouseServices">Услуги склада</CardHeaderLink> {/* Change the href to your desired page */}
                 <CardContentContainer>
                     <CardContent>
                         Заявки на услуги склада:

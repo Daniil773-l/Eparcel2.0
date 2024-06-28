@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Header from "components/headers/MainCabinetHeader";
 import { ReactComponent as SvgDecoratorBlob1 } from "../images/svg-decorator-blob-1.svg";
 import RoomHeader from "../components/headers/RoomHeader";
@@ -9,7 +10,6 @@ import Footer from "components/footers/MainFooterWithLinks";
 import ProfileCard from "../components/cards/ProfileCard";
 import TopUpCard from "../components/cards/TopUpCard";
 import SingleProfileCard from "../components/cards/SingleProfileCard";
-import {Link} from "react-router-dom";
 
 const Container = styled.div`
     ${tw`relative w-full min-h-screen`}
@@ -99,37 +99,7 @@ const ButtonContainer = styled.div`
     ${tw`mt-8`} // Add top margin
 `;
 
-const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
-
-const Actions = styled.div`
-    ${tw`relative flex items-center w-full gap-8`} // Add gap between containers
-`;
-
-const InputContainer = styled.div`
-    ${tw`relative flex-1`} // Use flex-1 to ensure proper spacing
-    width: 50%;
-`;
-
-const Label = styled.label`
-    ${tw`block text-gray-700 text-sm font-bold mb-2`}
-`;
-
-const SearchInput = styled.input`
-    ${tw`pl-4  py-3 font-medium focus:outline-none transition duration-300 `}
-    border-color: #0ABD19;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #0ABD19;
-    padding-left: 0;
-    &:hover, &:focus {
-        border-color: #0ABD19;
-    }
-    &:focus::placeholder {
-        color: transparent;
-    }
-`;
-
-const AddInput = styled.input`
+const ButtonAdd = styled.button`
     ${tw`ml-4 w-auto bg-gray-300 text-gray-600 font-bold py-3 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     border: none;
     width: 200px; // Set fixed width
@@ -146,6 +116,16 @@ const AddInput = styled.input`
     }
 `;
 
+const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
+
+const Actions = styled.div`
+    ${tw`relative flex items-center w-full gap-8`} // Add gap between containers
+`;
+
+const Description = styled.p`
+    ${tw`my-5 lg:my-8 text-base xl:text-lg`}
+`;
+
 const BottomButtonsContainer = styled.div`
     ${tw`flex justify-start gap-4 mt-8`} // Increase top margin
 `;
@@ -154,7 +134,7 @@ const BottomButton = styled.button`
     ${tw`w-auto bg-green-500 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
-    width: 200px; // Set fixed width
+    width: 250px; // Set fixed width
     height: 50px; // Set fixed height
 
     &:hover, &:focus {
@@ -183,7 +163,6 @@ const NavigationLink = styled.a`
     }
 `;
 
-
 const IllustrationContainer = styled.div`
     ${tw`flex justify-center lg:justify-end items-center`}
     width: 100%;
@@ -202,6 +181,15 @@ const IllustrationContainer = styled.div`
     }
 `;
 
+const CustomLink = styled(Link)`
+    text-decoration: none;
+    color: inherit; /* наследует цвет от родителя */
+    
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+`;
 
 const CardsContainer = styled.div`
     ${tw`grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto mb-20`}
@@ -213,16 +201,13 @@ const HighlightedText = styled.span`
     color: #0ABD19;
 `;
 
-
-const BackButton = styled(AddInput)`
+const BackButton = styled(ButtonAdd)`
     ${tw`w-auto bg-gray-300 text-gray-600 font-bold py-3 px-4 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     margin-left: 0; // Remove left margin
 `;
 
-export default ({ roundedHeaderButton }) => {
+const PersonalCabinet = ({ roundedHeaderButton }) => {
     const [showFirstImage, setShowFirstImage] = useState(true);
-    const [selectedCountry, setSelectedCountry] = useState("США");
-    const [selectedCategory, setSelectedCategory] = useState("Детский мир");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -241,33 +226,20 @@ export default ({ roundedHeaderButton }) => {
                     <TwoColumn>
                         <LeftColumn>
                             <Heading>
-                                Смена пароля
-                                <BackButton
-                                    type="button"
-                                    value="Назад в личный кабинет"
-                                    onClick={() => window.history.back()}
-                                />
+                                Получатели
+                                <CustomLink to="/PersonalArea">
+                                    <BackButton>
+                                        Назад в личный кабинет
+                                    </BackButton>
+                                </CustomLink>
                             </Heading>
-                            <Actions>
-                                <InputContainer>
-                                    <Label>Новый пароль</Label>
-                                    <SearchInput
-                                        type="password"
-                                        placeholder="Введите новый пароль"
-                                    />
-                                </InputContainer>
-                                <InputContainer>
-                                    <Label>Повторите пароль</Label>
-                                    <SearchInput
-                                        type="password"
-                                        placeholder="Повторите новый пароль"
-                                    />
-                                </InputContainer>
-                            </Actions>
+                            <Description>
+                                У вас не добавлено ни одного получателя посылок.<br />
+                                Нажмите кнопку "Добавить получателя" и следуйте инструкции, заполните все поля и выберите получателя в данном шаге.
+                            </Description>
                             <BottomButtonsContainer>
-                                <BottomButton>Сохранить</BottomButton>
+                                <BottomButton>Добавить получателя</BottomButton>
                             </BottomButtonsContainer>
-
                         </LeftColumn>
                     </TwoColumn>
                     <NavigationBanner>
@@ -278,8 +250,8 @@ export default ({ roundedHeaderButton }) => {
                         <NavigationLink href="/add-package">Добавить посылку</NavigationLink>
                     </NavigationBanner>
                     <CardsContainer>
-                        <TopUpCard/>
-                        <SingleProfileCard/>
+                        <TopUpCard />
+                        <SingleProfileCard />
                     </CardsContainer>
                 </Container>
                 <Footer />
@@ -287,3 +259,5 @@ export default ({ roundedHeaderButton }) => {
         </>
     );
 };
+
+export default PersonalCabinet;

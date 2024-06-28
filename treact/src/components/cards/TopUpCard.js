@@ -15,9 +15,9 @@ const GreenStrip = styled.div`
 `;
 
 const CircleIcon = styled.div`
-    ${tw`w-16 h-16 bg-white rounded-full flex items-center justify-center absolute shadow-lg`}
-    top: 8px;
-    left: 16px;
+    ${tw`w-20 h-20 bg-white rounded-full flex items-center justify-center absolute shadow-lg`}
+    top: 14px; /* Centering the icon vertically in the green strip */
+    left: 46px;
 `;
 
 const CardHeader = styled.div`
@@ -26,7 +26,12 @@ const CardHeader = styled.div`
 `;
 
 const BalanceText = styled.div`
-    ${tw`text-green-600 text-lg font-bold mt-4`}
+    ${tw`text-lg mt-4 `}
+    color: #2D2D2D;
+    padding-right: 30%;
+    span {
+        color: #0ABD19;
+    }
 `;
 
 const CardContent = styled.div`
@@ -37,25 +42,36 @@ const InputContainer = styled.div`
     ${tw`w-full flex items-center mt-4 mb-4`}
 `;
 
-const InputField = styled.input`
-    ${tw`w-2/3 py-2 px-4 border rounded-l-lg focus:outline-none`}
+const InputField = styled.div`
+    ${tw`w-1/2 flex items-center py-1 px-4 border rounded-lg focus:outline-none bg-white`}
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
 `;
 
-const CurrencyField = styled.div`
-    ${tw`w-1/3 py-2 px-4 bg-gray-100 border border-l-0 rounded-r-lg text-center text-gray-500`}
+const Input = styled.input`
+    ${tw`w-full py-2 px-4 border-none focus:outline-none `}
+`;
+
+const CurrencySymbol = styled.div`
+    ${tw`text-gray-500`}
 `;
 
 const Button = styled.button`
-    ${tw`bg-green-500 text-white font-bold py-2 px-6 rounded-lg mt-4`}
+    ${tw`bg-green-500 text-white font-bold py-3 px-8 rounded-lg ml-8 focus:outline-none transition duration-300`}
+    border: none;
+    background-color: #0ABD19;
     &:hover, &:focus {
-        ${tw`bg-green-600`}
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
 `;
 
 const Description = styled.div`
-    ${tw`text-gray-400 text-sm mt-4 text-center`}
+    ${tw`text-gray-400 text-sm mt-4`}
+    text-align: left;
+    width: 100%;
+    line-height: 1.5;
+    margin-left: 1rem;
+    margin-right: 1rem;
 `;
 
 const BalanceCard = () => {
@@ -72,23 +88,24 @@ const BalanceCard = () => {
                 <img src={iconBalance} alt="Balance Icon" />
             </CircleIcon>
             <CardHeader>
-                <BalanceText>Ваш баланс - 0,00 ₽</BalanceText>
+                <BalanceText>Ваш баланс - <span>0,00 ₽</span></BalanceText>
             </CardHeader>
             <CardContent>
-                <div>Укажите сумму</div>
+                <div style={{ color: '#999999', alignSelf: 'flex-start' }}>Укажите сумму</div>
                 <InputContainer>
-                    <InputField
-                        type="text"
-                        value={amount}
-                        onChange={handleInputChange}
-                        placeholder="0,00"
-                    />
-                    <CurrencyField>₽</CurrencyField>
+                    <InputField>
+                        <Input
+                            type="text"
+                            value={amount}
+                            onChange={handleInputChange}
+                        />
+                        <CurrencySymbol>₽</CurrencySymbol>
+                    </InputField>
+                    <Button>Пополнить баланс</Button>
                 </InputContainer>
-                <Button>Пополнить баланс</Button>
                 <Description>
-                    Для оперативной отправки посылок не забывайте своевременно пополнять баланс вашего счета.<br />
-                    На баланс будет зачислена та сумма, которую вы укажете в поле «Пополнить баланс на сумму».<br />
+                    Для оперативной отправки посылок не забывайте своевременно пополнять баланс вашего счета.<br /> <br/>
+                    На баланс будет зачислена та сумма, которую вы укажете в поле «Пополнить баланс на сумму».<br /><br/>
                     Комиссия платежной системы 0%.
                 </Description>
             </CardContent>

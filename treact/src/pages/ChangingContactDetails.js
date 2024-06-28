@@ -7,6 +7,8 @@ import RoomHeader from "../components/headers/RoomHeader";
 import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Footer from "components/footers/MainFooterWithLinks";
 import BalanceCard from "../components/cards/TopUpCard";
+import TopUpCard from "../components/cards/TopUpCard";
+import SingleProfileCard from "../components/cards/SingleProfileCard";
 
 
 const Container = styled.div`
@@ -37,6 +39,11 @@ const Heading = styled.h1`
     justify-content: space-between;
 `;
 
+const CardsContainer = styled.div`
+    ${tw`grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto mb-20`}
+    margin-top: 46px; /* Reduced top margin */
+`;
+
 const PrimaryButton = styled.button`
     ${tw`px-6 py-2 font-semibold rounded-lg shadow-md bg-gray-300 text-lg text-gray-600 h-10 w-full sm:w-auto m-2 border-2 border-solid border-green-600`}
     ${({ selected }) =>
@@ -54,7 +61,7 @@ const Actions = styled.div`
 `;
 
 const NavigationBanner = styled.div`
-    ${tw`w-full py-8 mb-12 mt-10`}
+    ${tw`w-full py-8 mb-16 mt-10`}
     background: #EBFAE5;
     text-align: center;
     font-size: 1rem;
@@ -179,21 +186,21 @@ export default ({ roundedHeaderButton }) => {
                                     <Label>Имя</Label>
                                     <SearchInput
                                         type="text"
-                                        placeholder="Zhaksyllyk"
+                                        placeholder="Daniil"
                                     />
                                 </InputContainer>
                                 <InputContainer>
                                     <Label>Фамилия</Label>
                                     <SearchInput
                                         type="text"
-                                        placeholder="Yernur"
+                                        placeholder="Shekdan"
                                     />
                                 </InputContainer>
                                 <InputContainer>
                                     <Label>Телефон</Label>
                                     <SearchInput
                                         type="text"
-                                        placeholder="+7(771) 151-65-61"
+                                        placeholder="+7(777) 777-77-77"
                                     />
                                 </InputContainer>
                             </Actions>
@@ -202,21 +209,21 @@ export default ({ roundedHeaderButton }) => {
                                     <Label>E-mail</Label>
                                     <SearchInput
                                         type="email"
-                                        placeholder="ernurov07ernur@gmail.com"
+                                        placeholder="daniil@gmail.com"
                                     />
                                 </InputContainer>
                                 <InputContainer>
                                     <Label>Страна</Label>
                                     <SearchInput
                                         type="text"
-                                        placeholder="Пример: Россия"
+                                        placeholder="Пример: Казахстан"
                                     />
                                 </InputContainer>
                                 <InputContainer>
                                     <Label>Город</Label>
                                     <SearchInput
                                         type="text"
-                                        placeholder="Пример: Санкт-Петербург"
+                                        placeholder="Пример: Астана"
                                     />
                                 </InputContainer>
                             </Actions>
@@ -232,6 +239,11 @@ export default ({ roundedHeaderButton }) => {
                         <NavigationLink href="/ask-question">Задать вопрос</NavigationLink>
                         <NavigationLink href="/add-package">Добавить посылку</NavigationLink>
                     </NavigationBanner>
+                    <CardsContainer>
+                        <TopUpCard/>
+                        <SingleProfileCard/>
+                    </CardsContainer>
+
                 </Container>
                 <Footer />
             </AnimationRevealPage>

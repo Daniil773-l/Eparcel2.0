@@ -42,6 +42,7 @@ const FAQSLink = styled.a`
     &::after {
         content: "→";
         position: absolute;
+        margin-bottom: 6px;
         right: -25px; /* Position the arrow to the right */
         font-size: 1.5rem; /* Increased size of the arrow */
         transition: transform 0.3s ease;

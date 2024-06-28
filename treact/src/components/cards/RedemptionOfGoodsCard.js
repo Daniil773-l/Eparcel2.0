@@ -13,17 +13,24 @@ const CardHeaderContainer = styled.div`
     ${tw`flex`}
 `;
 
-const CardHeader = styled.div`
-    ${tw`text-purple-600 text-lg font-bold relative flex-shrink-0 h-auto py-8`}
+const CardHeaderLink = styled.a`
+    ${tw`text-purple-600 text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
     border-left: 2px solid #979FFF;
     padding-left: 20px;
+    cursor: pointer;
+
     &:after {
         content: "";
         ${tw`absolute right-0 top-0 bottom-0 border-r border-purple-500`}
+    }
+
+    &:hover, &:focus {
+        color: #0ABD19;
+        text-decoration: none;
     }
 `;
 
@@ -41,7 +48,7 @@ const CardStats = styled.div`
 `;
 
 const Stat = styled.div`
-    ${tw`mb-2 flex justify-between`}
+    ${tw`mb-2 flex justify-between `}
 `;
 
 const StatLabel = styled.div`
@@ -55,7 +62,6 @@ const StatValue = styled.div`
 
 const CardActions = styled.div`
     ${tw`mt-auto w-full`}
-    
 `;
 
 const Button = styled.button`
@@ -82,7 +88,7 @@ const RedemptionCard = () => {
     return (
         <CardContainer>
             <CardHeaderContainer>
-                <CardHeader>Выкуп товаров</CardHeader>
+                <CardHeaderLink href="/desired-page">Выкуп товаров</CardHeaderLink> {/* Change the href to your desired page */}
                 <CardContentContainer>
                     <CardContent>
                         Ожидаемые товары для выкупа:
