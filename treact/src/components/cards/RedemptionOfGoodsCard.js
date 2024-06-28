@@ -83,7 +83,13 @@ const PlusIcon = () => (
         />
     </svg>
 );
+const Navlink=styled.a`
+    text-decoration: none;
+    
+    ${tw`flex items-center justify-center   text-white font-bold   `
 
+}
+`
 const RedemptionCard = () => {
     return (
         <CardContainer>
@@ -133,8 +139,10 @@ const RedemptionCard = () => {
                     </CardStats>
                     <CardActions>
                         <Button>
+                            <Navlink href="/Purchaseofgoods">
                             <PlusIcon />
                             Добавить заявку на выкуп
+                            </Navlink>
                         </Button>
                     </CardActions>
                 </CardContentContainer>

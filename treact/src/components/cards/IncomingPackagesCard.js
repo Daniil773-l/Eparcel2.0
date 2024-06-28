@@ -61,7 +61,14 @@ const StatValue = styled.div`
 const CardActions = styled.div`
     ${tw`mt-auto`}
 `;
+const Navlink=styled.a`
+    text-decoration: none;
+    
+    ${tw`flex items-center justify-center   text-white font-bold   `
 
+}
+    
+`
 const Button = styled.button`
     ${tw`flex items-center justify-center py-4 bg-green-500 text-white rounded-lg font-bold transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none mt-16`}
     svg {
@@ -106,9 +113,11 @@ const IncomingPackagesCard = () => {
                         </Stat>
                     </CardStats>
                     <CardActions>
-                        <Button>
+                        <Button >
+                            <Navlink href="/ExpectedLink">
                             <PlusIcon />
-                            Добавить ожидаемую посылку
+                            Добавить ожидаемую посылку</Navlink>
+
                         </Button>
                     </CardActions>
                 </CardContentContainer>

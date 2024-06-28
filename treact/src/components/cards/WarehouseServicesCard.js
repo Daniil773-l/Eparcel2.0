@@ -82,7 +82,13 @@ const PlusIcon = () => (
         />
     </svg>
 );
+const Navlink=styled.a`
+    text-decoration: none;
+    
+    ${tw`flex items-center justify-center   text-white font-bold   `
 
+}
+`
 const WarehouseServiceCard = () => {
     return (
         <CardContainer>
@@ -120,8 +126,10 @@ const WarehouseServiceCard = () => {
                     </CardStats>
                     <CardActions>
                         <Button>
+                            <Navlink href="/ServisApplication">
                             <PlusIcon />
                             Добавить заявку на услугу
+                            </Navlink>
                         </Button>
                     </CardActions>
                 </CardContentContainer>

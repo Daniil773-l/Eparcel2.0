@@ -7,25 +7,28 @@ import icon2 from "images/icon/Receivers.svg";
 import icon3 from "images/icon/ProfileIconCard.svg";
 import icon4 from "images/icon/ChangeContactDetailsIcon.svg";
 import icon5 from "images/icon/ChangePasswordIcon.svg";
-
+import {Link} from "react-router-dom";
 
 const Container = tw.div``;
 const Header = tw.div`flex justify-between items-center mb-8`;
 const Title = tw.h1`text-3xl font-semibold`;
 const Breadcrumb = tw.div`text-sm text-gray-500`;
 
-const AddButton = styled.button`
-    ${tw`ml-2 w-auto bg-green-500 text-white font-bold py-3 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
+
+const AddButton = styled.a`
+    ${tw`ml-2 w-auto bg-green-500 text-white font-medium py-3 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
     width: 250px;
-    height: 40px;
+    height: 20px;
+    font-size: 12px;
     background-color: #0ABD19;
     border: none;
+    text-decoration: none;
+    text-align: center;
 
     &:hover, &:focus {
         transform: scale(1.1);
     }
 `;
-
 const Content = styled.div`
     ${tw`grid grid-cols-1 md:grid-cols-2 gap-8`}
 `;
@@ -192,7 +195,7 @@ const PersonalCabinet = () => {
                     <Breadcrumb>Главная / Личный Кабинет</Breadcrumb>
                     <Title>Личный кабинет</Title>
                 </div>
-                <AddButton>+ Добавить ожидаемую посылку</AddButton>
+                <AddButton href= "/ExpectedLink">+ Добавить ожидаемую посылку</AddButton>
             </Header>
             <Content>
                 <Card>

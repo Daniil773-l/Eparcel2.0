@@ -37,7 +37,6 @@ import WarehouseServices from "./pages/WarehouseServices";
 import ChangePassword from "./pages/ChangePassword";
 import ChangingContactDetails from "./pages/ChangingContactDetails";
 import PersonalArea from "./pages/PersonalArea";
-import RecipientsPrivateCabinet from "pages/RecipientsPrivateCabinet";
 
 // Locate the root element from the DOM
 const rootElement = document.getElementById('root');
@@ -61,7 +60,7 @@ root.render(
             <Route path="/WarehouseServices" element={<WarehouseServices/>} />
             <Route path="/IncomingParcels" element={<IncomingParcels />} />
             <Route path="/PersonalArea" element={<PersonalArea />} />
-            <Route path="/RecipientsPrivateCabinet" element={<RecipientsPrivateCabinet/>} />
+
 
             <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path="/ChangingContactDetails" element={<ChangingContactDetails />} />
