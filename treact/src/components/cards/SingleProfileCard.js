@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import icon1 from "images/icon/MyPackages.svg";
@@ -6,6 +6,9 @@ import icon2 from "images/icon/Receivers.svg";
 import icon3 from "images/icon/ProfileIconCard.svg";
 import icon4 from "images/icon/ChangeContactDetailsIcon.svg";
 import icon5 from "images/icon/ChangePasswordIcon.svg";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../FireBaseConfig"; // Import Firestore
 
 const Container = tw.div``;
 
@@ -73,13 +76,53 @@ const LogoutText = styled.div`
 `;
 
 const ProfileCard = () => {
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        const auth = getAuth();
+        const cachedUser = localStorage.getItem('userData');
+
+        if (cachedUser) {
+            setUserData(JSON.parse(cachedUser));
+        } else {
+            const unsubscribe = onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        const userDocRef = doc(db, "users", user.uid);
+                        const userDocSnap = await getDoc(userDocRef);
+
+                        if (userDocSnap.exists()) {
+                            const userData = userDocSnap.data();
+                            console.log("User Data Fetched: ", userData); // Debug Log
+                            setUserData(userData);
+                            localStorage.setItem('userData', JSON.stringify(userData));
+                        } else {
+                            console.log("No such document!");
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user document:", error);
+                    }
+                } else {
+                    console.log("No user signed in!");
+                }
+            });
+
+            return () => unsubscribe();
+        }
+    }, []);
+
+    // Return null or loading indicator while userData is null
+    if (!userData) {
+        return null; // You can return a loading spinner or placeholder if needed
+    }
+    const initials = `${userData.firstName[0]}${userData.lastName[0]}`.toUpperCase();
     return (
         <Card>
             <GreenStrip />
-            <Avatar>ZY</Avatar>
+            <Avatar>{initials}</Avatar>
             <CardTitle>
-                <IDText>Ваш ID: #EPL-1021</IDText>
-                <Name>Zhaksylyk Yernur</Name>
+                <IDText>Ваш ID: {userData.userId}</IDText>
+                <Name>{`${userData.firstName} ${userData.lastName}`}</Name>
             </CardTitle>
             <Balance>Баланс: 0,00 ₽</Balance>
             <List>

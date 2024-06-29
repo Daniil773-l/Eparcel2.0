@@ -9,7 +9,9 @@ import Footer from "components/footers/MainFooterWithLinks";
 import BalanceCard from "../components/cards/TopUpCard";
 import TopUpCard from "../components/cards/TopUpCard";
 import SingleProfileCard from "../components/cards/SingleProfileCard";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../FireBaseConfig"; // Import Firestore configuration
 
 const Container = styled.div`
     ${tw`relative w-full min-h-screen`}
@@ -47,8 +49,8 @@ const CardsContainer = styled.div`
 const PrimaryButton = styled.button`
     ${tw`px-6 py-2 font-semibold rounded-lg shadow-md bg-gray-300 text-lg text-gray-600 h-10 w-full sm:w-auto m-2 border-2 border-solid border-green-600`}
     ${({ selected }) =>
-    selected &&
-    css`
+            selected &&
+            css`
             ${tw`bg-green-200 text-black`}
         `}
     &:hover, &:focus {
@@ -142,16 +144,98 @@ const BackButton = styled(AddInput)`
     margin-left: 0; // Remove left margin
 `;
 
+const UserProfileForm = ({ user, onSave }) => {
+    const [firstName, setFirstName] = useState(user.firstName || '');
+    const [lastName, setLastName] = useState(user.lastName || '');
+    const [phone, setPhone] = useState(user.phone || '');
+    const [email, setEmail] = useState(user.email || '');
+
+    const handleSave = async () => {
+        try {
+            const userRef = doc(db, "users", user.uid);
+            await setDoc(userRef, {
+                firstName,
+                lastName,
+                phone,
+                email
+            }, { merge: true });
+            alert("Data saved successfully!");
+            onSave({ firstName, lastName, phone, email }); // Call the onSave callback
+        } catch (error) {
+            console.error("Error saving user data: ", error);
+            alert("Failed to save data.");
+        }
+    };
+    return (
+        <>
+            <Heading>
+                Контактное лицо:
+            </Heading>
+            <Actions>
+                <InputContainer>
+                    <Label>Имя</Label>
+                    <SearchInput
+                        type="text"
+                        placeholder="Daniil"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Label>Фамилия</Label>
+                    <SearchInput
+                        type="text"
+                        placeholder="Shekdan"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Label>Телефон</Label>
+                    <SearchInput
+                        type="text"
+                        placeholder="+7(777) 777-77-77"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                    />
+                </InputContainer>
+            </Actions>
+            <Actions>
+                <InputContainer>
+                    <Label>E-mail</Label>
+                    <SearchInput
+                        type="email"
+                        placeholder="daniil@gmail.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </InputContainer>
+            </Actions>
+            <BottomButtonsContainer>
+                <BottomButton onClick={handleSave}>Сохранить</BottomButton>
+            </BottomButtonsContainer>
+        </>
+    );
+};
+
 export default ({ roundedHeaderButton }) => {
-    const [showFirstImage, setShowFirstImage] = useState(true);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setShowFirstImage((prev) => !prev); // Toggle between true and false
-        }, 3000); // Change image every 3 seconds
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (userDoc.exists()) {
+                    setUser({ uid: user.uid, ...userDoc.data() });
+                }
+            }
+        });
 
-        return () => clearInterval(interval); // Clean up the interval on component unmount
+        return () => unsubscribe();
     }, []);
+
+    if (!user) return <div>Loading...</div>;
 
     return (
         <>
@@ -169,67 +253,7 @@ export default ({ roundedHeaderButton }) => {
                                     onClick={() => window.history.back()}
                                 />
                             </Heading>
-                            <Actions>
-                                <InputContainer>
-                                    <Label>Название личного кабинета</Label>
-                                    <SearchInput
-                                        type="text"
-                                        placeholder="Ромашка"
-                                    />
-                                </InputContainer>
-                            </Actions>
-                            <Heading>
-                                Контактное лицо:
-                            </Heading>
-                            <Actions>
-                                <InputContainer>
-                                    <Label>Имя</Label>
-                                    <SearchInput
-                                        type="text"
-                                        placeholder="Daniil"
-                                    />
-                                </InputContainer>
-                                <InputContainer>
-                                    <Label>Фамилия</Label>
-                                    <SearchInput
-                                        type="text"
-                                        placeholder="Shekdan"
-                                    />
-                                </InputContainer>
-                                <InputContainer>
-                                    <Label>Телефон</Label>
-                                    <SearchInput
-                                        type="text"
-                                        placeholder="+7(777) 777-77-77"
-                                    />
-                                </InputContainer>
-                            </Actions>
-                            <Actions>
-                                <InputContainer>
-                                    <Label>E-mail</Label>
-                                    <SearchInput
-                                        type="email"
-                                        placeholder="daniil@gmail.com"
-                                    />
-                                </InputContainer>
-                                <InputContainer>
-                                    <Label>Страна</Label>
-                                    <SearchInput
-                                        type="text"
-                                        placeholder="Пример: Казахстан"
-                                    />
-                                </InputContainer>
-                                <InputContainer>
-                                    <Label>Город</Label>
-                                    <SearchInput
-                                        type="text"
-                                        placeholder="Пример: Астана"
-                                    />
-                                </InputContainer>
-                            </Actions>
-                            <BottomButtonsContainer>
-                                <BottomButton>Сохранить</BottomButton>
-                            </BottomButtonsContainer>
+                            <UserProfileForm user={user} />
                         </LeftColumn>
                     </TwoColumn>
                     <NavigationBanner>
@@ -243,7 +267,6 @@ export default ({ roundedHeaderButton }) => {
                         <TopUpCard/>
                         <SingleProfileCard/>
                     </CardsContainer>
-
                 </Container>
                 <Footer />
             </AnimationRevealPage>

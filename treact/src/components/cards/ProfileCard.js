@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import iconBalance from "images/icon/BalanceCard.svg";
@@ -7,13 +7,15 @@ import icon2 from "images/icon/Receivers.svg";
 import icon3 from "images/icon/ProfileIconCard.svg";
 import icon4 from "images/icon/ChangeContactDetailsIcon.svg";
 import icon5 from "images/icon/ChangePasswordIcon.svg";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../FireBaseConfig"; // Import Firestore
 
 const Container = tw.div``;
 const Header = tw.div`flex justify-between items-center mb-8`;
 const Title = tw.h1`text-3xl font-semibold`;
 const Breadcrumb = tw.div`text-sm text-gray-500`;
-
 
 const AddButton = styled.a`
     ${tw`ml-2 w-auto bg-green-500 text-white font-medium py-3 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
@@ -91,7 +93,7 @@ const Divider = styled.div`
 `;
 
 const LogoutText = styled.div`
-    ${tw`text-gray-400`}
+    ${tw`text-gray-400 cursor-pointer`}
     position: absolute;
     bottom: 20px;
     left: 26px;
@@ -162,6 +164,53 @@ const SecondCardText = styled.div`
 
 const PersonalCabinet = () => {
     const [activeTab, setActiveTab] = useState("usa");
+    const [userData, setUserData] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const auth = getAuth();
+        const cachedUser = localStorage.getItem('userData');
+
+        if (cachedUser) {
+            setUserData(JSON.parse(cachedUser));
+        } else {
+            const unsubscribe = onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        const userDocRef = doc(db, "users", user.uid);
+                        const userDocSnap = await getDoc(userDocRef);
+
+                        if (userDocSnap.exists()) {
+                            const userData = userDocSnap.data();
+                            console.log("User Data Fetched: ", userData); // Debug Log
+                            setUserData(userData);
+                            localStorage.setItem('userData', JSON.stringify(userData));
+                        } else {
+                            console.log("No such document!");
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user document:", error);
+                    }
+                } else {
+                    console.log("No user signed in!");
+                }
+            });
+
+            return () => unsubscribe();
+        }
+    }, []);
+
+    const handleLogout = () => {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            console.log("User signed out");
+            localStorage.removeItem('userData');
+            setUserData(null);
+            navigate("/App"); // Redirect to the App page
+        }).catch((error) => {
+            console.error("Error signing out:", error);
+        });
+    };
 
     const addressInfo = {
         usa: {
@@ -179,7 +228,7 @@ const PersonalCabinet = () => {
             address: (
                 <>
                     <AddressLine>Güzelyurt mahallesi 2128. Sokak no:4/1</AddressLine>
-                    <AddressLine>FAST DEPO ESENYURT İSTANBUL</AddressLine>
+                    <AddressLine>FAST DEPO ESENYURT İСТАНБУЛ</AddressLine>
                 </>
             ),
             phone: "+90 534 081 3187",
@@ -188,6 +237,12 @@ const PersonalCabinet = () => {
 
     const currentInfo = addressInfo[activeTab];
 
+    if (!userData) {
+        return <div>Loading...</div>;
+    }
+
+    const initials = `${userData.firstName[0]}${userData.lastName[0]}`.toUpperCase();
+
     return (
         <Container>
             <Header>
@@ -195,16 +250,16 @@ const PersonalCabinet = () => {
                     <Breadcrumb>Главная / Личный Кабинет</Breadcrumb>
                     <Title>Личный кабинет</Title>
                 </div>
-                <AddButton href= "/ExpectedLink">+ Добавить ожидаемую посылку</AddButton>
+                <AddButton href="/ExpectedLink">+ Добавить ожидаемую посылку</AddButton>
             </Header>
             <Content>
                 <Card>
                     <GreenStrip />
                     <CardHeader>
-                        <Avatar>ZY</Avatar>
+                        <Avatar>{initials}</Avatar>
                         <CardTitle>
-                            <IDText>Ваш ID: #{currentInfo.id}</IDText>
-                            <Name>Zhaksyllyk Yernur</Name>
+                            <IDText>Ваш ID: {userData.userId}</IDText>
+                            <Name>{`${userData.firstName} ${userData.lastName}`}</Name>
                         </CardTitle>
                         <Balance>Баланс: 0.00 ₽</Balance>
                     </CardHeader>
@@ -219,11 +274,11 @@ const PersonalCabinet = () => {
                             <Icon><img src={icon4} alt="Change Contact Details" /></Icon> Изменить контактные данные
                         </ListItem>
                         <ListItem>
-                            <Icon><img src={icon5} alt="Change Password" /></Icon> Сменить парол
+                            <Icon><img src={icon5} alt="Change Password" /></Icon> Сменить пароль
                         </ListItem>
                     </List>
                     <Divider />
-                    <LogoutText>Выйти из аккаунта</LogoutText>
+                    <LogoutText onClick={handleLogout}>Выйти из аккаунта</LogoutText>
                 </Card>
                 <Card>
                     <SecondCardGreenStrip />
@@ -233,7 +288,7 @@ const PersonalCabinet = () => {
                     </TabContainer>
                     <Address>
                         <AddressHeader>Ваш адрес склада:</AddressHeader>
-                        <AddressID>Ваш ID: #{currentInfo.id}</AddressID>
+                        <AddressID>Ваш ID: #{userData.userId}</AddressID>
                         <AddressInfo>* Не забывайте указывать Ваш ID при покупке товаров</AddressInfo>
                         <AddressDetails>
                             {currentInfo.address}

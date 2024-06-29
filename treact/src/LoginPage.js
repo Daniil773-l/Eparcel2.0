@@ -3,19 +3,15 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro"; // eslint-disable-line
 import illustration from "images/login-illustration.svg";
 import logo from "images/logo.svg";
-import googleIconImageSrc from "images/google-icon.png";
-import twitterIconImageSrc from "images/twitter-icon.png";
-import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import RegistrationPage from "./RegistrationPage";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./FireBaseConfig"; // Update the path to your firebaseConfig file
 
 const Container = styled(ContainerBase)`
     ${tw`min-h-screen bg-white text-white font-medium flex justify-center -m-8`}
-
 `;
 const Content = tw.div`
     max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 
@@ -28,23 +24,6 @@ const MainContent = tw.div`mt-12 flex flex-col items-center`;
 const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold`;
 const FormContainer = tw.div`w-full flex-1 mt-8`;
 
-const SocialButtonsContainer = tw.div`flex flex-col items-center`;
-const SocialButton = styled.a`
-    ${tw`w-full max-w-xs font-semibold rounded-lg py-3 border text-gray-900 bg-gray-100 hocus:bg-gray-200 hocus:border-gray-400 flex items-center justify-center transition-all duration-300 focus:outline-none focus:shadow-outline text-sm mt-5 first:mt-0`}
-    .iconContainer {
-        ${tw`bg-white p-2 rounded-full`}
-    }
-    .icon {
-        ${tw`w-4`}
-    }
-    .text {
-        ${tw`ml-4`}
-    }
-`;
-
-const DividerTextContainer = tw.div`my-2 border-b text-center relative`;
-const DividerText = tw.div`leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform -translate-y-1/2 absolute inset-x-0 top-1/2 bg-transparent`;
-
 const Form = tw.form`mx-auto w-full max-w-sm`;
 const Input = styled.input`
     ${tw`w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-8 first:mt-12`}
@@ -54,9 +33,7 @@ const PasswordInputWrapper = styled.div`
     ${tw`relative w-full`}
 `;
 
-const PasswordInput = styled(Input)`
-
-`;
+const PasswordInput = styled(Input)``;
 
 const TogglePasswordButton = styled.button`
     ${tw`absolute inset-y-0 right-0 pr-1 flex items-center text-gray-600 focus:outline-none`}
@@ -69,9 +46,9 @@ const TogglePasswordButton = styled.button`
 const SubmitButton = styled.button`
     ${tw`mt-8 tracking-wide font-semibold text-gray-100 py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
     background-color: #0ABD19;
-    width: 110%; /* Fixed width for the button */
+    width: 110%;
     &:hover {
-        background-color: #067D10; /* Change background color on hover */
+        background-color: #067D10;
     }
     .icon {
         ${tw`w-6 h-6 -ml-2`}
@@ -91,25 +68,37 @@ const IllustrationImage = styled.div`
 `;
 
 const PlainLink = styled.a`
-    ${tw`text-gray-600`}
+    text-decoration: none;
+    ${tw`text-gray-600 `}
     &:hover {
         ${tw`text-gray-800`}
     }
 `;
 
-export default ({
-                    logoLinkUrl = "#",
-                    illustrationImageSrc = illustration,
-                    headingText = "Войти",
-                    submitButtonText = "Войти",
-                    SubmitButtonIcon = LoginIcon,
-                    forgotPasswordUrl = "#",
-                    signupUrl = "#",
-                }) => {
+const LinksContainer = styled.div`
+    ${tw`flex flex-col items-center mt-4`}
+`;
+
+const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
+    const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
     const togglePasswordVisibility = () => {
         setPasswordShown(!passwordShown);
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            // Navigate to personal area upon successful login
+            navigate("/PersonalArea");
+        } catch (error) {
+            console.error("Error signing in: ", error.message);
+            // Handle error, e.g., display an error message to the user
+        }
     };
 
     return (
@@ -117,47 +106,52 @@ export default ({
             <Container>
                 <Content>
                     <MainContainer>
-                        <LogoLink href={logoLinkUrl}>
+                        <LogoLink href="#">
                             <LogoImage src={logo} />
                         </LogoLink>
                         <MainContent>
-                            <Heading>{headingText}</Heading>
+                            <Heading>Войти</Heading>
                             <FormContainer>
-                                <DividerTextContainer>
-                                    <DividerText> Войдите в систему, указав свои данные </DividerText>
-                                </DividerTextContainer>
-                                <Form>
-                                    <Input type="email" placeholder="Email"/>
+                                <Form onSubmit={handleLogin}>
+                                    <Input
+                                        type="email"
+                                        placeholder="Email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
                                     <PasswordInputWrapper>
-                                        <PasswordInput type={passwordShown ? "text" : "password"}
-                                                       placeholder="Password"/>
-                                        <TogglePasswordButton type="button" onClick={togglePasswordVisibility}>
-                                            {passwordShown ? <AiFillEyeInvisible size={24}/> : <AiFillEye size={24}/>}
+                                        <PasswordInput
+                                            type={passwordShown ? "text" : "password"}
+                                            placeholder="Password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                        <TogglePasswordButton onClick={togglePasswordVisibility}>
+                                            {passwordShown ? (
+                                                <AiFillEyeInvisible size={24}/>
+                                            ) : (
+                                                <AiFillEye size={24}/>
+                                            )}
                                         </TogglePasswordButton>
                                     </PasswordInputWrapper>
-                                    <PlainLink href="/App">
-                                        <SubmitButton type="button">
-                                            <SubmitButtonIcon className="icon" />
-                                            <span className="text">{submitButtonText}</span>
-                                        </SubmitButton>
-                                    </PlainLink>
+                                    <SubmitButton type="submit">
+                                        <span className="text">Войти</span>
+                                    </SubmitButton>
                                 </Form>
-                                <p tw="mt-8 text-xs text-gray-600 text-center">
-                                    <PlainLink href={forgotPasswordUrl}>Забыли свой пароль?</PlainLink>
-                                </p>
-                                <p tw="mt-10 text-sm text-gray-600 text-center">
-                                    Нету акаунта{" "}
-                                    <PlainLink href="/RegistrationPage">Зарегистрируйтесь</PlainLink>
-                                </p>
-
+                                <LinksContainer>
+                                    <PlainLink href="#">Забыли свой пароль?</PlainLink>
+                                    <PlainLink href="/RegistrationPage">Нету аккаунта? Зарегистрируйтесь</PlainLink>
+                                </LinksContainer>
                             </FormContainer>
                         </MainContent>
                     </MainContainer>
                     <IllustrationContainer>
-                        <IllustrationImage imageSrc={illustrationImageSrc} />
+                        <IllustrationImage imageSrc={illustration} />
                     </IllustrationContainer>
                 </Content>
             </Container>
         </AnimationRevealPage>
     );
 };
+
+export default Login;

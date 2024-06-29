@@ -112,7 +112,7 @@ const PersonalCabinet = ({ roundedHeaderButton }) => {
                         <NavigationLink href="/DeliveryCalculator">Калькулятор доставки</NavigationLink>
                         <NavigationLink href="/ProhibitedProductsPage">Запрещенные товары к пересылке</NavigationLink>
                         <NavigationLink href="/Contacts">Задать вопрос</NavigationLink>
-                        <NavigationLink href="/add-package">Добавить посылку</NavigationLink>
+                        <NavigationLink href="/ExpectedLink">Добавить посылку</NavigationLink>
                     </NavigationBanner>
                     <FAQ/>
                 </Container>

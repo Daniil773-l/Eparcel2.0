@@ -5,6 +5,7 @@ import Header from "../headers/light.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import DesignIllustration from "../../images/design-illustration-2.svg";
 import DesignIllustration1 from "../../images/design-illustration-1.svg";
+import { useNavigate } from "react-router-dom";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -68,7 +69,9 @@ const HighlightedText = styled.span`
 `;
 
 export default ({ roundedHeaderButton }) => {
+  const [email, setEmail] = useState('');
   const [showFirstImage, setShowFirstImage] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -77,6 +80,11 @@ export default ({ roundedHeaderButton }) => {
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
+
+  const handleRegister = () => {
+    localStorage.setItem('email', email); // Store email in local storage
+    navigate('/RegistrationPage'); // Navigate to the registration page
+  };
 
   return (
       <>
@@ -91,8 +99,13 @@ export default ({ roundedHeaderButton }) => {
                 Помогаем с покупками в американских и турецких интернет-магазинах и привозим их вам в Казахстан
               </Paragraph>
               <Actions>
-                <input type="text" placeholder="Ваш e-mail" />
-                <button>Зарегистрироваться</button>
+                <input
+                    type="text"
+                    placeholder="Ваш e-mail"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <button onClick={handleRegister}>Зарегистрироваться</button>
               </Actions>
             </LeftColumn>
             <RightColumn>

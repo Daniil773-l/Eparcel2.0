@@ -23,15 +23,7 @@ const CardHeaderLink = styled.a`
     padding-left: 20px;
     cursor: pointer;
 
-    &:after {
-        content: "";
-        ${tw`absolute right-0 top-0 bottom-0 border-r border-purple-500`}
-    }
-
-    &:hover, &:focus {
-        color: #0ABD19;
-        text-decoration: none;
-    }
+  
 `;
 
 const CardContentContainer = styled.div`

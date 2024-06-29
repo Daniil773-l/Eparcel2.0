@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
@@ -12,10 +12,12 @@ import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
 import { Link } from "react-router-dom";
 import InputMask from 'react-input-mask';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "./FireBaseConfig"; // Import Firestore
 
 const Container = styled(ContainerBase)`
     ${tw`min-h-screen bg-white text-white font-medium flex justify-center -m-8`}
-
 `;
 const Content = tw.div`
     max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 
@@ -109,11 +111,65 @@ export default ({
                     signInUrl = "#"
                 }) => {
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: localStorage.getItem('email') || "", // Retrieve email from local storage
+        password: "",
+        confirmPassword: ""
+    });
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const generateUserId = () => {
+        return Math.floor(Math.random() * 10000); // Generate a random ID between 0 and 9999
+    };
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Здесь можно добавить логику для обработки формы, например, отправку данных на сервер
-        navigate("/App"); // Замените "/target-page" на нужный URL
+        const { firstName, lastName, phone, email, password, confirmPassword } = formData;
+
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+
+        try {
+            const auth = getAuth();
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            const userId = generateUserId();
+
+            const userDocRef = doc(db, "users", user.uid);
+
+            // Parallelize Firestore write operation
+            const userDocPromise = setDoc(userDocRef, {
+                firstName,
+                lastName,
+                phone,
+                email,
+                userId // Save the generated user ID to Firestore
+            });
+
+            await Promise.all([userDocPromise]);
+
+            navigate("/PersonalArea");
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -127,16 +183,17 @@ export default ({
                         <MainContent>
                             <Heading>{headingText}</Heading>
                             <FormContainer>
+                                {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
                                 <Form onSubmit={handleSubmit}>
-                                    <Input type="text" placeholder="Имя" />
-                                    <Input type="text" placeholder="Фамилия" />
-                                    <MaskedInput mask="+7 (999) 999-99-99" type="text" placeholder="Телефон" />
-                                    <Input type="email" placeholder="Email" />
-                                    <Input type="password" placeholder="Пароль" />
-                                    <Input type="password" placeholder="Повторите пароль" />
-                                    <SubmitButton type="submit">
-                                        <SubmitButtonIcon className="icon" />
-                                        <span className="text">{submitButtonText}</span>
+                                    <Input name="firstName" type="text" placeholder="Имя" value={formData.firstName} onChange={handleInputChange} />
+                                    <Input name="lastName" type="text" placeholder="Фамилия" value={formData.lastName} onChange={handleInputChange} />
+                                    <MaskedInput mask="+7 (999) 999-99-99" name="phone" type="text" placeholder="Телефон" value={formData.phone} onChange={handleInputChange} />
+                                    <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleInputChange} />
+                                    <Input name="password" type="password" placeholder="Пароль" value={formData.password} onChange={handleInputChange} />
+                                    <Input name="confirmPassword" type="password" placeholder="Повторите пароль" value={formData.confirmPassword} onChange={handleInputChange} />
+                                    <SubmitButton type="submit" disabled={loading}>
+                                        <SignUpIcon className="icon" />
+                                        <span className="text">{loading ? "Регистрация..." : submitButtonText}</span>
                                     </SubmitButton>
                                     <p tw="mt-8 text-xs text-gray-600 text-center">
                                         Я согласен соблюдать положения закона{" "}

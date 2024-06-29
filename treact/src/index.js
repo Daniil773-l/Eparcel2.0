@@ -13,7 +13,7 @@ import Contacts from "./Contacts";
 import LegalInformation from "./pages/LegalInformation";
 
 import DeliveryCalculator from "./pages/DeliveryCalculator";
-
+import Purchaseofgoods from "./Purchaseofgoods";
 import CustomsRegulations from "./pages/CustomsRegulations";
 import ProhibitedProductsPage from "./pages/ProhibitedProductsPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -29,6 +29,8 @@ import News from "./News";
 import Questions from "./Questions";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
+import ServiseApplication from "./ServiseApplication";
+import ExpectedLink from "./ExpectedLink";
 import SinglePage from "./SinglePageApplication";
 import IncomingParcels from "./pages/IncomingParcels";
 import OutgoingParcels from "./pages/OutgoingParcels";
@@ -47,8 +49,8 @@ root.render(
 
     <Router>
         <Routes>
-            <Route path="/" element={<OutgoingParcels/>} />
-            <Route path="/App" element={<App/>} />
+            <Route path="/" element={<App/>} />
+                <Route path="/App" element={<App/>} />
             <Route path="/Tariffs" element={<Tariffs />} />
             <Route path="/Shops" element={<Shops />} />
             <Route path="/RedemptionOfGoods" element={<RedemptionOfGoods />} />
@@ -60,8 +62,9 @@ root.render(
             <Route path="/WarehouseServices" element={<WarehouseServices/>} />
             <Route path="/IncomingParcels" element={<IncomingParcels />} />
             <Route path="/PersonalArea" element={<PersonalArea />} />
-
-
+            <Route path="/ExpectedLink" element={<ExpectedLink />} />
+            <Route path="/ServisApplication" element={<ServiseApplication/>}/>
+            <Route path="/Purchaseofgoods" element={<Purchaseofgoods/>}/>
             <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path="/ChangingContactDetails" element={<ChangingContactDetails />} />
             <Route path="/RegistrationPage" element={<RegistrationPage />} />

@@ -3,6 +3,8 @@ import tw from "twin.macro";
 import styled from "styled-components/macro"; // eslint-disable-line
 import { motion } from "framer-motion";
 import { ReactComponent as PlusIcon } from "images/icon/PlusIcon.svg";
+import { useNavigate } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
 
 const Header = styled.header`
     ${tw`w-full flex justify-center items-center bg-[#F9F9F9] h-[70px]`}
@@ -66,6 +68,7 @@ const iconStyles = tw`w-6 h-6 mr-2`;
 const HeaderContainer = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const navigate = useNavigate();
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -83,6 +86,16 @@ const HeaderContainer = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [isDropdownOpen]);
+
+    const handleLogout = () => {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            console.log("User signed out");
+            navigate("/App"); // Redirect to the App page
+        }).catch((error) => {
+            console.error("Error signing out:", error);
+        });
+    };
 
     return (
         <Header>
@@ -109,7 +122,7 @@ const HeaderContainer = () => {
                                 <DropdownItem href="/RecipientsPrivateCabinet">Получатели</DropdownItem>
                                 <DropdownItem href="/ChangingContactDetails">Изменить контактные данные</DropdownItem>
                                 <DropdownItem href="/ChangePassword">Сменить пароль</DropdownItem>
-                                <DropdownItem href="/logout">Выйти из аккаунта</DropdownItem>
+                                <DropdownItem onClick={handleLogout}>Выйти из аккаунта</DropdownItem>
                             </DropdownMenu>
                         )}
                     </ProfileDropdownContainer>
