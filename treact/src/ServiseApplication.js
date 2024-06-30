@@ -499,7 +499,6 @@ export default function App() {
 
     return (
         <AnimationRevealPage>
-            <RoomHeader />
             <MainCabinetHeader />
             <Layout>
                 <SidebarContainer>

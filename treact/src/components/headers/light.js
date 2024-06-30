@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled, { keyframes, createGlobalStyle, css } from "styled-components";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { app } from "../../FireBaseConfig"; // Make sure to import your Firebase config
 import logo from "../../images/logo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
@@ -132,6 +133,21 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const auth = getAuth(app);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const defaultLinks = [
     <NavLinks key={1}>
       <NavLink href="/tariffs">Тарифы</NavLink>
@@ -140,7 +156,9 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       <NavLink href="/RedemptionOfGoods">Выкуп товаров</NavLink>
       <NavLink href="/AboutUS">О нас</NavLink>
       <NavLink href="/Contacts">Контакты</NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/Login">Войти</PrimaryLink>
+      {!isAuthenticated && (
+          <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/Login">Войти</PrimaryLink>
+      )}
     </NavLinks>
   ];
 

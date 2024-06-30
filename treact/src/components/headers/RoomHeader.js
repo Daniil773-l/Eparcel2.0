@@ -1,20 +1,42 @@
 import React, { useState, useEffect, useRef } from "react";
 import tw from "twin.macro";
-import styled from "styled-components/macro"; // eslint-disable-line
+import styled, { createGlobalStyle } from "styled-components/macro";
 import { motion } from "framer-motion";
 import { ReactComponent as PlusIcon } from "images/icon/PlusIcon.svg";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+import { useAuth } from "../../AuthContext";
+import { db } from "../../FireBaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: 'SFUIText';
+        src: url('../../fonts/SFUIDisplay-Ultralight.woff') format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'SFUIText', sans-serif;
+    }
+`;
 
 const Header = styled.header`
-    ${tw`w-full flex justify-center items-center bg-[#F9F9F9] h-[70px]`}
-    padding: 0 !important;
-    margin: 0 !important;
-    box-sizing: border-box; // Ensure the box model includes padding and border in the element's total width and height.
+    ${tw`w-full flex justify-between items-center bg-[#F9F9F9] h-[70px] px-8`}
+    box-sizing: border-box;
+    margin: 0;
+`;
+
+const NavContainer = styled.div`
+    ${tw`flex justify-center flex-1`}
 `;
 
 const NavLinks = styled.div`
-    ${tw`flex items-center space-x-12`}
+    ${tw`flex items-center space-x-8`}
 `;
 
 const NavLink = styled.a`
@@ -38,7 +60,7 @@ const ProfileDropdownContainer = tw.div`relative inline-block text-left`;
 
 const DropdownMenu = styled(motion.div)`
     ${tw`origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50`}
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Added shadow */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 `;
 
 const DropdownItem = styled.a`
@@ -53,7 +75,7 @@ const DropdownItem = styled.a`
 
 const ProfileButton = styled.button`
     ${tw`flex items-center text-sm font-medium text-white rounded-full focus:outline-none ml-16`}
-    ${tw`w-[120px] bg-green-500 mr-2 my-4 py-3 flex items-center justify-center leading-none transition duration-300`}
+    ${tw`w-[150px] bg-green-500 mr-2 my-4 py-3 flex items-center justify-center leading-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
     &:hover, &:focus {
@@ -62,13 +84,34 @@ const ProfileButton = styled.button`
     }
 `;
 
+const InitialsCircle = styled.div`
+    ${tw`flex items-center justify-center w-8 h-8 rounded-full bg-white text-green-500 font-bold mr-2`}
+`;
+
 const iconContainerStyles = tw`flex items-center ml-4`;
 const iconStyles = tw`w-6 h-6 mr-2`;
 
 const HeaderContainer = () => {
+    const { isAuthenticated, user } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [userData, setUserData] = useState(null);
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (user) {
+                const q = query(collection(db, "users"), where("email", "==", user.email));
+                const querySnapshot = await getDocs(q);
+                if (!querySnapshot.empty) {
+                    const userDoc = querySnapshot.docs[0].data();
+                    setUserData(userDoc);
+                }
+            }
+        };
+
+        fetchUserData();
+    }, [user]);
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -90,45 +133,62 @@ const HeaderContainer = () => {
     const handleLogout = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-            console.log("User signed out");
-            navigate("/App"); // Redirect to the App page
+            console.log("Пользователь вышел из системы");
+            navigate("/App");
         }).catch((error) => {
-            console.error("Error signing out:", error);
+            console.error("Ошибка выхода:", error);
         });
     };
 
+    const getInitials = () => {
+        if (userData) {
+            return `${userData.firstName.charAt(0).toUpperCase()}${userData.lastName.charAt(0).toUpperCase()}`;
+        }
+        return "П";
+    };
+
     return (
-        <Header>
-            <NavLinks>
-                <NavLink href="/CustomsRegulations">Таможенные правила</NavLink>
-                <NavLink href="/DeliveryCalculator">Калькулятор доставки</NavLink>
-                <NavLink href="/ProhibitedProductsPage">Запрещенные товары</NavLink>
-                <NavLink href="/Contacts">Задать вопрос</NavLink>
-                <LastNavLink href="/RedemptionOfGoods">Выкуп товаров</LastNavLink>
-                <div css={iconContainerStyles}>
-                    <PlusIcon css={iconStyles} />
-                    <span>Баланс: 0.00 ₽</span>
-                    <ProfileDropdownContainer ref={dropdownRef}>
-                        <ProfileButton onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                            Профиль
-                        </ProfileButton>
-                        {isDropdownOpen && (
-                            <DropdownMenu
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                            >
-                                <DropdownItem href="/PersonalArea">Профиль</DropdownItem>
-                                <DropdownItem href="/RecipientsPrivateCabinet">Получатели</DropdownItem>
-                                <DropdownItem href="/ChangingContactDetails">Изменить контактные данные</DropdownItem>
-                                <DropdownItem href="/ChangePassword">Сменить пароль</DropdownItem>
-                                <DropdownItem onClick={handleLogout}>Выйти из аккаунта</DropdownItem>
-                            </DropdownMenu>
-                        )}
-                    </ProfileDropdownContainer>
-                </div>
-            </NavLinks>
-        </Header>
+        <>
+            <GlobalStyle />
+            {isAuthenticated && (
+                <Header>
+                    <NavContainer>
+                        <NavLinks>
+                            <NavLink href="/CustomsRegulations">Таможенные правила</NavLink>
+                            <NavLink href="/DeliveryCalculator">Калькулятор доставки</NavLink>
+                            <NavLink href="/ProhibitedProductsPage">Запрещенные товары</NavLink>
+                            <NavLink href="/Contacts">Задать вопрос</NavLink>
+                            <LastNavLink href="/RedemptionOfGoods">Выкуп товаров</LastNavLink>
+                        </NavLinks>
+                    </NavContainer>
+                    <div css={iconContainerStyles}>
+                        <PlusIcon css={iconStyles} />
+                        <span>Баланс: 0.00 ₽</span>
+                        <ProfileDropdownContainer ref={dropdownRef}>
+                            <ProfileButton onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                                <InitialsCircle>
+                                    {getInitials()}
+                                </InitialsCircle>
+                                Профиль
+                            </ProfileButton>
+                            {isDropdownOpen && (
+                                <DropdownMenu
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                >
+                                    <DropdownItem href="/PersonalArea">Профиль</DropdownItem>
+                                    <DropdownItem href="/RecipientsPrivateCabinet">Получатели</DropdownItem>
+                                    <DropdownItem href="/ChangingContactDetails">Изменить контактные данные</DropdownItem>
+                                    <DropdownItem href="/ChangePassword">Сменить пароль</DropdownItem>
+                                    <DropdownItem onClick={handleLogout}>Выйти из аккаунта</DropdownItem>
+                                </DropdownMenu>
+                            )}
+                        </ProfileDropdownContainer>
+                    </div>
+                </Header>
+            )}
+        </>
     );
 };
 

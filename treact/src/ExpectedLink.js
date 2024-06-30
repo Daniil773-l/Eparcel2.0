@@ -283,7 +283,7 @@ const ExpectedLink = () => {
 
     return (
         <AnimationRevealPage>
-            <RoomHeader />
+
             <MainCabinetHeader />
             <PageContainer>
                 <FormContainer>

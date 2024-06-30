@@ -76,14 +76,20 @@ const Balance = styled.div`
 `;
 
 const List = styled.ul`
-    ${tw`space-y-2 mt-16`}
+    ${tw`space-y-4 mt-16`}  // Increase space between items
 `;
 
 const ListItem = styled.li`
-    ${tw`flex items-center text-gray-700`}
+    ${tw`flex items-center text-gray-700 text-lg`}  // Increase text size
 `;
 
-const Icon = tw.div`mr-2 text-green-500`;
+const Icon = styled.div`
+    ${tw`mr-4 text-green-500`}  // Increase space between icon and text
+    svg {
+        width: 36px;  // Increase icon size
+        height: 36px;
+    }
+`;
 
 const Divider = styled.div`
     ${tw`w-full h-px bg-gray-200`}
@@ -154,14 +160,26 @@ const IDText = styled.div`
 const SecondCardGreenStrip = styled.div`
     ${tw`absolute top-0 left-0 w-full h-16 bg-green-100 rounded-t-lg`}
 `;
+const Navlink=styled.a`
+    text-decoration: none;
+    
+    ${tw`flex items-center text-gray-700 text-lg`
 
-const SecondCardText = styled.div`
+}
+`
+const SecondCardText = styled.a`
+    ${tw`text-gray-400 mt-4`}
+    position: absolute;
+    text-decoration: none;
+    bottom: 20px;
+    left: 26px;
+`;
+const StyledLink = styled.a`
     ${tw`text-gray-400 mt-4`}
     position: absolute;
     bottom: 20px;
     left: 26px;
 `;
-
 const PersonalCabinet = () => {
     const [activeTab, setActiveTab] = useState("usa");
     const [userData, setUserData] = useState(null);
@@ -265,16 +283,13 @@ const PersonalCabinet = () => {
                     </CardHeader>
                     <List>
                         <ListItem>
-                            <Icon><img src={icon3} alt="Profile" /></Icon> Профиль
+                            <Icon><img src={icon3} alt="Profile" /></Icon><Navlink href="/ChangingContactDetails">Профиль</Navlink>
                         </ListItem>
                         <ListItem>
                             <Icon><img src={icon2} alt="Receivers" /></Icon> Получатели
                         </ListItem>
                         <ListItem>
-                            <Icon><img src={icon4} alt="Change Contact Details" /></Icon> Изменить контактные данные
-                        </ListItem>
-                        <ListItem>
-                            <Icon><img src={icon5} alt="Change Password" /></Icon> Сменить пароль
+                            <Icon><img src={icon5} alt="Change Password" /></Icon> <Navlink href="/ChangePassword"> Сменить пароль</Navlink>
                         </ListItem>
                     </List>
                     <Divider />
@@ -296,7 +311,7 @@ const PersonalCabinet = () => {
                         </AddressDetails>
                     </Address>
                     <Divider />
-                    <SecondCardText>Как правильно указывать адрес для доставки?</SecondCardText>
+                  <SecondCardText href="/Deliveryaddress">Как правильно указывать адрес для доставки?</SecondCardText>
                 </Card>
             </Content>
         </Container>

@@ -14,15 +14,20 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardHeaderLink = styled.a`
-    ${tw`text-blue-600 text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
+    ${tw`text-blue-600  text-lg font-bold relative flex-shrink-0 h-auto py-10 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
     border-left: 2px solid #45A1E3;
+
     padding-left: 20px;
     cursor: pointer;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 28%;
  
 `;
 

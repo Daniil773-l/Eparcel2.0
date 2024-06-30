@@ -12,7 +12,6 @@ const CardContainer = styled.div`
 const CardHeaderContainer = styled.div`
     ${tw`flex`}
 `;
-
 const CardHeaderLink = styled.a`
     ${tw`text-green-600 text-lg font-bold relative flex-shrink-0 h-auto py-10 no-underline`}
     writing-mode: vertical-rl;
@@ -22,8 +21,11 @@ const CardHeaderLink = styled.a`
     border-left: 2px solid #1BA557;
     padding-left: 20px;
     cursor: pointer;
-
- 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 28%;
 `;
 
 const CardContentContainer = styled.div`
@@ -43,7 +45,7 @@ const Stat = styled.div`
 `;
 
 const StatLabel = styled.div`
-    ${tw`flex items-center`}
+    ${tw`flex items-center justify-between`}
 `;
 
 const StatValue = styled.div`
@@ -53,14 +55,12 @@ const StatValue = styled.div`
 const CardActions = styled.div`
     ${tw`mt-auto`}
 `;
-const Navlink=styled.a`
-    text-decoration: none;
-    
-    ${tw`flex items-center justify-center   text-white font-bold   `
 
-}
-    
-`
+const Navlink = styled.a`
+    text-decoration: none;
+    ${tw`flex items-center justify-center text-white font-bold`}
+`;
+
 const Button = styled.button`
     ${tw`flex items-center justify-center py-4 bg-green-500 text-white rounded-lg font-bold transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none mt-16`}
     svg {
@@ -105,11 +105,11 @@ const IncomingPackagesCard = () => {
                         </Stat>
                     </CardStats>
                     <CardActions>
-                        <Button >
+                        <Button>
                             <Navlink href="/ExpectedLink">
-                            <PlusIcon />
-                            Добавить ожидаемую посылку</Navlink>
-
+                                <PlusIcon />
+                                Добавить ожидаемую посылку
+                            </Navlink>
                         </Button>
                     </CardActions>
                 </CardContentContainer>

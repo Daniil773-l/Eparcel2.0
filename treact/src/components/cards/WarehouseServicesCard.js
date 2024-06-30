@@ -22,6 +22,12 @@ const CardHeaderLink = styled.a`
     border-left: 2px solid #FFC0B7;
     padding-left: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 34%;
+
 
 `;
 

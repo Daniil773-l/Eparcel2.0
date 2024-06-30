@@ -333,7 +333,6 @@ const Purchaseofgoods = () => {
 
     return (
         <AnimationRevealPage>
-            <RoomHeader />
             <MainCabinetHeader />
             <PageContainer>
                 <TabContainer>
