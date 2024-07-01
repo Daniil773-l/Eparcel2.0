@@ -240,7 +240,6 @@ export default ({ roundedHeaderButton }) => {
     return (
         <>
             <AnimationRevealPage>
-                <RoomHeader />
                 <Header roundedHeaderButton={roundedHeaderButton} />
                 <Container>
                     <TwoColumn>

@@ -75,7 +75,7 @@ const DropdownItem = styled.a`
 
 const ProfileButton = styled.button`
     ${tw`flex items-center text-sm font-medium text-white rounded-full focus:outline-none ml-16`}
-    ${tw`w-[150px] bg-green-500 mr-2 my-4 py-3 flex items-center justify-center leading-none transition duration-300`}
+    ${tw`w-[150px] bg-green-500 mr-2 my-2 py-2 flex items-center justify-center leading-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
     &:hover, &:focus {
@@ -86,13 +86,15 @@ const ProfileButton = styled.button`
 
 const InitialsCircle = styled.div`
     ${tw`flex items-center justify-center w-8 h-8 rounded-full bg-white text-green-500 font-bold mr-2`}
+    font-size: 14px;
+    padding: 2px;
 `;
 
 const iconContainerStyles = tw`flex items-center ml-4`;
 const iconStyles = tw`w-6 h-6 mr-2`;
 
 const HeaderContainer = () => {
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated, user, loading } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [userData, setUserData] = useState(null);
     const dropdownRef = useRef(null);
@@ -100,18 +102,35 @@ const HeaderContainer = () => {
 
     useEffect(() => {
         const fetchUserData = async () => {
-            if (user) {
-                const q = query(collection(db, "users"), where("email", "==", user.email));
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    const userDoc = querySnapshot.docs[0].data();
-                    setUserData(userDoc);
+            if (user && user.email) {
+                try {
+                    const normalizedEmail = user.email.toLowerCase();
+                    console.log("Fetching data for user:", normalizedEmail);
+                    const q = query(collection(db, "users"), where("email", "==", normalizedEmail));
+                    const querySnapshot = await getDocs(q);
+                    console.log("Query Snapshot:", querySnapshot);
+                    querySnapshot.forEach(doc => {
+                        console.log("Doc data:", doc.data());
+                    });
+                    if (!querySnapshot.empty) {
+                        const userDoc = querySnapshot.docs[0].data();
+                        console.log("User data found:", userDoc);
+                        setUserData(userDoc);
+                    } else {
+                        console.log("No user data found for email:", normalizedEmail);
+                    }
+                } catch (error) {
+                    console.error("Ошибка получения данных пользователя:", error);
                 }
+            } else {
+                console.log("No user or user email is authenticated.");
             }
         };
 
-        fetchUserData();
-    }, [user]);
+        if (!loading) {
+            fetchUserData();
+        }
+    }, [user, loading]);
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -142,6 +161,7 @@ const HeaderContainer = () => {
 
     const getInitials = () => {
         if (userData) {
+            console.log("Getting initials for user data:", userData);
             return `${userData.firstName.charAt(0).toUpperCase()}${userData.lastName.charAt(0).toUpperCase()}`;
         }
         return "П";
