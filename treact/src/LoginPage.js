@@ -7,8 +7,9 @@ import illustration from "images/login-illustration.svg";
 import logo from "images/logo.svg";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./FireBaseConfig"; // Update the path to your firebaseConfig file
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore"; // Import Firestore functions
+import { auth, db } from "./FireBaseConfig";
 
 const Container = styled(ContainerBase)`
     ${tw`min-h-screen bg-white text-white font-medium flex justify-center -m-8`}
@@ -83,7 +84,8 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
-    const navigate = useNavigate(); // Use useNavigate instead of useHistory
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
         setPasswordShown(!passwordShown);
@@ -91,13 +93,27 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setError(""); // Reset error state
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Fetch user data from Firestore if needed and update local storage
+            const userDocRef = doc(db, "users", user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+
+            if (userDocSnap.exists()) {
+                const userData = userDocSnap.data();
+                localStorage.setItem('userData', JSON.stringify(userData));
+            } else {
+                console.log("No such document!");
+            }
+
             // Navigate to personal area upon successful login
             navigate("/PersonalArea");
         } catch (error) {
             console.error("Error signing in: ", error.message);
-            // Handle error, e.g., display an error message to the user
+            setError("Failed to log in. Please check your email and password.");
         }
     };
 
@@ -112,6 +128,7 @@ const Login = () => {
                         <MainContent>
                             <Heading>Войти</Heading>
                             <FormContainer>
+                                {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
                                 <Form onSubmit={handleLogin}>
                                     <Input
                                         type="email"

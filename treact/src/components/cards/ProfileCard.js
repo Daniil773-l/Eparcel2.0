@@ -200,7 +200,7 @@ const PersonalCabinet = () => {
 
                         if (userDocSnap.exists()) {
                             const userData = userDocSnap.data();
-                            console.log("User Data Fetched: ", userData); // Debug Log
+                            console.log("User Data Fetched: ", userData);
                             setUserData(userData);
                             localStorage.setItem('userData', JSON.stringify(userData));
                         } else {
@@ -224,7 +224,7 @@ const PersonalCabinet = () => {
             console.log("User signed out");
             localStorage.removeItem('userData');
             setUserData(null);
-            navigate("/App"); // Redirect to the App page
+            navigate("/App");
         }).catch((error) => {
             console.error("Error signing out:", error);
         });
@@ -311,7 +311,7 @@ const PersonalCabinet = () => {
                         </AddressDetails>
                     </Address>
                     <Divider />
-                  <SecondCardText href="/Deliveryaddress">Как правильно указывать адрес для доставки?</SecondCardText>
+                    <SecondCardText href="/Deliveryaddress">Как правильно указывать адрес для доставки?</SecondCardText>
                 </Card>
             </Content>
         </Container>

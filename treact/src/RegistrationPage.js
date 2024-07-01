@@ -115,7 +115,7 @@ export default ({
         firstName: "",
         lastName: "",
         phone: "",
-        email: localStorage.getItem('email') || "", // Retrieve email from local storage
+        email: localStorage.getItem('email') || "",
         password: "",
         confirmPassword: ""
     });
@@ -130,7 +130,7 @@ export default ({
     };
 
     const generateUserId = () => {
-        return Math.floor(Math.random() * 10000); // Generate a random ID between 0 and 9999
+        return Math.floor(Math.random() * 10000);
     };
 
     const handleSubmit = async (event) => {
@@ -153,16 +153,18 @@ export default ({
 
             const userDocRef = doc(db, "users", user.uid);
 
-            // Parallelize Firestore write operation
             const userDocPromise = setDoc(userDocRef, {
                 firstName,
                 lastName,
                 phone,
                 email,
-                userId // Save the generated user ID to Firestore
+                userId
             });
 
             await Promise.all([userDocPromise]);
+
+            // Update local storage with new user data
+            localStorage.setItem('userData', JSON.stringify({ firstName, lastName, phone, email, userId }));
 
             navigate("/PersonalArea");
         } catch (error) {
